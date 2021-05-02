@@ -1,5 +1,8 @@
 export declare class GoqZipCode {
-    private iwt;
+    private json;
+    private cache;
     constructor();
-    get(): string;
+    private init;
+    private fetchJson;
+    searchZipcode(): void;
 }
