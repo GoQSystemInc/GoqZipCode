@@ -1,6 +1,6 @@
 // TODO: fetchに変更する
 import axios from 'axios'
-import * as app from './types/app'
+import * as app from './types'
 
 export class GoqZipCode {
   static addressJson: string = './assets/zipcodes_min.json'

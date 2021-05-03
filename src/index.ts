@@ -1,3 +1,3 @@
-import { GoqZipCode } from './app'
+import { GoqZipCode } from './GoqZipCode'
 
 export { GoqZipCode }
