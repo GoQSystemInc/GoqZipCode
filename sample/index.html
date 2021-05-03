@@ -5,12 +5,61 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .container {
+      max-width: 800px;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .ml-1 {
+      margin-left: 0.5rem;
+    }
+
+    .address-list {
+      padding: 5px;
+      border: 1px solid #000;
+      list-style: inside;
+    }
+  </style>
 </head>
 <body>
+<div class="container">
+  <div>
+    <h1>郵便番号から住所を検索</h1>
+    <div class="flex">
+      <label for="zip">郵便番号</label>
+      <input id="zip" class="ml-1" name="zip" type="text">
+    </div>
+    <ul id="js-result" class="address-list"></ul>
+  </div>
+</div>
 
 <script src="../dist/app.js"></script>
 <script>
-console.log(GoqZipCode.get('test'))
+const $zip = document.getElementById('zip')
+$zip.addEventListener('keyup', async(e) => {
+  const data = await GoqZipCode.searchZipcode({
+    zipcode: String(e.target.value),
+    is_exact: true,
+    left_match: true,
+  }).catch((e) => {
+    return []
+  })
+
+  console.log(data)
+
+  let html = ''
+
+  data.forEach((item) => {
+    html += `<li>${item.pref}${item.pref}${item.city}${item.town}</li>`
+  })
+
+  const $result = document.getElementById('js-result')
+  $result.innerHTML = html
+})
 </script>
 </body>
 </html>
