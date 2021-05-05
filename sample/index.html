@@ -44,7 +44,6 @@ $zip.addEventListener('keyup', async(e) => {
   const data = await GoqZipCode.searchZipcode({
     zipcode: String(e.target.value),
     is_exact: true,
-    left_match: true,
   }).catch((e) => {
     return []
   })

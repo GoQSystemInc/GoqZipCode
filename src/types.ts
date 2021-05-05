@@ -12,8 +12,7 @@ export type response = {
 
 export type responses = response[]
 
-export type requestZipCode = {
+export type requestSearchZipCode = {
   zipcode: string
   is_exact: boolean
-  left_match: boolean
 }

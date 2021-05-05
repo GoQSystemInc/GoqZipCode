@@ -30,7 +30,7 @@ export class GoqZipCode {
   }
 
   // 郵便番号から検索
-  static async searchZipcode(data: app.requestZipCode): Promise<app.responses> {
+  static async searchZipcode(data: app.requestSearchZipCode): Promise<app.responses> {
     return new Promise(async (resolve, reject) => {
       // 2文字未満は処理しない
       if (data.zipcode.length <= 1) {
