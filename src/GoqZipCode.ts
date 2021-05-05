@@ -1,5 +1,7 @@
 // TODO: fetchに変更する
 import axios from 'axios'
+
+import { convertZipCode } from './utils'
 import * as app from './types'
 
 export class GoqZipCode {
@@ -32,8 +34,10 @@ export class GoqZipCode {
   // 郵便番号から検索
   static async searchZipcode(data: app.requestSearchZipCode): Promise<app.responses> {
     return new Promise(async (resolve, reject) => {
+      const zipCode = convertZipCode(data.zipcode)
+
       // 2文字未満は処理しない
-      if (data.zipcode.length <= 1) {
+      if (zipCode.length <= 1) {
         reject('2文字以上必要です')
       }
 
@@ -52,7 +56,7 @@ export class GoqZipCode {
         // データは50件まで
         if (payload.length >= 50) break
 
-        const rule:RegExp = new RegExp(`^${data.zipcode}`)
+        const rule:RegExp = new RegExp(`^${zipCode}`)
         const address: app.response = this.addressData[i]
 
         if (rule.test(address.zipcode)) {
