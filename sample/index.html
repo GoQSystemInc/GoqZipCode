@@ -39,9 +39,10 @@
 
 <script src="../dist/app.js"></script>
 <script>
+const app = new GoqZipCode()
 const $zip = document.getElementById('zip')
 $zip.addEventListener('keyup', async(e) => {
-  const data = await GoqZipCode.searchZipcode({
+  const data = await app.searchZipcode({
     zipcode: String(e.target.value),
     is_exact: true,
   }).catch((e) => {

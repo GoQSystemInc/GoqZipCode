@@ -32,7 +32,7 @@ export class GoqZipCode {
   }
 
   // 郵便番号から検索
-  static async searchZipcode(data: app.requestSearchZipCode): Promise<app.responses> {
+  async searchZipcode(data: app.requestSearchZipCode): Promise<app.responses> {
     return new Promise(async (resolve, reject) => {
       const zipCode = convertZipCode(data.zipcode)
 
@@ -42,13 +42,13 @@ export class GoqZipCode {
       }
 
       // jsonデータを取得してない場合
-      if (!this.addressData.length) {
-        await this.init()
+      if (!GoqZipCode.addressData.length) {
+        await GoqZipCode.init()
       }
 
       // データの格納
       const payload: app.response[] = []
-      const len: number = this.addressData.length
+      const len: number = GoqZipCode.addressData.length
 
       // mapやらreduceだとループの途中で抜けられないので
       // 普通のfor文で回すことにする
@@ -57,7 +57,7 @@ export class GoqZipCode {
         if (payload.length >= 50) break
 
         const rule:RegExp = new RegExp(`^${zipCode}`)
-        const address: app.response = this.addressData[i]
+        const address: app.response = GoqZipCode.addressData[i]
 
         if (rule.test(address.zipcode)) {
           payload.push(address)
