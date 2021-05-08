@@ -1,7 +1,7 @@
 // TODO: fetchに変更する
 import axios from 'axios'
 
-import { convertZipCode } from './utils'
+import { convertZipCode } from './utils/convertZipCode'
 import * as app from './types'
 
 export class GoqZipCode {
@@ -39,9 +39,15 @@ export class GoqZipCode {
     return new Promise(async (resolve, reject) => {
       const zipCode = convertZipCode(data.zipcode)
 
-      // 2文字未満は処理しない
+      // 一致検索する場合、7文字でない場合は処理しない
+      if (data.is_exact && zipCode.length !== 7) {
+        reject('郵便番号は7文字必要です')
+        return
+      }
+
+      // 一致検索でない場合、2文字未満は処理しない
       if (!data.is_exact && zipCode.length <= 1) {
-        reject('2文字以上必要です')
+        reject('郵便番号は2文字以上必要です')
         return
       }
 
