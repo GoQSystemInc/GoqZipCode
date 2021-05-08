@@ -10,6 +10,15 @@
       max-width: 800px;
     }
 
+    .box {
+      padding-top: 15px;
+      border-bottom: 1px solid;
+    }
+
+    .title {
+      font-size: 1.75rem;
+    }
+
     .flex {
       display: flex;
     }
@@ -27,27 +36,33 @@
 </head>
 <body>
 <div class="container">
-  <div>
-    <h1>郵便番号から住所を検索</h1>
+  <div class="box">
+    <h1 class="title">郵便番号から住所を検索（7桁で一致したもの）</h1>
     <div class="flex">
-      <label for="zip">郵便番号</label>
-      <input id="zip" class="ml-1" name="zip" type="text">
+      <label for="zip1">郵便番号</label>
+      <input id="zip1" class="ml-1" name="zip1" type="text">
     </div>
-    <ol id="js-result" class="address-list"></ol>
+    <ul id="js-result1" class="address-list">
+      <li>入力した郵便番号に一致する住所が見つかりません</li>
+    </ul>
   </div>
 </div>
 
 <script src="../dist/app.js"></script>
 <script>
-const app = new GoqZipCode(100)
-const $zip = document.getElementById('zip')
-$zip.addEventListener('keyup', async(e) => {
-  const data = await app.searchZipcode({
+const goqZipCode = new GoqZipCode(100)
+
+// 郵便番号一致検索
+const $zip1 = document.getElementById('zip1')
+$zip1.addEventListener('keyup', async(e) => {
+  const data = await goqZipCode.searchZipcode({
     zipcode: String(e.target.value),
     is_exact: true,
   }).catch((e) => {
     return []
   })
+
+  if (!data.length) return
 
   let html = ''
 
@@ -55,7 +70,7 @@ $zip.addEventListener('keyup', async(e) => {
     html += `<li>${item.pref}${item.pref}${item.city}${item.town}</li>`
   })
 
-  const $result = document.getElementById('js-result')
+  const $result = document.getElementById('js-result1')
   $result.innerHTML = html
 })
 </script>
