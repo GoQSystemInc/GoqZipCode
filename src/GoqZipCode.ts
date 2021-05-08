@@ -40,8 +40,9 @@ export class GoqZipCode {
       const zipCode = convertZipCode(data.zipcode)
 
       // 2文字未満は処理しない
-      if (zipCode.length <= 1) {
+      if (!data.is_exact && zipCode.length <= 1) {
         reject('2文字以上必要です')
+        return
       }
 
       // jsonデータを取得してない場合
