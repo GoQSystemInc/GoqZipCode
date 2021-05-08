@@ -52,33 +52,36 @@ export class GoqZipCode {
         await GoqZipCode.init()
       }
 
-      // データの格納
-      const payload: app.response[] = []
-
+      // 一致検索の場合
       if (data.is_exact) {
+        // 郵便番号7桁とマッチするデータを探す
         const matchAddress = GoqZipCode.addressData.find(element => element.zipcode === zipCode)
 
+        // データがないならreject
         if (!matchAddress) {
           reject('指定の郵便番号に一致する住所は見つかりませんでした')
           return
         }
 
-        payload.push(matchAddress)
-      } else {
-        const len: number = GoqZipCode.addressData.length
+        resolve([matchAddress])
+        return
+      }
 
-        // mapやらreduceだとループの途中で抜けられないので
-        // 普通のfor文で回すことにする
-        for (let i: number = 0; i < len; i++) {
-          // データは50件まで
-          if (payload.length >= this.limit) break
+      // 一致検索でない場合
+      const payload: app.response[] = []
+      const len: number = GoqZipCode.addressData.length
 
-          const rule:RegExp = new RegExp(`^${zipCode}`)
-          const address: app.response = GoqZipCode.addressData[i]
+      // mapやらreduceだとループの途中で抜けられないので
+      // 普通のfor文で回すことにする
+      for (let i: number = 0; i < len; i++) {
+        // データはlimit(default: 50)で指定した件数まで
+        if (payload.length >= this.limit) break
 
-          if (rule.test(address.zipcode)) {
-            payload.push(address)
-          }
+        const rule:RegExp = new RegExp(`^${zipCode}`)
+        const address: app.response = GoqZipCode.addressData[i]
+
+        if (rule.test(address.zipcode)) {
+          payload.push(address)
         }
       }
 
