@@ -38,16 +38,12 @@ export class GoqZipCode {
   async searchZipcode(data: app.requestSearchZipCode): Promise<app.responses> {
     return new Promise(async (resolve, reject) => {
       const zipCode = convertZipCode(data.zipcode)
+      const flag = GoqZipCode.checkLength(data.is_exact, zipCode.length)
 
-      // 一致検索する場合、7文字でない場合は処理しない
-      if (data.is_exact && zipCode.length !== 7) {
-        reject('郵便番号は7文字必要です')
-        return
-      }
-
-      // 一致検索でない場合、2文字未満は処理しない
-      if (!data.is_exact && zipCode.length <= 1) {
-        reject('郵便番号は2文字以上必要です')
+      // 郵便番号の桁数が検索条件にマッチしない場合は、以降の検索処理を実行させない
+      if (!flag) {
+        const message = data.is_exact ? '郵便番号は7文字必要です' : '郵便番号は2文字以上必要です'
+        reject(message)
         return
       }
 
@@ -76,5 +72,20 @@ export class GoqZipCode {
 
       resolve(payload)
     })
+  }
+
+  // 検索条件と郵便番号の桁数によってフラグを返す
+  private static checkLength (isExact: boolean, length: number): boolean {
+    // 一致検索する場合、7文字でない場合は処理しない
+    if (isExact && length !== 7) {
+      return false
+    }
+
+    // 一致検索でない場合、2文字未満は処理しない
+    if (!isExact && length <= 1) {
+      return false
+    }
+
+    return true
   }
 }
