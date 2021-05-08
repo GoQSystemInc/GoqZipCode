@@ -7,8 +7,11 @@ import * as app from './types'
 export class GoqZipCode {
   static addressJson: string = './assets/zipcodes_min.json'
   static addressData: app.responses = []
+  private limit: number = 50
 
-  constructor() {}
+  constructor(limit: number) {
+    this.limit = limit
+  }
 
   // 初期化
   // ※ユーザーがinit()した場合、jsonファイルの容量が大きく、
@@ -54,7 +57,7 @@ export class GoqZipCode {
       // 普通のfor文で回すことにする
       for (let i: number = 0; i < len; i++) {
         // データは50件まで
-        if (payload.length >= 50) break
+        if (payload.length >= this.limit) break
 
         const rule:RegExp = new RegExp(`^${zipCode}`)
         const address: app.response = GoqZipCode.addressData[i]

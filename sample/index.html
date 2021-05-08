@@ -21,7 +21,7 @@
     .address-list {
       padding: 5px;
       border: 1px solid #000;
-      list-style: inside;
+      list-style-position: inside;
     }
   </style>
 </head>
@@ -33,13 +33,13 @@
       <label for="zip">郵便番号</label>
       <input id="zip" class="ml-1" name="zip" type="text">
     </div>
-    <ul id="js-result" class="address-list"></ul>
+    <ol id="js-result" class="address-list"></ol>
   </div>
 </div>
 
 <script src="../dist/app.js"></script>
 <script>
-const app = new GoqZipCode()
+const app = new GoqZipCode(100)
 const $zip = document.getElementById('zip')
 $zip.addEventListener('keyup', async(e) => {
   const data = await app.searchZipcode({
@@ -48,8 +48,6 @@ $zip.addEventListener('keyup', async(e) => {
   }).catch((e) => {
     return []
   })
-
-  console.log(data)
 
   let html = ''
 
