@@ -35,7 +35,7 @@ export class GoqZipCode {
   }
 
   // 郵便番号から検索
-  async searchZipcode(data: app.requestSearchZipCode): Promise<app.responses> {
+  async searchAddressFromZipcode(data: app.requestSearchZipCode): Promise<app.responses> {
     return new Promise(async (resolve, reject) => {
       const zipCode = convertZipCode(data.zipcode)
       const flag = GoqZipCode.checkLength(data.is_exact, zipCode.length)

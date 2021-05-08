@@ -66,7 +66,7 @@ const goqZipCode = new GoqZipCode(100)
 // 郵便番号一致検索
 const $zip1 = document.getElementById('zip1')
 $zip1.addEventListener('keyup', async(e) => {
-  const data = await goqZipCode.searchZipcode({
+  const data = await goqZipCode.searchAddressFromZipcode({
     zipcode: String(e.target.value),
     is_exact: true,
   }).catch((e) => {
@@ -88,7 +88,7 @@ $zip1.addEventListener('keyup', async(e) => {
 // 郵便番号先頭一致で検索
 const $zip2 = document.getElementById('zip2')
 $zip2.addEventListener('keyup', async(e) => {
-  const data = await goqZipCode.searchZipcode({
+  const data = await goqZipCode.searchAddressFromZipcode({
     zipcode: String(e.target.value),
     is_exact: false,
   }).catch((e) => {
