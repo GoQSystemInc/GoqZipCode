@@ -95,7 +95,7 @@ $zip2.addEventListener('keyup', async(e) => {
     return []
   })
 
-  let html = data.length ? '' : '入力した郵便番号で候補となる住所が見つかりません'
+  let html = data.length ? '' : '<li>入力した郵便番号で候補となる住所が見つかりません</li>'
 
   data.forEach((item) => {
     html += `<li>${item.pref}${item.pref}${item.city}${item.town}</li>`
