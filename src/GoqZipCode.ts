@@ -115,6 +115,13 @@ export class GoqZipCode {
   // 住所から検索
   async searchZipcodeFromAddress(data: app.requestSearchZipcodeFromAddress): Promise<app.responses> {
     return new Promise(async (resolve, reject) => {
+      // 住所が3文字未満の場合は、以降の検索処理を実行させない
+      if (data.address.length <= 2) {
+        const message = '住所は3文字以上必要です';
+        reject(message);
+        return;
+      }
+
       // jsonデータを取得してない場合
       if (GoqZipCode.addressData.length === 0) {
         await GoqZipCode.init();
