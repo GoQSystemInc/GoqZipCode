@@ -1,3 +1,3 @@
-import { GoqZipCode } from './GoqZipCode'
+import { GoqZipCode } from './GoqZipCode';
 
-export { GoqZipCode }
+export { GoqZipCode };
