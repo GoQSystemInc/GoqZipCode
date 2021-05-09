@@ -1,7 +1,6 @@
 // TODO: fetchに変更する
 import axios from 'axios'
 
-import { convertZipCode } from './utils/convertZipCode'
 import * as app from './types'
 
 export class GoqZipCode {
@@ -34,6 +33,14 @@ export class GoqZipCode {
     })
   }
 
+  // 全角の数字を半角に変換 ハイフンが入っていても数字のみの抽出
+  private static convertZipCode (zipCode: string): string {
+    const a:string = zipCode.replace(/[０-９]/g, (s: string) => String.fromCharCode(s.charCodeAt(0) - 65248))
+    const b:RegExpMatchArray = a.match(/\d/g) || []
+
+    return b.join('')
+  }
+
   // 検索条件と郵便番号の桁数によってフラグを返す
   private static checkLength(isExact: boolean, length: number): boolean {
     // 一致検索する場合、7文字でない場合は処理しない
@@ -52,7 +59,7 @@ export class GoqZipCode {
   // 郵便番号から検索
   async searchAddressFromZipcode(data: app.requestSearchAddressFromZipcode): Promise<app.responses> {
     return new Promise(async (resolve, reject) => {
-      const zipCode = convertZipCode(data.zipcode)
+      const zipCode = GoqZipCode.convertZipCode(data.zipcode)
       const flag = GoqZipCode.checkLength(data.is_exact, zipCode.length)
 
       // 郵便番号の桁数が検索条件にマッチしない場合は、以降の検索処理を実行させない
