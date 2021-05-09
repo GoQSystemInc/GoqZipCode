@@ -57,6 +57,17 @@
       <li>入力した郵便番号で候補となる住所が見つかりません</li>
     </ul>
   </div>
+
+  <div class="box">
+    <h1 class="title">住所から郵便番号を検索（7桁で一致したもの）</h1>
+    <div class="flex">
+      <label for="address1">住所</label>
+      <input id="address1" class="ml-1" name="address1" type="text">
+    </div>
+    <ul id="js-result3" class="address-list">
+      <li>入力した住所で候補となる郵便番号が見つかりません</li>
+    </ul>
+  </div>
 </div>
 
 <script src="../dist/app.js"></script>
@@ -102,6 +113,29 @@ $zip2.addEventListener('keyup', async(e) => {
   })
 
   const $result = document.getElementById('js-result2')
+  $result.innerHTML = html
+})
+
+// 郵便番号先頭一致で検索
+const $address1 = document.getElementById('address1')
+$address1.addEventListener('keyup', async(e) => {
+  const data = await goqZipCode.searchZipcodeFromAddress({
+    address: String(e.target.value),
+    is_exact: true,
+    is_left: true,
+  }).catch((e) => {
+    return []
+  })
+
+  if (!data.length) return
+
+  let html = ''
+
+  data.forEach((item) => {
+    html += `<li>${item.zipcode}</li>`
+  })
+
+  const $result = document.getElementById('js-result3')
   $result.innerHTML = html
 })
 </script>

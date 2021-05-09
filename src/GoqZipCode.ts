@@ -103,4 +103,34 @@ export class GoqZipCode {
       resolve(payload)
     })
   }
+
+  // 住所から検索
+  async searchZipcodeFromAddress(data: app.requestSearchZipcodeFromAddress): Promise<app.responses> {
+    return new Promise(async (resolve, reject) => {
+      // jsonデータを取得してない場合
+      if (!GoqZipCode.addressData.length) {
+        await GoqZipCode.init()
+      }
+
+      // 一致検索の場合
+      if (data.is_exact) {
+        // 住所とマッチするデータを探す
+        const matchAddress = GoqZipCode.addressData.find(element => {
+          const fullAddress = `${element.pref}${element.city}${element.town}`
+          const fullKanaAddress = `${element.pref_kana}${element.city_kana}${element.town_kana}`
+
+          return fullAddress === data.address || fullKanaAddress === data.address
+        })
+
+        // データがないならreject
+        if (!matchAddress) {
+          reject('指定の住所に一致する郵便番号は見つかりませんでした')
+          return
+        }
+        
+        resolve([matchAddress])
+        return
+      }
+    })
+  }
 }

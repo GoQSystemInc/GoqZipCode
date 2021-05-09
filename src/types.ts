@@ -16,3 +16,9 @@ export type requestSearchAddressFromZipcode = {
   zipcode: string
   is_exact: boolean
 }
+
+export type requestSearchZipcodeFromAddress = {
+  address: string
+  is_exact: boolean
+  is_left: boolean
+}
