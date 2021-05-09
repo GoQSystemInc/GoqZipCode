@@ -68,6 +68,28 @@
       <li>入力した住所で候補となる郵便番号が見つかりません</li>
     </ul>
   </div>
+
+  <div class="box">
+    <h1 class="title">住所から郵便番号を検索（先頭一致で候補を探す）</h1>
+    <div class="flex">
+      <label for="address2">住所</label>
+      <input id="address2" class="ml-1" name="address2" type="text">
+    </div>
+    <ul id="js-result4" class="address-list">
+      <li>入力した住所で候補となる郵便番号が見つかりません</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h1 class="title">住所から郵便番号を検索（部分一致で候補を探す）</h1>
+    <div class="flex">
+      <label for="address3">住所</label>
+      <input id="address3" class="ml-1" name="address3" type="text">
+    </div>
+    <ul id="js-result5" class="address-list">
+      <li>入力した住所で候補となる郵便番号が見つかりません</li>
+    </ul>
+  </div>
 </div>
 
 <script src="../dist/app.js"></script>
@@ -136,6 +158,52 @@ $address1.addEventListener('keyup', async(e) => {
   })
 
   const $result = document.getElementById('js-result3')
+  $result.innerHTML = html
+})
+
+// 住所から先頭一致で検索
+const $address2 = document.getElementById('address2')
+$address2.addEventListener('keyup', async(e) => {
+  const data = await goqZipCode.searchZipcodeFromAddress({
+    address: String(e.target.value),
+    is_exact: false,
+    is_left: true,
+  }).catch((e) => {
+    return []
+  })
+
+  if (!data.length) return
+
+  let html = data.length ? '' : '<li>入力した住所で候補となる郵便番号が見つかりません</li>'
+
+  data.forEach((item) => {
+    html += `<li>${item.zipcode}（${item.pref}${item.city}${item.town}）</li>`
+  })
+
+  const $result = document.getElementById('js-result4')
+  $result.innerHTML = html
+})
+
+// 住所から部分一致で検索
+const $address3 = document.getElementById('address3')
+$address3.addEventListener('keyup', async(e) => {
+  const data = await goqZipCode.searchZipcodeFromAddress({
+    address: String(e.target.value),
+    is_exact: false,
+    is_left: false,
+  }).catch((e) => {
+    return []
+  })
+
+  if (!data.length) return
+
+  let html = data.length ? '' : '<li>入力した住所で候補となる郵便番号が見つかりません</li>'
+
+  data.forEach((item) => {
+    html += `<li>${item.zipcode}（${item.pref}${item.city}${item.town}）</li>`
+  })
+
+  const $result = document.getElementById('js-result5')
   $result.innerHTML = html
 })
 </script>

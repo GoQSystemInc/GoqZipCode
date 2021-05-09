@@ -127,10 +127,38 @@ export class GoqZipCode {
           reject('指定の住所に一致する郵便番号は見つかりませんでした')
           return
         }
-        
+
         resolve([matchAddress])
         return
       }
+
+      // 一致検索でない場合
+      const payload: app.response[] = []
+      const len: number = GoqZipCode.addressData.length
+
+      // mapやらreduceだとループの途中で抜けられないので
+      // 普通のfor文で回すことにする
+      for (let i: number = 0; i < len; i++) {
+        // データはlimit(default: 50)で指定した件数まで
+        if (payload.length >= this.limit) break
+
+        const address: app.response = GoqZipCode.addressData[i]
+        const fullAddress = `${address.pref}${address.city}${address.town}`
+        const fullKanaAddress = `${address.pref_kana}${address.city_kana}${address.town_kana}`
+
+        // 先頭一致
+        if (data.is_left) {
+          if (fullAddress.startsWith(data.address) || fullKanaAddress.startsWith(data.address)) {
+            payload.push(address)
+          }
+        } else {
+          if (fullAddress.includes(data.address) || fullKanaAddress.includes(data.address)) {
+            payload.push(address)
+          }
+        }
+      }
+
+      resolve(payload)
     })
   }
 }
