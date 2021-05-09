@@ -59,7 +59,7 @@
   </div>
 
   <div class="box">
-    <h1 class="title">住所から郵便番号を検索（7桁で一致したもの）</h1>
+    <h1 class="title">住所から郵便番号を検索（住所で一致したもの）</h1>
     <div class="flex">
       <label for="address1">住所</label>
       <input id="address1" class="ml-1" name="address1" type="text">
@@ -116,7 +116,7 @@ $zip2.addEventListener('keyup', async(e) => {
   $result.innerHTML = html
 })
 
-// 郵便番号先頭一致で検索
+// 住所一致検索
 const $address1 = document.getElementById('address1')
 $address1.addEventListener('keyup', async(e) => {
   const data = await goqZipCode.searchZipcodeFromAddress({
