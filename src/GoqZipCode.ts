@@ -146,7 +146,7 @@ export class GoqZipCode {
         const fullAddress = `${address.pref}${address.city}${address.town}`
         const fullKanaAddress = `${address.pref_kana}${address.city_kana}${address.town_kana}`
 
-        // 先頭一致
+        // 前方一致か部分一致か
         if (data.is_left) {
           if (fullAddress.startsWith(data.address) || fullKanaAddress.startsWith(data.address)) {
             payload.push(address)

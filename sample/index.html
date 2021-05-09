@@ -48,7 +48,7 @@
   </div>
 
   <div class="box">
-    <h1 class="title">郵便番号から住所を検索（先頭一致で候補を探す）</h1>
+    <h1 class="title">郵便番号から住所を検索（前方一致で候補を探す）</h1>
     <div class="flex">
       <label for="zip2">郵便番号</label>
       <input id="zip2" class="ml-1" name="zip2" type="text">
@@ -70,7 +70,7 @@
   </div>
 
   <div class="box">
-    <h1 class="title">住所から郵便番号を検索（先頭一致で候補を探す）</h1>
+    <h1 class="title">住所から郵便番号を検索（前方一致で候補を探す）</h1>
     <div class="flex">
       <label for="address2">住所</label>
       <input id="address2" class="ml-1" name="address2" type="text">
@@ -118,7 +118,7 @@ $zip1.addEventListener('keyup', async(e) => {
   $result.innerHTML = html
 })
 
-// 郵便番号先頭一致で検索
+// 郵便番号前方一致で検索
 const $zip2 = document.getElementById('zip2')
 $zip2.addEventListener('keyup', async(e) => {
   const data = await goqZipCode.searchAddressFromZipcode({
@@ -161,7 +161,7 @@ $address1.addEventListener('keyup', async(e) => {
   $result.innerHTML = html
 })
 
-// 住所から先頭一致で検索
+// 住所から前方一致で検索
 const $address2 = document.getElementById('address2')
 $address2.addEventListener('keyup', async(e) => {
   const data = await goqZipCode.searchZipcodeFromAddress({
