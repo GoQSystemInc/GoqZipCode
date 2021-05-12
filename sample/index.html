@@ -5,90 +5,81 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
   <style>
-    .container {
-      max-width: 800px;
+    body {
+      background: #f7f7f7;
     }
 
-    .box {
-      padding-top: 15px;
-      border-bottom: 1px solid;
-    }
-
-    .title {
-      font-size: 1.75rem;
-    }
-
-    .flex {
-      display: flex;
-    }
-
-    .ml-1 {
-      margin-left: 0.5rem;
-    }
-
-    .address-list {
-      padding: 5px;
-      border: 1px solid #000;
-      list-style-position: inside;
+    .content-box {
+      padding: 30px;
+      margin: 20px 0 30px;
+      background: #fff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <div class="box">
-    <h1 class="title">郵便番号から住所を検索（7桁で一致したもの）</h1>
-    <div class="flex">
-      <label for="zip1">郵便番号</label>
-      <input id="zip1" class="ml-1" name="zip1" type="text">
+  <div class="content-box">
+    <h1 class="fs-5 fw-bold">郵便番号から住所を検索（7桁で一致したもの）</h1>
+    <div class="mb-3">
+      <label class="form-label" for="zip1">郵便番号</label>
+      <input id="zip1" class="form-control" name="zip1">
     </div>
-    <ul id="js-result1" class="address-list">
-      <li>入力した郵便番号に一致する住所が見つかりません</li>
-    </ul>
+    <div>
+      <label class="form-label" for="js-result1">検索結果</label>
+      <input id="js-result1" class="form-control bg-white" value="入力した郵便番号に一致する住所が見つかりません" readonly>
+    </div>
   </div>
 
-  <div class="box">
-    <h1 class="title">郵便番号から住所を検索（前方一致で候補を探す）</h1>
-    <div class="flex">
-      <label for="zip2">郵便番号</label>
-      <input id="zip2" class="ml-1" name="zip2" type="text">
+  <div class="content-box">
+    <h1 class="fs-5 fw-bold">郵便番号から住所を検索（前方一致で候補を探す）</h1>
+    <div class="mb-3">
+      <label class="form-label" for="zip2">郵便番号</label>
+      <input id="zip2" class="form-control" name="zip2">
     </div>
-    <ul id="js-result2" class="address-list">
-      <li>入力した郵便番号で候補となる住所が見つかりません</li>
-    </ul>
+    <div>
+      <label class="form-label" for="js-result2">検索結果</label>
+      <textarea id="js-result2" class="form-control bg-white" rows="3" readonly>入力した郵便番号で候補となる住所が見つかりません</textarea>
+    </div>
   </div>
 
-  <div class="box">
-    <h1 class="title">住所から郵便番号を検索（住所で一致したもの）</h1>
-    <div class="flex">
-      <label for="address1">住所</label>
-      <input id="address1" class="ml-1" name="address1" type="text">
+  <div class="content-box">
+    <h1 class="fs-5 fw-bold">住所から郵便番号を検索（住所で一致したもの）</h1>
+    <div class="mb-3">
+      <label class="form-label" for="address1">住所</label>
+      <input id="address1" class="form-control" name="address1">
     </div>
-    <ul id="js-result3" class="address-list">
-      <li>入力した住所で候補となる郵便番号が見つかりません</li>
-    </ul>
+    <div>
+      <label class="form-label" for="js-result3">検索結果</label>
+      <input id="js-result3" class="form-control bg-white" value="入力した住所に一致する郵便番号が見つかりません" readonly>
+    </div>
   </div>
 
-  <div class="box">
-    <h1 class="title">住所から郵便番号を検索（前方一致で候補を探す）</h1>
-    <div class="flex">
-      <label for="address2">住所</label>
-      <input id="address2" class="ml-1" name="address2" type="text">
+  <div class="content-box">
+    <h1 class="fs-5 fw-bold">住所から郵便番号を検索（前方一致で候補を探す）</h1>
+    <div class="mb-3">
+      <label class="form-label" for="address2">住所</label>
+      <input id="address2" class="form-control" name="address2">
     </div>
-    <ul id="js-result4" class="address-list">
-      <li>入力した住所で候補となる郵便番号が見つかりません</li>
-    </ul>
+    <div>
+      <label class="form-label" for="js-result4">検索結果</label>
+    <textarea id="js-result4" class="form-control bg-white" rows="3" readonly>入力した住所で候補となる郵便番号が見つかりません</textarea>
+    </div>
   </div>
 
-  <div class="box">
-    <h1 class="title">住所から郵便番号を検索（部分一致で候補を探す）</h1>
-    <div class="flex">
-      <label for="address3">住所</label>
-      <input id="address3" class="ml-1" name="address3" type="text">
+  <div class="content-box">
+    <h1 class="fs-5 fw-bold">住所から郵便番号を検索（部分一致で候補を探す）</h1>
+    <div class="mb-3">
+      <label class="form-label" for="address3">住所</label>
+      <input id="address3" class="form-control" name="address3">
     </div>
-    <ul id="js-result5" class="address-list">
-      <li>入力した住所で候補となる郵便番号が見つかりません</li>
-    </ul>
+    <div>
+      <label class="form-label" for="js-result5">検索結果</label>
+      <textarea id="js-result5" class="form-control bg-white" rows="3" readonly>入力した住所で候補となる郵便番号が見つかりません</textarea>
+    </div>
   </div>
 </div>
 
@@ -106,16 +97,10 @@ $zip1.addEventListener('input', async(e) => {
     return []
   })
 
-  if (!data.length) return
-
-  let html = ''
-
-  data.forEach((item) => {
-    html += `<li>${item.pref}${item.city}${item.town}</li>`
-  })
+  const value = data.map((item) => `${item.pref}${item.city}${item.town}`).join('\n')
 
   const $result = document.getElementById('js-result1')
-  $result.innerHTML = html
+  $result.value = value || '入力した郵便番号に一致する住所が見つかりません'
 })
 
 // 郵便番号前方一致で検索
@@ -128,14 +113,10 @@ $zip2.addEventListener('input', async(e) => {
     return []
   })
 
-  let html = data.length ? '' : '<li>入力した郵便番号で候補となる住所が見つかりません</li>'
-
-  data.forEach((item) => {
-    html += `<li>${item.pref}${item.city}${item.town}</li>`
-  })
+  const value = data.map((item) => `${item.pref}${item.city}${item.town}`).join('\n')
 
   const $result = document.getElementById('js-result2')
-  $result.innerHTML = html
+  $result.value = value || '入力した郵便番号で候補となる住所が見つかりません'
 })
 
 // 住所一致検索
@@ -149,16 +130,10 @@ $address1.addEventListener('input', async(e) => {
     return []
   })
 
-  if (!data.length) return
-
-  let html = ''
-
-  data.forEach((item) => {
-    html += `<li>${item.zipcode}</li>`
-  })
+  const value = data.map((item) => `${item.zipcode}`).join('\n')
 
   const $result = document.getElementById('js-result3')
-  $result.innerHTML = html
+  $result.value = value || '入力した住所に一致する郵便番号が見つかりません'
 })
 
 // 住所から前方一致で検索
@@ -172,16 +147,10 @@ $address2.addEventListener('input', async(e) => {
     return []
   })
 
-  if (!data.length) return
-
-  let html = data.length ? '' : '<li>入力した住所で候補となる郵便番号が見つかりません</li>'
-
-  data.forEach((item) => {
-    html += `<li>${item.zipcode}（${item.pref}${item.city}${item.town}）</li>`
-  })
+  const value = data.map((item) => `${item.zipcode}（${item.pref}${item.city}${item.town}）`).join('\n')
 
   const $result = document.getElementById('js-result4')
-  $result.innerHTML = html
+  $result.value = value || '入力した住所で候補となる郵便番号が見つかりません'
 })
 
 // 住所から部分一致で検索
@@ -195,16 +164,10 @@ $address3.addEventListener('input', async(e) => {
     return []
   })
 
-  if (!data.length) return
-
-  let html = data.length ? '' : '<li>入力した住所で候補となる郵便番号が見つかりません</li>'
-
-  data.forEach((item) => {
-    html += `<li>${item.zipcode}（${item.pref}${item.city}${item.town}）</li>`
-  })
+  const value = data.map((item) => `${item.zipcode}（${item.pref}${item.city}${item.town}）`).join('\n')
 
   const $result = document.getElementById('js-result5')
-  $result.innerHTML = html
+  $result.value = value || '入力した住所で候補となる郵便番号が見つかりません'
 })
 </script>
 </body>
