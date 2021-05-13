@@ -1,4 +1,3 @@
-// TODO: fetchに変更する
 import JSZip from 'jszip';
 
 import * as app from './types';
