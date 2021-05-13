@@ -3,7 +3,7 @@ import JSZip from 'jszip';
 import * as app from './types';
 
 export class GoqZipCode {
-  static addressJson: string = './assets/zipcodes_min.json.zip';
+  static addressJson: string = 'https://goqform-zipcode.s3-ap-northeast-1.amazonaws.com/data/zipcodes_min.json.zip';
   static addressData: app.responses = [];
   static fetchFlag: boolean = false;
   private limit: number = 50;
