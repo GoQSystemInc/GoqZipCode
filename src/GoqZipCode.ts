@@ -1,11 +1,12 @@
-// TODO: fetchに変更する
-import axios from 'axios';
+import JSZip from 'jszip';
 
 import * as app from './types';
 
 export class GoqZipCode {
-  static addressJson: string = './assets/zipcodes_min.json';
+  static addressJson: string =
+    'https://goqform-zipcode.s3-ap-northeast-1.amazonaws.com/data/zipcodes_min.json.zip';
   static addressData: app.responses = [];
+  static isFetching: boolean = false;
   private limit: number = 50;
 
   // TODO: カナありなしのオプションつけたい
@@ -17,16 +18,32 @@ export class GoqZipCode {
   // ※ユーザーがinit()した場合、jsonファイルの容量が大きく、
   // 他の動作に支障が出るため、ライブラリ側で実行する
   private static async init() {
-    this.addressData = await this.fetchAddressJson(this.addressJson);
+    // 二重取得防止
+    if (this.isFetching === true) return;
+    this.isFetching = true;
+
+    const zip: Blob = await this.fetchAddressJson(this.addressJson);
+
+    // zipファイルを解凍
+    const addressJson: string | undefined = await JSZip.loadAsync(zip).then(
+      (zip: JSZip) => {
+        return zip.file('zipcodes_min.json')?.async('text');
+      }
+    );
+
+    if (addressJson) {
+      this.addressData = await JSON.parse(addressJson);
+    }
+
+    this.isFetching = false;
   }
 
   // jsonデータを取得して保持
-  private static async fetchAddressJson(json: string): Promise<app.responses> {
+  private static async fetchAddressJson(path: string): Promise<Blob> {
     return new Promise(async (resolve, reject) => {
-      await axios
-        .get(json)
-        .then(({ data }) => {
-          resolve(data);
+      await fetch(path)
+        .then((data) => {
+          resolve(data.blob());
         })
         .catch((e: Error) => {
           // TODO
