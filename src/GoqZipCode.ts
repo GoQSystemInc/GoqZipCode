@@ -19,13 +19,14 @@ export class GoqZipCode {
     const zip: Blob = await this.fetchAddressJson(this.addressJson);
 
     // zipファイルを解凍
-    const addressJson: string | undefined = await JSZip.loadAsync(zip)
-      .then((zip: JSZip) => {
-        return zip.file('zipcodes_min.json')?.async('text')
-      })
+    const addressJson: string | undefined = await JSZip.loadAsync(zip).then(
+      (zip: JSZip) => {
+        return zip.file('zipcodes_min.json')?.async('text');
+      }
+    );
 
-    if (!addressJson) return
-    this.addressData = JSON.parse(addressJson)
+    if (!addressJson) return;
+    this.addressData = JSON.parse(addressJson);
   }
 
   // jsonデータを取得して保持
