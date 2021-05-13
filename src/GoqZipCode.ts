@@ -5,6 +5,7 @@ import * as app from './types';
 export class GoqZipCode {
   static addressJson: string = './assets/zipcodes_min.json.zip';
   static addressData: app.responses = [];
+  static fetchFlag: boolean = false;
   private limit: number = 50;
 
   // TODO: カナありなしのオプションつけたい
@@ -16,6 +17,10 @@ export class GoqZipCode {
   // ※ユーザーがinit()した場合、jsonファイルの容量が大きく、
   // 他の動作に支障が出るため、ライブラリ側で実行する
   private static async init() {
+    // 二重取得防止
+    if (this.fetchFlag === true) return
+    this.fetchFlag = true
+
     const zip: Blob = await this.fetchAddressJson(this.addressJson);
 
     // zipファイルを解凍
@@ -25,8 +30,11 @@ export class GoqZipCode {
       }
     );
 
-    if (!addressJson) return;
-    this.addressData = JSON.parse(addressJson);
+    if (addressJson) {
+      this.addressData = JSON.parse(addressJson);
+    }
+
+    this.fetchFlag = false
   }
 
   // jsonデータを取得して保持
