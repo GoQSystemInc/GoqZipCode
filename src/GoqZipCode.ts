@@ -32,7 +32,7 @@ export class GoqZipCode {
     );
 
     if (addressJson) {
-      this.addressData = JSON.parse(addressJson);
+      this.addressData = await JSON.parse(addressJson);
     }
 
     this.fetchFlag = false;
