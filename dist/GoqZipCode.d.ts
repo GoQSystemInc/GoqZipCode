@@ -2,6 +2,7 @@ import * as app from './types';
 export declare class GoqZipCode {
     static addressJson: string;
     static addressData: app.responses;
+    static isFetching: boolean;
     private limit;
     constructor(limit: number);
     private static init;
