@@ -1,7 +1,6 @@
 .goqzip-dropdown {
   position: absolute;
   padding: 10px 0;
-  min-width: 10rem;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
@@ -22,7 +21,6 @@
   width: 100%;
   padding: 0.25rem 1rem;
   text-align: left;
-  white-space: nowrap;
   border: none;
   background-color: #fff;
 }
