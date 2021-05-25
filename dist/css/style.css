@@ -13,8 +13,6 @@
 }
 
 .goqzip-dropdown .goqzip-dropdown-list {
-  padding-left: 0;
-  list-style: none;
   overflow-y: auto;
   max-height: 320px;
 }
