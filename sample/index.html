@@ -73,7 +73,7 @@ $zip1.addEventListener('input', async(e) => {
     return [];
   });
 
-  const value = data.map((item) => `${item.pref}${item.city}${item.town}`).join('\n');
+  const value = data.map((item) => `${item.pref}${item.city}${item.town}`);
 
   const $result = document.getElementById('js-result1');
   $result.value = value || '入力した郵便番号に一致する住所が見つかりません';
@@ -171,7 +171,7 @@ $address1.addEventListener('input', async(e) => {
     return [];
   });
 
-  const value = data.map((item) => `${item.zipcode}`).join('\n');
+  const value = data.map((item) => `${item.zipcode}`);
 
   const $result = document.getElementById('js-result3');
   $result.value = value || '入力した住所に一致する郵便番号が見つかりません';
@@ -315,7 +315,7 @@ $zip1.addEventListener('input', async(e) => {
     return []
   })
 
-  const value = data.map((item) => `${item.pref}${item.city}${item.town}`).join('\n')
+  const value = data.map((item) => `${item.pref}${item.city}${item.town}`)
 
   const $result = document.getElementById('js-result1')
   $result.value = value || '入力した郵便番号に一致する住所が見つかりません'
@@ -366,7 +366,7 @@ $address1.addEventListener('input', async(e) => {
     return []
   })
 
-  const value = data.map((item) => `${item.zipcode}`).join('\n')
+  const value = data.map((item) => `${item.zipcode}`)
 
   const $result = document.getElementById('js-result3')
   $result.value = value || '入力した住所に一致する郵便番号が見つかりません'
