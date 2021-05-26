@@ -1,0 +1,34 @@
+.goqzip-dropdown {
+  position: absolute;
+  padding: 10px 0;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  z-index: 1000;
+}
+
+.goqzip-dropdown:empty {
+  display: none;
+}
+
+.goqzip-dropdown .goqzip-dropdown__list {
+  margin: 0;
+  padding: 0;
+  max-height: 320px;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.goqzip-dropdown .goqzip-dropdown__button {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1rem;
+  text-align: left;
+  border: none;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+.goqzip-dropdown .goqzip-dropdown__button:hover {
+  background-color: #e9ecef;
+}

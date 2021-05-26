@@ -7,6 +7,7 @@
   <title>Document</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="../dist/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <style>
@@ -21,23 +22,41 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.16);
       border-radius: 5px;
     }
+
+    .menu {
+      position: sticky;
+      top: 1rem;
+    }
   </style>
 </head>
 <body>
 <div class="pt-3 container">
-  <h1 class="fs-5 fw-bold">郵便番号から住所を検索（7桁で一致したもの）</h1>
-  <div class="content-box">
-    <div class="mb-3">
-      <label class="form-label" for="zip1">郵便番号</label>
-      <input id="zip1" class="form-control" name="zip1">
+  <div class="row">
+    <div class="mb-5 mb-sm-0 col-sm-3">
+      <div class="list-group menu">
+        <a href="#example1" class="list-group-item">郵便番号から住所を検索（完全一致）</a>
+        <a href="#example2" class="list-group-item">郵便番号から住所を検索（前方一致）</a>
+        <a href="#example3" class="list-group-item">住所から郵便番号を検索（完全一致)</a>
+        <a href="#example4" class="list-group-item">住所から郵便番号を検索（前方一致)</a>
+        <a href="#example5" class="list-group-item">住所から郵便番号を検索（部分一致)</a>
+      </div>
     </div>
-    <div>
-      <label class="form-label" for="js-result1">検索結果</label>
-      <input id="js-result1" class="form-control bg-white" value="入力した郵便番号に一致する住所が見つかりません" readonly>
-    </div>
-  </div>
-  <pre>
-    <code class="p-4 html">&lt;div class="mb-3"&gt;
+
+  <div class="col-sm-9">
+    <div id="example1">
+      <h1 class="fs-4 fw-bold">郵便番号から住所を検索（完全一致）</h1>
+      <div class="content-box">
+        <div class="mb-3">
+          <label class="form-label" for="zip1">郵便番号</label>
+          <input id="zip1" class="form-control" name="zip1">
+        </div>
+        <div>
+          <label class="form-label" for="js-result1">検索結果</label>
+          <input id="js-result1" class="form-control bg-white" value="入力した郵便番号に一致する住所が見つかりません" readonly>
+        </div>
+      </div>
+      <pre>
+        <code class="p-4 html">&lt;div class="mb-3"&gt;
   &lt;label class="form-label" for="zip1"&gt;郵便番号&lt;/label&gt;
   &lt;input id="zip1" class="form-control" name="zip1"&gt;
 &lt;/div&gt;
@@ -54,34 +73,45 @@ $zip1.addEventListener('input', async(e) => {
     return [];
   });
 
-  const value = data.map((item) => `${item.pref}${item.city}${item.town}`).join('\n');
+  const value = data.map((item) => `${item.pref}${item.city}${item.town}`);
 
   const $result = document.getElementById('js-result1');
   $result.value = value || '入力した郵便番号に一致する住所が見つかりません';
 });</code>
-  </pre>
+      </pre>
+    </div>
 
-  <h1 class="fs-5 fw-bold">郵便番号から住所を検索（前方一致で候補を探す）</h1>
-  <div class="content-box">
-    <div class="mb-3">
-      <label class="form-label" for="zip2">郵便番号</label>
-      <input id="zip2" class="form-control" name="zip2">
-    </div>
-    <div>
-      <label class="form-label" for="js-result2">検索結果</label>
-      <textarea id="js-result2" class="form-control bg-white" rows="3" readonly>入力した郵便番号で候補となる住所が見つかりません</textarea>
-    </div>
-  </div>
-  <pre>
-    <code class="p-4 html">&lt;div class="mb-3"&gt;
+    <div id="example2">
+      <h1 class="fs-4 fw-bold">郵便番号から住所を検索（前方一致）</h1>
+      <div class="content-box">
+        <div class="mb-3">
+          <label class="form-label" for="zip2">郵便番号</label>
+          <input id="zip2" class="form-control" name="zip2">
+          <div id="dropdown2" class="goqzip-dropdown"></div>
+        </div>
+        <div>
+          <label class="form-label" for="js-result2">検索結果</label>
+          <input id="js-result2" class="form-control bg-white">
+        </div>
+      </div>
+      <pre>
+        <code class="p-4 html">&lt;div class="mb-3"&gt;
   &lt;label class="form-label" for="zip2"&gt;郵便番号&lt;/label&gt;
   &lt;input id="zip2" class="form-control" name="zip2"&gt;
+  &lt;div id="dropdown2" class="goqzip-dropdown"&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div&gt;
   &lt;label class="form-label" for="js-result2"&gt;検索結果&lt;/label&gt;
-  &lt;textarea id="js-result2" class="form-control bg-white" rows="3" readonly&gt;入力した郵便番号で候補となる住所が見つかりません&lt;/textarea&gt;
+  &lt;input id="js-result2" class="form-control bg-white"&gt;
 &lt;/div&gt;</code>
     <code class="p-4 javascript">const $zip2 = document.getElementById('zip2');
+const $dropdown2 = document.getElementById('dropdown2');
+const $result2 = document.getElementById('js-result2');
+
+const hideDropdown2 = () => {
+  $dropdown2.innerText = '';
+};
+
 $zip2.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchAddressFromZipcode({
     zipcode: String(e.target.value),
@@ -90,26 +120,39 @@ $zip2.addEventListener('input', async(e) => {
     return [];
   });
 
-  const value = data.map((item) => `${item.pref}${item.city}${item.town}`).join('\n');
+  const template = data
+    .map((item) => `&lt;li&gt;&lt;button type="button" class="js-dropdown goqzip-dropdown__button"&gt;〒${item.zipcode} （${item.pref}${item.city}${item.town}）&lt;/button&gt;&lt;/li&gt;`)
+    .join('');
+  $dropdown2.innerHTML = template ? `&lt;ul class="goqzip-dropdown__list"&gt;${template}&lt;/ul&gt;` : '';
 
-  const $result = document.getElementById('js-result2');
-  $result.value = value || '入力した郵便番号で候補となる住所が見つかりません';
+  const $dropdown = document.querySelectorAll('.js-dropdown');
+  $dropdown.forEach((x, index) => {
+    x.addEventListener('click', () => {
+      const target = data[index];
+      $zip2.value = target.zipcode;
+      $result2.value = `${target.pref}${target.city}${target.town}`;
+    });
+  });
+
+  document.addEventListener('click', hideDropdown2, { once: true });
 });</code>
-  </pre>
+      </pre>
+    </div>
 
-  <h1 class="fs-5 fw-bold">住所から郵便番号を検索（住所で一致したもの）</h1>
-  <div class="content-box">
-    <div class="mb-3">
-      <label class="form-label" for="address1">住所</label>
-      <input id="address1" class="form-control" name="address1">
-    </div>
-    <div>
-      <label class="form-label" for="js-result3">検索結果</label>
-      <input id="js-result3" class="form-control bg-white" value="入力した住所に一致する郵便番号が見つかりません" readonly>
-    </div>
-  </div>
-  <pre>
-    <code class="p-4 html">&lt;div class="mb-3"&gt;
+    <div id="example3">
+      <h1 class="fs-4 fw-bold">住所から郵便番号を検索（完全一致）</h1>
+      <div class="content-box">
+        <div class="mb-3">
+          <label class="form-label" for="address1">住所</label>
+          <input id="address1" class="form-control" name="address1">
+        </div>
+        <div>
+          <label class="form-label" for="js-result3">検索結果</label>
+          <input id="js-result3" class="form-control bg-white" value="入力した住所に一致する郵便番号が見つかりません" readonly>
+        </div>
+      </div>
+      <pre>
+        <code class="p-4 html">&lt;div class="mb-3"&gt;
   &lt;label class="form-label" for="address1"&gt;住所&lt;/label&gt;
   &lt;input id="address1" class="form-control" name="address1"&gt;
 &lt;/div&gt;
@@ -128,34 +171,45 @@ $address1.addEventListener('input', async(e) => {
     return [];
   });
 
-  const value = data.map((item) => `${item.zipcode}`).join('\n');
+  const value = data.map((item) => `${item.zipcode}`);
 
   const $result = document.getElementById('js-result3');
   $result.value = value || '入力した住所に一致する郵便番号が見つかりません';
 });</code>
-  </pre>
+      </pre>
+    </div>
 
-  <h1 class="fs-5 fw-bold">住所から郵便番号を検索（前方一致で候補を探す）</h1>
-  <div class="content-box">
-    <div class="mb-3">
-      <label class="form-label" for="address2">住所</label>
-      <input id="address2" class="form-control" name="address2">
-    </div>
-    <div>
-      <label class="form-label" for="js-result4">検索結果</label>
-    <textarea id="js-result4" class="form-control bg-white" rows="3" readonly>入力した住所で候補となる郵便番号が見つかりません</textarea>
-    </div>
-  </div>
-  <pre>
-    <code class="p-4 html">&lt;div class="mb-3"&gt;
+    <div id="example4">
+      <h1 class="fs-4 fw-bold">住所から郵便番号を検索（前方一致）</h1>
+      <div class="content-box">
+        <div class="mb-3">
+          <label class="form-label" for="address2">住所</label>
+          <input id="address2" class="form-control" name="address2">
+          <div id="dropdown4" class="goqzip-dropdown"></div>
+        </div>
+        <div>
+          <label class="form-label" for="js-result4">検索結果</label>
+          <input id="js-result4" class="form-control bg-white">
+        </div>
+      </div>
+      <pre>
+        <code class="p-4 html">&lt;div class="mb-3"&gt;
   &lt;label class="form-label" for="address2"&gt;住所&lt;/label&gt;
   &lt;input id="address2" class="form-control" name="address2"&gt;
+  &lt;div id="dropdown4" class="goqzip-dropdown"&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div&gt;
   &lt;label class="form-label" for="js-result4"&gt;検索結果&lt;/label&gt;
-&lt;textarea id="js-result4" class="form-control bg-white" rows="3" readonly&gt;入力した住所で候補となる郵便番号が見つかりません&lt;/textarea&gt;
+  &lt;input id="js-result4" class="form-control bg-white"&gt;
 &lt;/div&gt;</code>
     <code class="p-4 javascript">const $address2 = document.getElementById('address2');
+const $dropdown4 = document.getElementById('dropdown4');
+const $result4 = document.getElementById('js-result4');
+
+const hideDropdown4 = () => {
+  $dropdown4.innerText = '';
+};
+
 $address2.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchZipcodeFromAddress({
     address: String(e.target.value),
@@ -165,34 +219,56 @@ $address2.addEventListener('input', async(e) => {
     return [];
   });
 
-  const value = data.map((item) => `${item.zipcode}（${item.pref}${item.city}${item.town}）`).join('\n');
+  const template = data
+    .map((item) => `&lt;li&gt;&lt;button type="button" class="js-dropdown goqzip-dropdown__button"&gt;〒${item.zipcode}（${item.pref}${item.city}${item.town}）&lt;/button&gt;&lt;/li&gt;`)
+    .join('');
 
-  const $result = document.getElementById('js-result4');
-  $result.value = value || '入力した住所で候補となる郵便番号が見つかりません';
+  $dropdown4.innerHTML = template ? `&lt;ul class="goqzip-dropdown__list"&gt;${template}&lt;/ul&gt;` : '';
+
+  const $dropdown = document.querySelectorAll('.js-dropdown');
+  $dropdown.forEach((x, index) => {
+    x.addEventListener('click', () => {
+      const target = data[index];
+      $address2.value = `${target.pref}${target.city}${target.town}`;
+      $result4.value = target.zipcode;
+    });
+  });
+
+  document.addEventListener('click', hideDropdown4, { once: true });
 });</code>
-  </pre>
+      </pre>
+    </div>
 
-  <h1 class="fs-5 fw-bold">住所から郵便番号を検索（部分一致で候補を探す）</h1>
-  <div class="content-box">
-    <div class="mb-3">
-      <label class="form-label" for="address3">住所</label>
-      <input id="address3" class="form-control" name="address3">
-    </div>
-    <div>
-      <label class="form-label" for="js-result5">検索結果</label>
-      <textarea id="js-result5" class="form-control bg-white" rows="3" readonly>入力した住所で候補となる郵便番号が見つかりません</textarea>
-    </div>
-  </div>
-  <pre>
-    <code class="p-4 html">&lt;div class="mb-3">
-  &lt;label class="form-label" for="address3">住所&lt;/label>
-  &lt;input id="address3" class="form-control" name="address3">
-&lt;/div>
-&lt;div>
-  &lt;label class="form-label" for="js-result5">検索結果&lt;/label>
-  &lt;textarea id="js-result5" class="form-control bg-white" rows="3" readonly>入力した住所で候補となる郵便番号が見つかりません&lt;/textarea>
-&lt;/div></code>
+    <div id="example5">
+      <h1 class="fs-4 fw-bold">住所から郵便番号を検索（部分一致）</h1>
+      <div class="content-box">
+        <div class="mb-3">
+          <label class="form-label" for="address3">住所</label>
+          <input id="address3" class="form-control" name="address3">
+          <div id="dropdown5" class="goqzip-dropdown"></div>
+        </div>
+        <div>
+          <label class="form-label" for="js-result5">検索結果</label>
+          <input id="js-result5" class="form-control bg-white">
+        </div>
+      </div>
+      <pre>
+        <code class="p-4 html">&lt;div class="mb-3"&gt;
+  &lt;label class="form-label" for="address3"&gt;住所&lt;/label&gt;
+  &lt;input id="address3" class="form-control" name="address3"&gt;
+  &lt;div id="dropdown5" class="goqzip-dropdown"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  &lt;label class="form-label" for="js-result5"&gt;検索結果&lt;/label&gt;
+  &lt;input id="js-result5" class="form-control bg-white"&gt;
+&lt;/div&gt;</code>
     <code class="p-4 javascript">const $address3 = document.getElementById('address3');
+const $dropdown5 = document.getElementById('dropdown5');
+const $result5 = document.getElementById('js-result5');
+
+const hideDropdown5 = () => {
+  $dropdown5.innerText = '';
+};
 
 $address3.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchZipcodeFromAddress({
@@ -203,19 +279,33 @@ $address3.addEventListener('input', async(e) => {
     return [];
   });
 
-  const value = data.map((item) => `${item.zipcode}（${item.pref}${item.city}${item.town}）`).join('\n');
+  const template = data
+    .map((item) => `&lt;li&gt;&lt;button type="button" class="js-dropdown goqzip-dropdown__button"&gt;〒${item.zipcode}（${item.pref}${item.city}${item.town}）&lt;/button&gt;&lt;/li&gt;`)
+    .join('');
 
-  const $result = document.getElementById('js-result5');
-  $result.value = value || '入力した住所で候補となる郵便番号が見つかりません';
+  $dropdown5.innerHTML = template ? `&lt;ul class="goqzip-dropdown__list"&gt;${template}&lt;/ul&gt;` : '';
+
+  const $dropdown = document.querySelectorAll('.js-dropdown');
+  $dropdown.forEach((x, index) => {
+    x.addEventListener('click', () => {
+      const target = data[index];
+      $address3.value = `${target.pref}${target.city}${target.town}`;
+      $result5.value = target.zipcode;
+    });
+  });
+
+  document.addEventListener('click', hideDropdown5, { once: true });
 });</code>
-  </pre>
+      </pre>
+    </div>
+  </div>
 </div>
 
 <script src="../dist/app.js"></script>
 <script>
 const goqZipCode = new GoqZipCode(100)
 
-// 郵便番号一致検索
+// 郵便番号から住所を検索（完全一致）
 const $zip1 = document.getElementById('zip1')
 $zip1.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchAddressFromZipcode({
@@ -225,14 +315,21 @@ $zip1.addEventListener('input', async(e) => {
     return []
   })
 
-  const value = data.map((item) => `${item.pref}${item.city}${item.town}`).join('\n')
+  const value = data.map((item) => `${item.pref}${item.city}${item.town}`)
 
   const $result = document.getElementById('js-result1')
   $result.value = value || '入力した郵便番号に一致する住所が見つかりません'
 })
 
-// 郵便番号前方一致で検索
+// 郵便番号から住所を検索（前方一致）
 const $zip2 = document.getElementById('zip2')
+const $dropdown2 = document.getElementById('dropdown2')
+const $result2 = document.getElementById('js-result2')
+
+const hideDropdown2 = () => {
+  $dropdown2.innerText = ''
+}
+
 $zip2.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchAddressFromZipcode({
     zipcode: String(e.target.value),
@@ -241,13 +338,24 @@ $zip2.addEventListener('input', async(e) => {
     return []
   })
 
-  const value = data.map((item) => `${item.pref}${item.city}${item.town}`).join('\n')
+  const template = data
+    .map((item) => `<li><button type="button" class="js-dropdown goqzip-dropdown__button">〒${item.zipcode} （${item.pref}${item.city}${item.town}）</button></li>`)
+    .join('')
+  $dropdown2.innerHTML = template ? `<ul class="goqzip-dropdown__list">${template}</ul>` : ''
 
-  const $result = document.getElementById('js-result2')
-  $result.value = value || '入力した郵便番号で候補となる住所が見つかりません'
+  const $dropdown = document.querySelectorAll('.js-dropdown')
+  $dropdown.forEach((x, index) => {
+    x.addEventListener('click', () => {
+      const target = data[index]
+      $zip2.value = target.zipcode
+      $result2.value = `${target.pref}${target.city}${target.town}`
+    })
+  })
+
+  document.addEventListener('click', hideDropdown2, { once: true })
 })
 
-// 住所一致検索
+// 住所から郵便番号を検索（住所で一致したもの）
 const $address1 = document.getElementById('address1')
 $address1.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchZipcodeFromAddress({
@@ -258,14 +366,21 @@ $address1.addEventListener('input', async(e) => {
     return []
   })
 
-  const value = data.map((item) => `${item.zipcode}`).join('\n')
+  const value = data.map((item) => `${item.zipcode}`)
 
   const $result = document.getElementById('js-result3')
   $result.value = value || '入力した住所に一致する郵便番号が見つかりません'
 })
 
-// 住所から前方一致で検索
+// 住所から郵便番号を検索（前方一致）
 const $address2 = document.getElementById('address2')
+const $dropdown4 = document.getElementById('dropdown4')
+const $result4 = document.getElementById('js-result4')
+
+const hideDropdown4 = () => {
+  $dropdown4.innerText = ''
+}
+
 $address2.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchZipcodeFromAddress({
     address: String(e.target.value),
@@ -275,14 +390,33 @@ $address2.addEventListener('input', async(e) => {
     return []
   })
 
-  const value = data.map((item) => `${item.zipcode}（${item.pref}${item.city}${item.town}）`).join('\n')
+  const template = data
+    .map((item) => `<li><button type="button" class="js-dropdown goqzip-dropdown__button">〒${item.zipcode}（${item.pref}${item.city}${item.town}）</button></li>`)
+    .join('')
 
-  const $result = document.getElementById('js-result4')
-  $result.value = value || '入力した住所で候補となる郵便番号が見つかりません'
+  $dropdown4.innerHTML = template ? `<ul class="goqzip-dropdown__list">${template}</ul>` : ''
+
+  const $dropdown = document.querySelectorAll('.js-dropdown')
+  $dropdown.forEach((x, index) => {
+    x.addEventListener('click', () => {
+      const target = data[index]
+      $address2.value = `${target.pref}${target.city}${target.town}`
+      $result4.value = target.zipcode
+    })
+  })
+
+  document.addEventListener('click', hideDropdown4, { once: true })
 })
 
-// 住所から部分一致で検索
+// 住所から郵便番号を検索（部分一致）
 const $address3 = document.getElementById('address3')
+const $dropdown5 = document.getElementById('dropdown5')
+const $result5 = document.getElementById('js-result5')
+
+const hideDropdown5 = () => {
+  $dropdown5.innerText = ''
+}
+
 $address3.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchZipcodeFromAddress({
     address: String(e.target.value),
@@ -292,10 +426,22 @@ $address3.addEventListener('input', async(e) => {
     return []
   })
 
-  const value = data.map((item) => `${item.zipcode}（${item.pref}${item.city}${item.town}）`).join('\n')
+  const template = data
+    .map((item) => `<li><button type="button" class="js-dropdown goqzip-dropdown__button">〒${item.zipcode}（${item.pref}${item.city}${item.town}）</button></li>`)
+    .join('')
 
-  const $result = document.getElementById('js-result5')
-  $result.value = value || '入力した住所で候補となる郵便番号が見つかりません'
+  $dropdown5.innerHTML = template ? `<ul class="goqzip-dropdown__list">${template}</ul>` : ''
+
+  const $dropdown = document.querySelectorAll('.js-dropdown')
+  $dropdown.forEach((x, index) => {
+    x.addEventListener('click', () => {
+      const target = data[index]
+      $address3.value = `${target.pref}${target.city}${target.town}`
+      $result5.value = target.zipcode
+    })
+  })
+
+  document.addEventListener('click', hideDropdown5, { once: true })
 })
 </script>
 </body>
