@@ -121,9 +121,9 @@ $zip2.addEventListener('input', async(e) => {
   });
 
   const template = data
-    .map((item) => `&lt;button type="button" class="js-dropdown goqzip-dropdown-item"&gt;〒${item.zipcode} （${item.pref}${item.city}${item.town}）&lt;/button&gt;`)
+    .map((item) => `&lt;li&gt;&lt;button type="button" class="js-dropdown goqzip-dropdown-item"&gt;〒${item.zipcode} （${item.pref}${item.city}${item.town}）&lt;/button&gt;&lt;/li&gt;`)
     .join('');
-  $list2.innerHTML = template ? `&lt;div class="goqzip-dropdown-list"&gt;${template}&lt;/div&gt;` : '';
+  $list2.innerHTML = template ? `&lt;ul class="goqzip-dropdown-list"&gt;${template}&lt;/ul&gt;` : '';
 
   const $dropdown = document.querySelectorAll('.js-dropdown');
   $dropdown.forEach((x, index) => {
@@ -220,10 +220,10 @@ $address2.addEventListener('input', async(e) => {
   });
 
   const template = data
-    .map((item) => `&lt;button type="button" class="js-dropdown goqzip-dropdown-item"&gt;〒${item.zipcode}（${item.pref}${item.city}${item.town}）&lt;/button&gt;`)
+    .map((item) => `&lt;li&gt;&lt;button type="button" class="js-dropdown goqzip-dropdown-item"&gt;〒${item.zipcode}（${item.pref}${item.city}${item.town}）&lt;/button&gt;&lt;/li&gt;`)
     .join('');
 
-  $list4.innerHTML = template ? `&lt;div class="goqzip-dropdown-list"&gt;${template}&lt;/div&gt;` : '';
+  $list4.innerHTML = template ? `&lt;ul class="goqzip-dropdown-list"&gt;${template}&lt;/ul&gt;` : '';
 
   const $dropdown = document.querySelectorAll('.js-dropdown');
   $dropdown.forEach((x, index) => {
@@ -280,10 +280,10 @@ $address3.addEventListener('input', async(e) => {
   });
 
   const template = data
-    .map((item) => `&lt;button type="button" class="js-dropdown goqzip-dropdown-item"&gt;〒${item.zipcode}（${item.pref}${item.city}${item.town}）&lt;/button&gt;`)
+    .map((item) => `&lt;li&gt;&lt;button type="button" class="js-dropdown goqzip-dropdown-item"&gt;〒${item.zipcode}（${item.pref}${item.city}${item.town}）&lt;/button&gt;&lt;/li&gt;`)
     .join('');
 
-  $list5.innerHTML = template ? `&lt;div class="goqzip-dropdown-list"&gt;${template}&lt;/div&gt;` : '';
+  $list5.innerHTML = template ? `&lt;ul class="goqzip-dropdown-list"&gt;${template}&lt;/ul&gt;` : '';
 
   const $dropdown = document.querySelectorAll('.js-dropdown');
   $dropdown.forEach((x, index) => {
@@ -339,9 +339,9 @@ $zip2.addEventListener('input', async(e) => {
   })
 
   const template = data
-    .map((item) => `<button type="button" class="js-dropdown goqzip-dropdown-item">〒${item.zipcode} （${item.pref}${item.city}${item.town}）</button>`)
+    .map((item) => `<li><button type="button" class="js-dropdown goqzip-dropdown-item">〒${item.zipcode} （${item.pref}${item.city}${item.town}）</button></li>`)
     .join('')
-  $list2.innerHTML = template ? `<div class="goqzip-dropdown-list">${template}</div>` : ''
+  $list2.innerHTML = template ? `<ul class="goqzip-dropdown-list">${template}</ul>` : ''
 
   const $dropdown = document.querySelectorAll('.js-dropdown')
   $dropdown.forEach((x, index) => {
@@ -391,10 +391,10 @@ $address2.addEventListener('input', async(e) => {
   })
 
   const template = data
-    .map((item) => `<button type="button" class="js-dropdown goqzip-dropdown-item">〒${item.zipcode}（${item.pref}${item.city}${item.town}）</button>`)
+    .map((item) => `<li><button type="button" class="js-dropdown goqzip-dropdown-item">〒${item.zipcode}（${item.pref}${item.city}${item.town}）</button></li>`)
     .join('')
 
-  $list4.innerHTML = template ? `<div class="goqzip-dropdown-list">${template}</div>` : ''
+  $list4.innerHTML = template ? `<ul class="goqzip-dropdown-list">${template}</ul>` : ''
 
   const $dropdown = document.querySelectorAll('.js-dropdown')
   $dropdown.forEach((x, index) => {
@@ -427,10 +427,10 @@ $address3.addEventListener('input', async(e) => {
   })
 
   const template = data
-    .map((item) => `<button type="button" class="js-dropdown goqzip-dropdown-item">〒${item.zipcode}（${item.pref}${item.city}${item.town}）</button>`)
+    .map((item) => `<li><button type="button" class="js-dropdown goqzip-dropdown-item">〒${item.zipcode}（${item.pref}${item.city}${item.town}）</button></li>`)
     .join('')
 
-  $list5.innerHTML = template ? `<div class="goqzip-dropdown-list">${template}</div>` : ''
+  $list5.innerHTML = template ? `<ul class="goqzip-dropdown-list">${template}</ul>` : ''
 
   const $dropdown = document.querySelectorAll('.js-dropdown')
   $dropdown.forEach((x, index) => {
