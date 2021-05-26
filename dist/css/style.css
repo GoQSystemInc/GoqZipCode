@@ -11,7 +11,7 @@
   display: none;
 }
 
-.goqzip-dropdown .goqzip-dropdown-list {
+.goqzip-dropdown .goqzip-dropdown__list {
   margin: 0;
   padding: 0;
   max-height: 320px;
@@ -19,7 +19,7 @@
   overflow-y: auto;
 }
 
-.goqzip-dropdown .goqzip-dropdown-item {
+.goqzip-dropdown .goqzip-dropdown__button {
   display: block;
   width: 100%;
   padding: 0.25rem 1rem;
@@ -29,6 +29,6 @@
   font-size: 16px;
 }
 
-.goqzip-dropdown .goqzip-dropdown-item:hover {
+.goqzip-dropdown .goqzip-dropdown__button:hover {
   background-color: #e9ecef;
 }
