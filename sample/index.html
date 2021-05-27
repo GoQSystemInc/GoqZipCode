@@ -30,7 +30,7 @@
   </style>
 </head>
 <body>
-<div class="pt-3 container">
+<div class="mt-3 mb-5 container">
   <div class="row">
     <div class="mb-5 mb-sm-0 col-sm-3">
       <div class="list-group menu">
@@ -39,12 +39,12 @@
         <a href="#example3" class="list-group-item">住所から郵便番号を検索（完全一致)</a>
         <a href="#example4" class="list-group-item">住所から郵便番号を検索（前方一致)</a>
         <a href="#example5" class="list-group-item">住所から郵便番号を検索（部分一致)</a>
+        <a href="#options" class="list-group-item">オプション</a>
       </div>
     </div>
 
-  <div class="col-sm-9">
-    <div id="example1">
-      <h1 class="fs-4 fw-bold">郵便番号から住所を検索（完全一致）</h1>
+    <div class="col-sm-9">
+      <h1 id="example1" class="fs-4 fw-bold">郵便番号から住所を検索（完全一致）</h1>
       <div class="content-box">
         <div class="mb-3">
           <label class="form-label" for="zip1">郵便番号</label>
@@ -79,10 +79,8 @@ $zip1.addEventListener('input', async(e) => {
   $result.value = value || '入力した郵便番号に一致する住所が見つかりません';
 });</code>
       </pre>
-    </div>
 
-    <div id="example2">
-      <h1 class="fs-4 fw-bold">郵便番号から住所を検索（前方一致）</h1>
+      <h1 id="example2" class="fs-4 fw-bold">郵便番号から住所を検索（前方一致）</h1>
       <div class="content-box">
         <div class="mb-3">
           <label class="form-label" for="zip2">郵便番号</label>
@@ -137,10 +135,8 @@ $zip2.addEventListener('input', async(e) => {
   document.addEventListener('click', hideDropdown2, { once: true });
 });</code>
       </pre>
-    </div>
 
-    <div id="example3">
-      <h1 class="fs-4 fw-bold">住所から郵便番号を検索（完全一致）</h1>
+      <h1 id="example3" class="fs-4 fw-bold">住所から郵便番号を検索（完全一致）</h1>
       <div class="content-box">
         <div class="mb-3">
           <label class="form-label" for="address1">住所</label>
@@ -177,10 +173,8 @@ $address1.addEventListener('input', async(e) => {
   $result.value = value || '入力した住所に一致する郵便番号が見つかりません';
 });</code>
       </pre>
-    </div>
 
-    <div id="example4">
-      <h1 class="fs-4 fw-bold">住所から郵便番号を検索（前方一致）</h1>
+      <h1  id="example4" class="fs-4 fw-bold">住所から郵便番号を検索（前方一致）</h1>
       <div class="content-box">
         <div class="mb-3">
           <label class="form-label" for="address2">住所</label>
@@ -237,10 +231,8 @@ $address2.addEventListener('input', async(e) => {
   document.addEventListener('click', hideDropdown4, { once: true });
 });</code>
       </pre>
-    </div>
 
-    <div id="example5">
-      <h1 class="fs-4 fw-bold">住所から郵便番号を検索（部分一致）</h1>
+      <h1 id="example5" class="fs-4 fw-bold">住所から郵便番号を検索（部分一致）</h1>
       <div class="content-box">
         <div class="mb-3">
           <label class="form-label" for="address3">住所</label>
@@ -297,6 +289,28 @@ $address3.addEventListener('input', async(e) => {
   document.addEventListener('click', hideDropdown5, { once: true });
 });</code>
       </pre>
+
+      <h1 id="options" class="fs-4 fw-bold">オプション</h1>
+      <div class="content-box">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>名前</th>
+              <th>型</th>
+              <th>初期値</th>
+              <th>説明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>is_hyphen</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>郵便番号のハイフン（-）の有無</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

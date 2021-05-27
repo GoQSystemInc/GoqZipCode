@@ -8,10 +8,17 @@ export class GoqZipCode {
   static addressData: app.responses = [];
   static isFetching: boolean = false;
   private limit: number = 50;
+  private options: app.options = {
+    is_hyphen: false
+  };
 
   // TODO: カナありなしのオプションつけたい
-  constructor(limit: number) {
+  constructor(limit: number, options: app.options) {
     this.limit = limit;
+    this.options = {
+      ...this.options,
+      ...options
+    };
   }
 
   // 初期化
@@ -77,6 +84,20 @@ export class GoqZipCode {
     return true;
   }
 
+  // オプションで指定している場合、郵便番号にハイフンを追加する
+  static convertHyphenatedZipCode(addresses: app.response[], options: app.options): app.response[] {
+    if (options.is_hyphen === false) {
+      return addresses;
+    }
+
+    return addresses.map((address) => {
+      return {
+        ...address,
+        zipcode: `${address.zipcode.slice(0, 3)}-${address.zipcode.slice(3)}`
+      };
+    });
+  }
+
   // 郵便番号から検索
   async searchAddressFromZipcode(
     data: app.requestSearchAddressFromZipcode
@@ -114,28 +135,30 @@ export class GoqZipCode {
           return;
         }
 
-        resolve([matchAddress]);
+        const payload = GoqZipCode.convertHyphenatedZipCode([matchAddress], this.options);
+        resolve(payload);
         return;
       }
 
       // 一致検索でない場合
-      const payload: app.response[] = [];
+      const matchAddresses: app.response[] = [];
       const len: number = GoqZipCode.addressData.length;
 
       // mapやらreduceだとループの途中で抜けられないので
       // 普通のfor文で回すことにする
       for (let i: number = 0; i < len; i++) {
         // データはlimit(default: 50)で指定した件数まで
-        if (payload.length >= this.limit) break;
+        if (matchAddresses.length >= this.limit) break;
 
         const rule: RegExp = new RegExp(`^${zipCode}`);
         const address: app.response = GoqZipCode.addressData[i];
 
         if (rule.test(address.zipcode) === true) {
-          payload.push(address);
+          matchAddresses.push(address);
         }
       }
 
+      const payload = GoqZipCode.convertHyphenatedZipCode(matchAddresses, this.options);
       resolve(payload);
     });
   }
@@ -176,19 +199,20 @@ export class GoqZipCode {
           return;
         }
 
-        resolve([matchAddress]);
+        const payload = GoqZipCode.convertHyphenatedZipCode([matchAddress], this.options);
+        resolve(payload);
         return;
       }
 
       // 一致検索でない場合
-      const payload: app.response[] = [];
+      const matchAddresses: app.response[] = [];
       const len: number = GoqZipCode.addressData.length;
 
       // mapやらreduceだとループの途中で抜けられないので
       // 普通のfor文で回すことにする
       for (let i: number = 0; i < len; i++) {
         // データはlimit(default: 50)で指定した件数まで
-        if (payload.length >= this.limit) break;
+        if (matchAddresses.length >= this.limit) break;
 
         const address: app.response = GoqZipCode.addressData[i];
         const fullAddress: string = `${address.pref}${address.city}${address.town}`;
@@ -200,18 +224,19 @@ export class GoqZipCode {
             fullAddress.startsWith(data.address) === true ||
             fullKanaAddress.startsWith(data.address) === true
           ) {
-            payload.push(address);
+            matchAddresses.push(address);
           }
         } else {
           if (
             fullAddress.includes(data.address) === true ||
             fullKanaAddress.includes(data.address) === true
           ) {
-            payload.push(address);
+            matchAddresses.push(address);
           }
         }
       }
 
+      const payload = GoqZipCode.convertHyphenatedZipCode(matchAddresses, this.options);
       resolve(payload);
     });
   }
