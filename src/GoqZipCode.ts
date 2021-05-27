@@ -2,6 +2,9 @@ import JSZip from 'jszip';
 
 import * as app from './types';
 
+/**
+ * APIで住所を検索
+ */
 export class GoqZipCode {
   static addressJson: string =
     'https://goqform-zipcode.s3-ap-northeast-1.amazonaws.com/data/zipcodes_min.json.zip';
@@ -9,14 +12,20 @@ export class GoqZipCode {
   static isFetching: boolean = false;
   private limit: number = 50;
 
+  /**
+   * @param {number} limit - 取得する住所の上限
+   */
   // TODO: カナありなしのオプションつけたい
   constructor(limit: number) {
     this.limit = limit;
   }
 
-  // 初期化
-  // ※ユーザーがinit()した場合、jsonファイルの容量が大きく、
-  // 他の動作に支障が出るため、ライブラリ側で実行する
+  /**
+   * 初期化
+   * ※ユーザーがinit()した場合、jsonファイルの容量が大きく、
+   * 他の動作に支障が出るため、ライブラリ側で実行する
+   * @module init
+   */
   private static async init() {
     // 二重取得防止
     if (this.isFetching === true) return;
@@ -38,7 +47,12 @@ export class GoqZipCode {
     this.isFetching = false;
   }
 
-  // jsonデータを取得して保持
+  /**
+   * jsonデータを取得して保持
+   * @module fetchAddressJson
+   * @param {string} path - 住所一覧のjsonファイルが入った、zipファイルのパス
+   * @return {Promise<Blob>} Blob
+   */
   private static async fetchAddressJson(path: string): Promise<Blob> {
     return new Promise(async (resolve, reject) => {
       await fetch(path)
@@ -52,7 +66,12 @@ export class GoqZipCode {
     });
   }
 
-  // 全角の数字を半角に変換 ハイフンが入っていても数字のみの抽出
+  /**
+   * 全角の数字を半角に変換 ハイフンが入っていても数字のみの抽出
+   * @module fetchAddressJson
+   * @param {string} zipCode - 郵便番号
+   * @return {string} 変換後の郵便番号
+   */
   private static convertZipCode(zipCode: string): string {
     const a: string = zipCode.replace(/[０-９]/g, (s: string) =>
       String.fromCharCode(s.charCodeAt(0) - 65248)
@@ -62,7 +81,13 @@ export class GoqZipCode {
     return b.join('');
   }
 
-  // 検索条件と郵便番号の桁数によってフラグを返す
+  /**
+   * 検索条件と郵便番号の桁数によってフラグを返す
+   * @module fetchAddressJson
+   * @param {boolean} isExact - 検索条件
+   * @param {number} length - 郵便番号の文字数
+   * @return {boolean} trueかfalseか
+   */
   private static checkLength(isExact: boolean, length: number): boolean {
     // 一致検索する場合、7文字でない場合は処理しない
     if (isExact === true && length !== 7) {
@@ -77,7 +102,11 @@ export class GoqZipCode {
     return true;
   }
 
-  // 郵便番号から検索
+  /**
+   * 郵便番号から検索
+   * @param {app.requestSearchAddressFromZipcode} data - 郵便番号と検索条件
+   * @return {Promise<app.responses>} 検索結果（条件に合う住所またはエラー文）
+   */
   async searchAddressFromZipcode(
     data: app.requestSearchAddressFromZipcode
   ): Promise<app.responses> {
@@ -140,7 +169,11 @@ export class GoqZipCode {
     });
   }
 
-  // 住所から検索
+  /**
+   * 住所から検索
+   * @param {app.requestSearchZipcodeFromAddress} data - 住所と検索条件
+   * @return {Promise<app.responses>} 検索結果（条件に合う住所またはエラー文）
+   */
   async searchZipcodeFromAddress(
     data: app.requestSearchZipcodeFromAddress
   ): Promise<app.responses> {
