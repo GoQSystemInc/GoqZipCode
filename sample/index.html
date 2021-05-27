@@ -303,9 +303,15 @@ $address3.addEventListener('input', async(e) => {
           </thead>
           <tbody>
             <tr>
+              <td>limit</td>
+              <td>number</td>
+              <td>50</td>
+              <td>取得する住所の上限</td>
+            </tr>
+            <tr>
               <td>is_hyphen</td>
               <td>boolean</td>
-              <td>false</td>
+              <td>true</td>
               <td>郵便番号のハイフン（-）の有無</td>
             </tr>
           </tbody>
@@ -317,7 +323,7 @@ $address3.addEventListener('input', async(e) => {
 
 <script src="../dist/app.js"></script>
 <script>
-const goqZipCode = new GoqZipCode(100)
+const goqZipCode = new GoqZipCode()
 
 // 郵便番号から住所を検索（完全一致）
 const $zip1 = document.getElementById('zip1')

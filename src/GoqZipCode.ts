@@ -7,14 +7,13 @@ export class GoqZipCode {
     'https://goqform-zipcode.s3-ap-northeast-1.amazonaws.com/data/zipcodes_min.json.zip';
   static addressData: app.responses = [];
   static isFetching: boolean = false;
-  private limit: number = 50;
   private options: app.options = {
-    is_hyphen: false
+    limit: 50,
+    is_hyphen: true
   };
 
   // TODO: カナありなしのオプションつけたい
-  constructor(limit: number, options: app.options) {
-    this.limit = limit;
+  constructor(options?: app.options) {
     this.options = {
       ...this.options,
       ...options
@@ -84,7 +83,7 @@ export class GoqZipCode {
     return true;
   }
 
-  // オプションで指定している場合、郵便番号にハイフンを追加する
+  // オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する
   static convertHyphenatedZipCode(addresses: app.response[], options: app.options): app.response[] {
     if (options.is_hyphen === false) {
       return addresses;
@@ -148,7 +147,7 @@ export class GoqZipCode {
       // 普通のfor文で回すことにする
       for (let i: number = 0; i < len; i++) {
         // データはlimit(default: 50)で指定した件数まで
-        if (matchAddresses.length >= this.limit) break;
+        if (matchAddresses.length >= this.options.limit) break;
 
         const rule: RegExp = new RegExp(`^${zipCode}`);
         const address: app.response = GoqZipCode.addressData[i];
@@ -212,7 +211,7 @@ export class GoqZipCode {
       // 普通のfor文で回すことにする
       for (let i: number = 0; i < len; i++) {
         // データはlimit(default: 50)で指定した件数まで
-        if (matchAddresses.length >= this.limit) break;
+        if (matchAddresses.length >= this.options.limit) break;
 
         const address: app.response = GoqZipCode.addressData[i];
         const fullAddress: string = `${address.pref}${address.city}${address.town}`;
