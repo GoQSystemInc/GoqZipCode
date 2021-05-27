@@ -68,7 +68,7 @@ export class GoqZipCode {
 
   /**
    * 全角の数字を半角に変換 ハイフンが入っていても数字のみの抽出
-   * @module fetchAddressJson
+   * @module convertZipCode
    * @param {string} zipCode - 郵便番号
    * @return {string} 変換後の郵便番号
    */
@@ -83,7 +83,7 @@ export class GoqZipCode {
 
   /**
    * 検索条件と郵便番号の桁数によってフラグを返す
-   * @module fetchAddressJson
+   * @module checkLength
    * @param {boolean} isExact - 検索条件
    * @param {number} length - 郵便番号の文字数
    * @return {boolean} trueかfalseか
