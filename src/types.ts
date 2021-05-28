@@ -22,3 +22,8 @@ export type requestSearchZipcodeFromAddress = {
   is_exact: boolean;
   is_left: boolean;
 };
+
+export type options = {
+  limit: number;
+  is_hyphen: boolean;
+};
