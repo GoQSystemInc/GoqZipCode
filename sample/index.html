@@ -296,9 +296,17 @@ $address3.addEventListener('input', async(e) => {
       </pre>
 
       <h1 id="options" class="fs-4 fw-bold">オプション</h1>
-      <p>例：取得する住所の上限を100、郵便番号のハイフンを無し</p>
+      <p class="mb-0">
+        インスタンス作成時にオブジェクトでオプションを指定することができます。<br>
+        例：取得する住所の上限を100、郵便番号のハイフンを無し
+      </p>
       <pre>
-        <code class="p-4 javascript">const goqZipCode = new GoqZipCode({ limit: 100, is_hyphen: false })</code>
+        <code class="p-4 javascript">const options = {
+  limit: 100,
+  is_hyphen: false
+};
+
+const goqZipCode = new GoqZipCode(options);</code>
       </pre>
       <div class="content-box">
         <table class="table">
@@ -312,15 +320,15 @@ $address3.addEventListener('input', async(e) => {
           </thead>
           <tbody>
             <tr>
-              <td>limit</td>
+              <td><code>limit</code></td>
               <td>number</td>
-              <td>50</td>
+              <td><code>50</code></td>
               <td>取得する住所の上限</td>
             </tr>
             <tr>
-              <td>is_hyphen</td>
+              <td><code>is_hyphen</code></td>
               <td>boolean</td>
-              <td>true</td>
+              <td><code>true</code></td>
               <td>郵便番号のハイフン（-）の有無</td>
             </tr>
           </tbody>
