@@ -16,7 +16,7 @@ export class GoqZipCode {
   };
 
   /**
-   * @param {number} limit - 取得する住所の上限
+   * @param {app.options} options - オプション
    */
   // TODO: カナありなしのオプションつけたい
   constructor(options?: app.options) {
@@ -108,7 +108,12 @@ export class GoqZipCode {
     return true;
   }
 
-  // オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する
+  /**
+   * オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する
+   * @param {app.response[]} addresses - 住所一覧
+   * @param {app.options} options - オプション
+   * @returns {app.response[]} 変換後の住所一覧
+   */
   static convertHyphenatedZipCode(addresses: app.response[], options: app.options): app.response[] {
     if (options.is_hyphen === false) {
       return addresses;
