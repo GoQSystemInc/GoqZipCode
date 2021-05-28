@@ -3,7 +3,7 @@ import JSZip from 'jszip';
 import * as app from './types';
 
 /**
- * APIで住所を検索
+ * 住所を検索
  */
 export class GoqZipCode {
   static addressJson: string =
