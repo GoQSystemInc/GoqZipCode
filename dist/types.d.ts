@@ -19,3 +19,7 @@ export declare type requestSearchZipcodeFromAddress = {
     is_exact: boolean;
     is_left: boolean;
 };
+export declare type options = {
+    limit: number;
+    is_hyphen: boolean;
+};

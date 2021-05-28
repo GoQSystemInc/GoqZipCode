@@ -30,7 +30,7 @@
   </style>
 </head>
 <body>
-<div class="pt-3 container">
+<div class="mt-3 mb-5 container">
   <div class="row">
     <div class="mb-5 mb-sm-0 col-sm-3">
       <div class="list-group menu">
@@ -39,12 +39,12 @@
         <a href="#example3" class="list-group-item">住所から郵便番号を検索（完全一致)</a>
         <a href="#example4" class="list-group-item">住所から郵便番号を検索（前方一致)</a>
         <a href="#example5" class="list-group-item">住所から郵便番号を検索（部分一致)</a>
+        <a href="#options" class="list-group-item">オプション</a>
       </div>
     </div>
 
-  <div class="col-sm-9">
-    <div id="example1">
-      <h1 class="fs-4 fw-bold">郵便番号から住所を検索（完全一致）</h1>
+    <div class="col-sm-9">
+      <h1 id="example1" class="fs-4 fw-bold">郵便番号から住所を検索（完全一致）</h1>
       <div class="content-box">
         <div class="mb-3">
           <label class="form-label" for="zip1">郵便番号</label>
@@ -64,7 +64,8 @@
   &lt;label class="form-label" for="js-result1"&gt;検索結果&lt;/label&gt;
   &lt;input id="js-result1" class="form-control bg-white" value="入力した郵便番号に一致する住所が見つかりません" readonly&gt;
 &lt;/div&gt;</code>
-    <code class="p-4 javascript">const $zip1 = document.getElementById('zip1');
+    <code class="p-4 javascript">const goqZipCode = new GoqZipCode();
+const $zip1 = document.getElementById('zip1');
 $zip1.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchAddressFromZipcode({
     zipcode: String(e.target.value),
@@ -79,10 +80,8 @@ $zip1.addEventListener('input', async(e) => {
   $result.value = value || '入力した郵便番号に一致する住所が見つかりません';
 });</code>
       </pre>
-    </div>
 
-    <div id="example2">
-      <h1 class="fs-4 fw-bold">郵便番号から住所を検索（前方一致）</h1>
+      <h1 id="example2" class="fs-4 fw-bold">郵便番号から住所を検索（前方一致）</h1>
       <div class="content-box">
         <div class="mb-3">
           <label class="form-label" for="zip2">郵便番号</label>
@@ -104,7 +103,8 @@ $zip1.addEventListener('input', async(e) => {
   &lt;label class="form-label" for="js-result2"&gt;検索結果&lt;/label&gt;
   &lt;input id="js-result2" class="form-control bg-white"&gt;
 &lt;/div&gt;</code>
-    <code class="p-4 javascript">const $zip2 = document.getElementById('zip2');
+    <code class="p-4 javascript">const goqZipCode = new GoqZipCode();
+const $zip2 = document.getElementById('zip2');
 const $dropdown2 = document.getElementById('dropdown2');
 const $result2 = document.getElementById('js-result2');
 
@@ -121,12 +121,12 @@ $zip2.addEventListener('input', async(e) => {
   });
 
   const template = data
-    .map((item) => `&lt;li&gt;&lt;button type="button" class="js-dropdown goqzip-dropdown__button"&gt;〒${item.zipcode} （${item.pref}${item.city}${item.town}）&lt;/button&gt;&lt;/li&gt;`)
+    .map((item) => `&lt;li&gt;&lt;button type="button" class="js-dropdownButton goqzip-dropdown__button"&gt;〒${item.zipcode} （${item.pref}${item.city}${item.town}）&lt;/button&gt;&lt;/li&gt;`)
     .join('');
   $dropdown2.innerHTML = template ? `&lt;ul class="goqzip-dropdown__list"&gt;${template}&lt;/ul&gt;` : '';
 
-  const $dropdown = document.querySelectorAll('.js-dropdown');
-  $dropdown.forEach((x, index) => {
+  const $dropdownButton = document.querySelectorAll('.js-dropdownButton');
+  $dropdownButton.forEach((x, index) => {
     x.addEventListener('click', () => {
       const target = data[index];
       $zip2.value = target.zipcode;
@@ -137,10 +137,8 @@ $zip2.addEventListener('input', async(e) => {
   document.addEventListener('click', hideDropdown2, { once: true });
 });</code>
       </pre>
-    </div>
 
-    <div id="example3">
-      <h1 class="fs-4 fw-bold">住所から郵便番号を検索（完全一致）</h1>
+      <h1 id="example3" class="fs-4 fw-bold">住所から郵便番号を検索（完全一致）</h1>
       <div class="content-box">
         <div class="mb-3">
           <label class="form-label" for="address1">住所</label>
@@ -161,7 +159,8 @@ $zip2.addEventListener('input', async(e) => {
   &lt;input id="js-result3" class="form-control bg-white" value="入力した住所に一致する郵便番号が見つかりません" readonly&gt;
 &lt;/div&gt;
 &lt;/div&gt;</code>
-    <code class="p-4 javascript">const $address1 = document.getElementById('address1');
+    <code class="p-4 javascript">const goqZipCode = new GoqZipCode();
+const $address1 = document.getElementById('address1');
 $address1.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchZipcodeFromAddress({
     address: String(e.target.value),
@@ -177,10 +176,8 @@ $address1.addEventListener('input', async(e) => {
   $result.value = value || '入力した住所に一致する郵便番号が見つかりません';
 });</code>
       </pre>
-    </div>
 
-    <div id="example4">
-      <h1 class="fs-4 fw-bold">住所から郵便番号を検索（前方一致）</h1>
+      <h1  id="example4" class="fs-4 fw-bold">住所から郵便番号を検索（前方一致）</h1>
       <div class="content-box">
         <div class="mb-3">
           <label class="form-label" for="address2">住所</label>
@@ -202,7 +199,8 @@ $address1.addEventListener('input', async(e) => {
   &lt;label class="form-label" for="js-result4"&gt;検索結果&lt;/label&gt;
   &lt;input id="js-result4" class="form-control bg-white"&gt;
 &lt;/div&gt;</code>
-    <code class="p-4 javascript">const $address2 = document.getElementById('address2');
+    <code class="p-4 javascript">const goqZipCode = new GoqZipCode();
+const $address2 = document.getElementById('address2');
 const $dropdown4 = document.getElementById('dropdown4');
 const $result4 = document.getElementById('js-result4');
 
@@ -220,13 +218,13 @@ $address2.addEventListener('input', async(e) => {
   });
 
   const template = data
-    .map((item) => `&lt;li&gt;&lt;button type="button" class="js-dropdown goqzip-dropdown__button"&gt;〒${item.zipcode}（${item.pref}${item.city}${item.town}）&lt;/button&gt;&lt;/li&gt;`)
+    .map((item) => `&lt;li&gt;&lt;button type="button" class="js-dropdownButton goqzip-dropdown__button"&gt;〒${item.zipcode}（${item.pref}${item.city}${item.town}）&lt;/button&gt;&lt;/li&gt;`)
     .join('');
 
   $dropdown4.innerHTML = template ? `&lt;ul class="goqzip-dropdown__list"&gt;${template}&lt;/ul&gt;` : '';
 
-  const $dropdown = document.querySelectorAll('.js-dropdown');
-  $dropdown.forEach((x, index) => {
+  const $dropdownButton = document.querySelectorAll('.js-dropdownButton');
+  $dropdownButton.forEach((x, index) => {
     x.addEventListener('click', () => {
       const target = data[index];
       $address2.value = `${target.pref}${target.city}${target.town}`;
@@ -237,10 +235,8 @@ $address2.addEventListener('input', async(e) => {
   document.addEventListener('click', hideDropdown4, { once: true });
 });</code>
       </pre>
-    </div>
 
-    <div id="example5">
-      <h1 class="fs-4 fw-bold">住所から郵便番号を検索（部分一致）</h1>
+      <h1 id="example5" class="fs-4 fw-bold">住所から郵便番号を検索（部分一致）</h1>
       <div class="content-box">
         <div class="mb-3">
           <label class="form-label" for="address3">住所</label>
@@ -262,7 +258,8 @@ $address2.addEventListener('input', async(e) => {
   &lt;label class="form-label" for="js-result5"&gt;検索結果&lt;/label&gt;
   &lt;input id="js-result5" class="form-control bg-white"&gt;
 &lt;/div&gt;</code>
-    <code class="p-4 javascript">const $address3 = document.getElementById('address3');
+    <code class="p-4 javascript">const goqZipCode = new GoqZipCode();
+const $address3 = document.getElementById('address3');
 const $dropdown5 = document.getElementById('dropdown5');
 const $result5 = document.getElementById('js-result5');
 
@@ -280,13 +277,13 @@ $address3.addEventListener('input', async(e) => {
   });
 
   const template = data
-    .map((item) => `&lt;li&gt;&lt;button type="button" class="js-dropdown goqzip-dropdown__button"&gt;〒${item.zipcode}（${item.pref}${item.city}${item.town}）&lt;/button&gt;&lt;/li&gt;`)
+    .map((item) => `&lt;li&gt;&lt;button type="button" class="js-dropdownButton goqzip-dropdown__button"&gt;〒${item.zipcode}（${item.pref}${item.city}${item.town}）&lt;/button&gt;&lt;/li&gt;`)
     .join('');
 
   $dropdown5.innerHTML = template ? `&lt;ul class="goqzip-dropdown__list"&gt;${template}&lt;/ul&gt;` : '';
 
-  const $dropdown = document.querySelectorAll('.js-dropdown');
-  $dropdown.forEach((x, index) => {
+  const $dropdownButton = document.querySelectorAll('.js-dropdownButton');
+  $dropdownButton.forEach((x, index) => {
     x.addEventListener('click', () => {
       const target = data[index];
       $address3.value = `${target.pref}${target.city}${target.town}`;
@@ -297,13 +294,53 @@ $address3.addEventListener('input', async(e) => {
   document.addEventListener('click', hideDropdown5, { once: true });
 });</code>
       </pre>
+
+      <h1 id="options" class="fs-4 fw-bold">オプション</h1>
+      <p class="mb-0">
+        インスタンス作成時にオブジェクトでオプションを指定することができます。<br>
+        例：取得する住所の上限を100、郵便番号のハイフンを無し
+      </p>
+      <pre>
+        <code class="p-4 javascript">const options = {
+  limit: 100,
+  is_hyphen: false
+};
+
+const goqZipCode = new GoqZipCode(options);</code>
+      </pre>
+      <div class="content-box">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>名前</th>
+              <th>型</th>
+              <th>初期値</th>
+              <th>説明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>limit</code></td>
+              <td>number</td>
+              <td><code>50</code></td>
+              <td>取得する住所の上限</td>
+            </tr>
+            <tr>
+              <td><code>is_hyphen</code></td>
+              <td>boolean</td>
+              <td><code>true</code></td>
+              <td>郵便番号のハイフン（-）の有無</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
 
 <script src="../dist/app.js"></script>
 <script>
-const goqZipCode = new GoqZipCode(100)
+const goqZipCode = new GoqZipCode()
 
 // 郵便番号から住所を検索（完全一致）
 const $zip1 = document.getElementById('zip1')
@@ -339,12 +376,12 @@ $zip2.addEventListener('input', async(e) => {
   })
 
   const template = data
-    .map((item) => `<li><button type="button" class="js-dropdown goqzip-dropdown__button">〒${item.zipcode} （${item.pref}${item.city}${item.town}）</button></li>`)
+    .map((item) => `<li><button type="button" class="js-dropdownButton goqzip-dropdown__button">〒${item.zipcode} （${item.pref}${item.city}${item.town}）</button></li>`)
     .join('')
   $dropdown2.innerHTML = template ? `<ul class="goqzip-dropdown__list">${template}</ul>` : ''
 
-  const $dropdown = document.querySelectorAll('.js-dropdown')
-  $dropdown.forEach((x, index) => {
+  const $dropdownButton = document.querySelectorAll('.js-dropdownButton')
+  $dropdownButton.forEach((x, index) => {
     x.addEventListener('click', () => {
       const target = data[index]
       $zip2.value = target.zipcode
@@ -391,13 +428,13 @@ $address2.addEventListener('input', async(e) => {
   })
 
   const template = data
-    .map((item) => `<li><button type="button" class="js-dropdown goqzip-dropdown__button">〒${item.zipcode}（${item.pref}${item.city}${item.town}）</button></li>`)
+    .map((item) => `<li><button type="button" class="js-dropdownButton goqzip-dropdown__button">〒${item.zipcode}（${item.pref}${item.city}${item.town}）</button></li>`)
     .join('')
 
   $dropdown4.innerHTML = template ? `<ul class="goqzip-dropdown__list">${template}</ul>` : ''
 
-  const $dropdown = document.querySelectorAll('.js-dropdown')
-  $dropdown.forEach((x, index) => {
+  const $dropdownButton = document.querySelectorAll('.js-dropdownButton')
+  $dropdownButton.forEach((x, index) => {
     x.addEventListener('click', () => {
       const target = data[index]
       $address2.value = `${target.pref}${target.city}${target.town}`
@@ -427,13 +464,13 @@ $address3.addEventListener('input', async(e) => {
   })
 
   const template = data
-    .map((item) => `<li><button type="button" class="js-dropdown goqzip-dropdown__button">〒${item.zipcode}（${item.pref}${item.city}${item.town}）</button></li>`)
+    .map((item) => `<li><button type="button" class="js-dropdownButton goqzip-dropdown__button">〒${item.zipcode}（${item.pref}${item.city}${item.town}）</button></li>`)
     .join('')
 
   $dropdown5.innerHTML = template ? `<ul class="goqzip-dropdown__list">${template}</ul>` : ''
 
-  const $dropdown = document.querySelectorAll('.js-dropdown')
-  $dropdown.forEach((x, index) => {
+  const $dropdownButton = document.querySelectorAll('.js-dropdownButton')
+  $dropdownButton.forEach((x, index) => {
     x.addEventListener('click', () => {
       const target = data[index]
       $address3.value = `${target.pref}${target.city}${target.town}`
