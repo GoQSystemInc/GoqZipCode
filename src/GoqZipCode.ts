@@ -218,7 +218,7 @@ export class GoqZipCode {
       }
 
       // 一致検索の場合
-      if (data.is_exact === true) {
+      if (data.is_exact) {
         // 住所とマッチするデータを探す
         const matchAddress: app.response | undefined =
           GoqZipCode.addressData.find((element) => {
