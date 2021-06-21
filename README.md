@@ -26,6 +26,8 @@ GoQZipCodeは郵便番号(もしくは住所)から該当する住所を検索�
 以下のデモページから使用できるメソッドやオプションの一覧が確認できます。  
 [デモページ](https://goqsysteminc.github.io/GoqZipCode/)
 
+[comment]: <> (masterマージ後、ブランチを変更する)
+
 ## インストール
 `npm`を使用します。
 ```shell
