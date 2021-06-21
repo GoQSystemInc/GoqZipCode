@@ -18,7 +18,6 @@ export class GoqZipCode {
   /**
    * @param {app.options} options - オプション
    */
-  // TODO: カナありなしのオプションつけたい
   constructor(options?: app.options) {
     this.options = {
       ...this.options,
