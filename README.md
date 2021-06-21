@@ -5,8 +5,25 @@ GoQZipCodeは郵便番号(もしくは住所)から該当する住所を検索�
 以下のデモページから使用できるメソッドやオプションの一覧が確認できます。  
 [デモページ](https://goqsysteminc.github.io/GoqZipCode/)
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [インストール](#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+- [API](#api)
+  - [初期化](#%E5%88%9D%E6%9C%9F%E5%8C%96)
+  - [オプション](#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3)
+  - [データ返り値](#%E3%83%87%E3%83%BC%E3%82%BF%E8%BF%94%E3%82%8A%E5%80%A4)
+  - [郵便番号から住所を検索](#%E9%83%B5%E4%BE%BF%E7%95%AA%E5%8F%B7%E3%81%8B%E3%82%89%E4%BD%8F%E6%89%80%E3%82%92%E6%A4%9C%E7%B4%A2)
+    - [完全一致](#%E5%AE%8C%E5%85%A8%E4%B8%80%E8%87%B4)
+    - [前方一致](#%E5%89%8D%E6%96%B9%E4%B8%80%E8%87%B4)
+  - [住所から郵便番号を検索](#%E4%BD%8F%E6%89%80%E3%81%8B%E3%82%89%E9%83%B5%E4%BE%BF%E7%95%AA%E5%8F%B7%E3%82%92%E6%A4%9C%E7%B4%A2)
+    - [完全一致](#%E5%AE%8C%E5%85%A8%E4%B8%80%E8%87%B4-1)
+    - [前方一致](#%E5%89%8D%E6%96%B9%E4%B8%80%E8%87%B4-1)
+    - [部分一致](#%E9%83%A8%E5%88%86%E4%B8%80%E8%87%B4)
+- [ライセンス](#%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## インストール
 `npm`を使用します。
