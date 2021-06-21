@@ -27,10 +27,12 @@ import { GoQZipCode } from 'goqzipcode'
 const goqZipCode = new GoQZipCode()
 ```
 
-この時、以下のオプションを設定することができます。
-| 名前 | 型 | 初期値 | 説明 
-| limit  | number  | 50 | 取得する住所の上限
-| is_hyphen  | boolean  | true | 郵便番号のハイフン（-）の有無
+### オプション
+| 名前 | 型 | 初期値 | 説明 |
+----|----|----|----
+| limit  | number  | 50 | 取得する住所の上限 |
+| is_hyphen  | boolean  | true | 郵便番号のハイフン（-）の有無 |
+
 ```javascript
 const options = {
   limit: 100,
@@ -40,7 +42,9 @@ const options = {
 const goqZipCode = new GoqZipCode(options);
 ```
 
-検索後、返り値として、住所情報オブジェクトが取得できます。
+### データ返り値
+配列の中に該当したデータがオブジェクト形式で返ります。
+
 ```javascript
 [
   {
