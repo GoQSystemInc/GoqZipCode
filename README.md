@@ -3,21 +3,20 @@ GoQZipCodeは郵便番号(もしくは住所)から該当する住所を検索�
 
 ## デモページ
 以下のデモページから使用できるメソッドやオプションの一覧が確認できます。  
-[ここにデモページのURLを](https://example.com){:target="_blank"}
+[ここにデモページのURLを](https://example.com)
 
 ## インストール
-NpmもしくはYarnを使用します。
-
-Npmを使用する
 ```shell
 $ npm install goqzipcode
 ```
-Yarnを使用する
+もしくは
 ```shell
 $ yarn add goqzipcode
 ```
 
 ## 使用方法
+
+### 初期化
 インポートした`GoQZipCode`を初期化します。
 ```javascript
 // node.js
@@ -28,7 +27,19 @@ import { GoQZipCode } from 'goqzipcode'
 const goqZipCode = new GoQZipCode()
 ```
 
-### データ型
+この時、以下のオプションを設定することができます。
+| 名前 | 型 | 初期値 | 説明 
+| limit  | number  | 50 | 取得する住所の上限
+| is_hyphen  | boolean  | true | 郵便番号のハイフン（-）の有無
+```javascript
+const options = {
+  limit: 100,
+  is_hyphen: false
+};
+
+const goqZipCode = new GoqZipCode(options);
+```
+
 検索後、返り値として、住所情報オブジェクトが取得できます。
 ```javascript
 [
@@ -47,8 +58,7 @@ const goqZipCode = new GoQZipCode()
 データを検索するタイミングとして、**完全一致**・**前方一致**が可能です。
 
 #### 完全一致
-郵便番号を入力し、一致したデータがあればそのデータを返します。
-`is_exact: true`を設定してください。
+郵便番号を入力し、一致したデータがあった場合、データを返します。  
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
@@ -64,8 +74,7 @@ goqZipCode.searchAddressFromZipcode({
 ```
 
 #### 前方一致
-郵便番号を入力し、その都度データ照合をして該当したデータを返します。
-`is_exact: false`を設定してください。
+郵便番号を入力し、先頭から都度データ照合をして該当した場合、データを返します。
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
@@ -86,13 +95,46 @@ goqZipCode.searchAddressFromZipcode({
 データを検索するタイミングとして、**完全一致**・**前方一致**・**部分一致**が可能です。
 
 #### 完全一致
-住所を入力し、その住所がデータと一致した時に、その一致したデータを返します。
-`is_exact: true`を設定してください。
+住所を入力し、その住所がデータと一致した場合、データを返します。
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
-  zipcode: '100-0002',
+  address: 'xx県oo市',
   is_exact: true
+})
+  .then(result => {
+    // do sccess handling 
+  })
+  .catch(() => {
+    // do failure handling 
+  })
+```
+
+#### 前方一致
+住所を入力し、先頭から都度データ照合をして該当した場合、データを返します。
+
+```javascript
+goqZipCode.searchAddressFromZipcode({
+  address: 'xx県oo市',
+  is_exact: false,
+  is_left: true
+})
+  .then(result => {
+    // do sccess handling 
+  })
+  .catch(() => {
+    // do failure handling 
+  })
+```
+
+#### 部分一致
+住所を入力し、入力データが部分的に該当した場合に、データを返します。
+
+```javascript
+goqZipCode.searchAddressFromZipcode({
+  address: 'xx市oo町',
+  is_exact: false,
+  is_left: false
 })
   .then(result => {
     // do sccess handling 
