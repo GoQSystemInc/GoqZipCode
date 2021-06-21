@@ -3,19 +3,22 @@ GoQZipCodeは郵便番号(もしくは住所)から該当する住所を検索�
 
 ## デモページ
 以下のデモページから使用できるメソッドやオプションの一覧が確認できます。  
-[ここにデモページのURLを](https://example.com)
+[デモページ](https://goqsysteminc.github.io/GoqZipCode/)
+
+<!-- START doctoc -->
+<!-- END doctoc -->
 
 ## インストール
+`npm`を使用します。
 ```shell
 $ npm install goqzipcode
 ```
-もしくは
+もしくは`yarn`を使用します。
 ```shell
 $ yarn add goqzipcode
 ```
 
-## 使用方法
-
+## API
 ### 初期化
 インポートした`GoQZipCode`を初期化します。
 ```javascript
@@ -82,7 +85,7 @@ goqZipCode.searchAddressFromZipcode({
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
-  zipcode: '100-0002',
+  zipcode: 'xxx-xxxx',
   is_exact: false
 })
   .then(result => {
@@ -147,3 +150,6 @@ goqZipCode.searchAddressFromZipcode({
     // do failure handling 
   })
 ```
+
+## ライセンス
+MIT License &copy;GoQSystem Inc.
