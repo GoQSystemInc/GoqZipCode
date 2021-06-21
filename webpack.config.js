@@ -4,7 +4,7 @@ module.exports = {
     contentBase: './',
     publicPath: '/dist/',
     open: true,
-    openPage: 'sample/index.html'
+    openPage: 'docs/index.html'
   },
   entry: './src/index.ts',
   output: {
