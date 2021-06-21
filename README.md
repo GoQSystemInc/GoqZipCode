@@ -1,12 +1,13 @@
 # GoQZipCode
 GoQZipCodeは郵便番号(もしくは住所)から該当する住所を検索し、住所データを受け取ることができます。
 
+## 目次
+<!-- START doctoc -->
+<!-- END doctoc -->
+
 ## デモページ
 以下のデモページから使用できるメソッドやオプションの一覧が確認できます。  
 [デモページ](https://goqsysteminc.github.io/GoqZipCode/)
-
-<!-- START doctoc -->
-<!-- END doctoc -->
 
 ## インストール
 `npm`を使用します。
