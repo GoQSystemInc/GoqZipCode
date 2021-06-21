@@ -80,8 +80,7 @@ const goqZipCode = new GoqZipCode(options);
 ```
 
 ### 郵便番号から住所を検索
-郵便番号から住所を検索するには`searchAddressFromZipcode`メソッドを使用します。
-
+郵便番号から住所を検索するには`searchAddressFromZipcode`メソッドを使用します。  
 データを検索するタイミングとして、**完全一致**・**前方一致**が可能です。
 
 #### 完全一致
@@ -117,8 +116,7 @@ goqZipCode.searchAddressFromZipcode({
 ```
 
 ### 住所から郵便番号を検索
-住所から郵便番号を検索するには`searchZipcodeFromAddress`メソッドを使用します。
-
+住所から郵便番号を検索するには`searchZipcodeFromAddress`メソッドを使用します。  
 データを検索するタイミングとして、**完全一致**・**前方一致**・**部分一致**が可能です。
 
 #### 完全一致
