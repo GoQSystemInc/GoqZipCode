@@ -131,7 +131,7 @@ goqZipCode.searchAddressFromZipcode({
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
-  address: 'xx県oo市',
+  address: '東京都中央区京橋',
   is_exact: true
 })
   .then(result => {
@@ -147,7 +147,7 @@ goqZipCode.searchAddressFromZipcode({
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
-  address: 'xx県oo市',
+  address: '東京都中央区京橋',
   is_exact: false,
   is_left: true
 })
@@ -164,7 +164,7 @@ goqZipCode.searchAddressFromZipcode({
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
-  address: 'xx市oo町',
+  address: '中央区京橋',
   is_exact: false,
   is_left: false
 })
