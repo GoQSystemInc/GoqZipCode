@@ -90,8 +90,11 @@ const goqZipCode = new GoqZipCode(options);
 郵便番号から住所を検索するには`searchAddressFromZipcode`メソッドを使用します。  
 データを検索するタイミングとして、**完全一致**・**前方一致**が可能です。
 
+※ -(ハイフン)があった場合、-は除外してカウントされます。
+
 #### 完全一致
-郵便番号を入力し、一致したデータがあった場合、データを返します。  
+入力番号が7文字必須です。  
+入力番号と一致したデータを返します。
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
@@ -107,7 +110,8 @@ goqZipCode.searchAddressFromZipcode({
 ```
 
 #### 前方一致
-郵便番号を入力し、先頭から都度データ照合をして該当した場合、データを返します。
+入力番号が2文字以上必須です。  
+入力番号から都度データ照合をして該当したデータを返します。
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
@@ -126,8 +130,10 @@ goqZipCode.searchAddressFromZipcode({
 住所から郵便番号を検索するには`searchZipcodeFromAddress`メソッドを使用します。  
 データを検索するタイミングとして、**完全一致**・**前方一致**・**部分一致**が可能です。
 
+※いずれも3文字以上必須になります。
+
 #### 完全一致
-住所を入力し、その住所がデータと一致した場合、データを返します。
+入力された住所と一致したデータを返します。
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
@@ -143,7 +149,7 @@ goqZipCode.searchAddressFromZipcode({
 ```
 
 #### 前方一致
-住所を入力し、先頭から都度データ照合をして該当した場合、データを返します。
+入力された住所と都度データ照合をして、該当したデータを返します。
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
@@ -160,7 +166,7 @@ goqZipCode.searchAddressFromZipcode({
 ```
 
 #### 部分一致
-住所を入力し、入力データが部分的に該当した場合、データを返します。
+入力された住所が部分的に該当したデータを返します。
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
