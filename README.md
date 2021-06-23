@@ -114,7 +114,7 @@ goqZipCode.searchAddressFromZipcode({
 
 #### 前方一致
 入力番号が2文字以上必須です。  
-入力番号から都度データ照合をして該当したデータを返します。
+入力番号から都度データ照合をして、該当したデータを返します。
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
