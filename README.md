@@ -68,6 +68,13 @@ const goqZipCode = new GoqZipCode(options);
 ### データ返り値
 配列の中に該当したデータがオブジェクト形式で返ります。
 
+| 名前 | 型 | 説明 |
+----|----|----
+| city  | string  | 市区 |
+| pref  | string  | 都道府県 |
+| town  | string  | 町村 |
+| zipcode  | string  | 郵便番号 |
+
 ```javascript
 [
   {
