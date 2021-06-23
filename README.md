@@ -5,6 +5,7 @@ GoQZipCodeは郵便番号から住所を検索し、該当の住所データを�
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [サポートブラウザ](#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6)
 - [デモページ](#%E3%83%87%E3%83%A2%E3%83%9A%E3%83%BC%E3%82%B8)
 - [インストール](#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 - [API](#api)
