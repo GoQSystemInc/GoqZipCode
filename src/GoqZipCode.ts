@@ -218,7 +218,7 @@ export class GoqZipCode {
       }
 
       // 一致検索の場合
-      if (data.is_exact) {
+      if (data.is_exact === true) {
         // 住所とマッチするデータを探す
         const matchAddress: app.response | undefined =
           GoqZipCode.addressData.find((element) => {
@@ -256,7 +256,7 @@ export class GoqZipCode {
         const fullKanaAddress: string = `${address.pref_kana}${address.city_kana}${address.town_kana}`;
 
         // 前方一致か部分一致か
-        if (data.is_left) {
+        if (data.is_left === true) {
           if (
             fullAddress.startsWith(data.address) === true ||
             fullKanaAddress.startsWith(data.address) === true
