@@ -95,7 +95,7 @@ const goqZipCode = new GoqZipCode(options);
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
-  zipcode: 'xxx-xxxx',
+  zipcode: '1040031',
   is_exact: true
 })
   .then(result => {
@@ -111,7 +111,7 @@ goqZipCode.searchAddressFromZipcode({
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
-  zipcode: 'xxx-xxxx',
+  zipcode: '1040031',
   is_exact: false
 })
   .then(result => {
