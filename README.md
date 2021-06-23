@@ -160,7 +160,7 @@ goqZipCode.searchAddressFromZipcode({
 ```
 
 #### 部分一致
-住所を入力し、入力データが部分的に該当した場合に、データを返します。
+住所を入力し、入力データが部分的に該当した場合、データを返します。
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
