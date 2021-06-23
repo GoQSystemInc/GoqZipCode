@@ -1,5 +1,5 @@
 # GoQZipCode
-GoQZipCodeは郵便番号(もしくは住所)から該当する住所を検索し、住所データを受け取ることができます。
+GoQZipCodeは郵便番号から住所を検索し、該当の住所データを受け取ることができます。
 
 ## 目次
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
