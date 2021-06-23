@@ -22,6 +22,9 @@ GoQZipCodeは郵便番号から住所を検索し、該当の住所データを�
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+## サポートブラウザ
+InternetExplorerを除く、モダンブラウザで使用可能です。　
+
 ## デモページ
 以下のデモページから使用できるメソッドやオプションの一覧が確認できます。  
 [デモページ](https://goqsysteminc.github.io/GoqZipCode/)
@@ -44,7 +47,7 @@ $ yarn add goqzipcode
 ```javascript
 // node.js
 const { GoQZipCode } = require('goqzipcode')
-// ES6~
+// ES6
 import { GoQZipCode } from 'goqzipcode'
 // initialize
 const goqZipCode = new GoQZipCode()
