@@ -54,7 +54,7 @@ const goqZipCode = new GoQZipCode()
 | 名前 | 型 | 初期値 | 説明 |
 ----|----|----|----
 | limit  | number  | 50 | 取得する住所の上限 |
-| is_hyphen  | boolean  | true | 返り値にハイフン(-)を含むか |
+| is_hyphen  | boolean  | true | 返り値の郵便番号にハイフン(-)を含むか |
 
 ```javascript
 const options = {
