@@ -1,6 +1,6 @@
-import { GoqZipCode } from '../src';
+import { GoqZipCode } from './index';
 
-import * as app from '../src/types';
+import * as app from './types';
 
 const goqZipCode = new GoqZipCode();
 

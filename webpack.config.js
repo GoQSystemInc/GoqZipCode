@@ -8,7 +8,7 @@ module.exports = {
   },
   entry: {
     'dist/index': './src/index.ts',
-    'docs/demo': './docs/demo.ts',
+    'docs/demo': './src/demo.ts',
   },
   output: {
     path: `${__dirname}`,
@@ -20,16 +20,6 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: 'ts-loader',
-      },
-      {
-        test: /\.css$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { url: false }
-          }
-        ]
       }
     ],
   },
