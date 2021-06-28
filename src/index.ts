@@ -6,8 +6,7 @@ import * as app from './types';
  * 住所を検索
  */
 export class GoqZipCode {
-  static addressJson: string =
-    'https://goqform-zipcode.s3-ap-northeast-1.amazonaws.com/data/zipcodes_min.json.zip';
+  static addressJson: string = process.env.ZIP_FILE_PATH as string;
   static addressData: app.responses = [];
   static isFetching: boolean = false;
   private options: app.options = {
