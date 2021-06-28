@@ -19,7 +19,6 @@ GoqZipCodeは、郵便番号もしくは住所から該当する住所を検索�
     - [完全一致](#%E5%AE%8C%E5%85%A8%E4%B8%80%E8%87%B4-1)
     - [前方一致](#%E5%89%8D%E6%96%B9%E4%B8%80%E8%87%B4-1)
     - [部分一致](#%E9%83%A8%E5%88%86%E4%B8%80%E8%87%B4)
-- [ライセンス](#%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
