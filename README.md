@@ -1,5 +1,5 @@
-# GoQZipCode
-GoQZipCodeは、郵便番号もしくは住所から該当する住所を検索し、住所データを受け取ることができます。
+# GoqZipCode
+GoqZipCodeは、郵便番号もしくは住所から該当する住所を検索し、住所データを受け取ることができます。
 
 ## 目次
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -42,14 +42,14 @@ $ yarn add goqzipcode
 
 ## API
 ### 初期化
-インポートした`GoQZipCode`を初期化します。
+インポートした`GoqZipCode`を初期化します。
 ```javascript
 // node.js
-const { GoQZipCode } = require('goqzipcode')
+const { GoqZipCode } = require('goqzipcode')
 // ES6
-import { GoQZipCode } from 'goqzipcode'
+import { GoqZipCode } from 'goqzipcode'
 // initialize
-const goqZipCode = new GoQZipCode()
+const goqZipCode = new GoqZipCode()
 ```
 
 ### オプション
@@ -96,10 +96,10 @@ const goqZipCode = new GoqZipCode(options);
 
 引数のオブジェクトプロパティは以下を設定します。
 
-| 名前 | 型 | 説明 | デフォルト値
-----|----|----|----
-| zipcode  | string  | 郵便番号 | ""
-| is_exact  | boolean  | 完全一致の有無 | false
+| 名前 | 型 | 説明 | 必須 | デフォルト値
+----|----|----|----|----
+| zipcode  | string | 郵便番号 | true | ""
+| is_exact  | boolean  | 完全一致の有無 | | false
 
 #### 完全一致
 入力番号が7文字必須です。  
@@ -142,11 +142,11 @@ goqZipCode.searchAddressFromZipcode({
 
 引数のオブジェクトプロパティは以下を設定します。
 
-| 名前 | 型 | 説明 | デフォルト値
-----|----|----|----
-| address  | string  | 住所 | ""
-| is_exact  | boolean  | 完全一致の有無 | false
-| is_left  | boolean  | 前方一致の有無 | false
+| 名前 | 型 | 説明 | 必須 | デフォルト値
+----|----|----|----|----
+| address  | string  | 住所 | true | ""
+| is_exact  | boolean  | 完全一致の有無 | | false
+| is_left  | boolean  | 前方一致の有無 | | false
 
 #### 完全一致
 入力された住所と一致したデータを返します。
