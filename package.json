@@ -5,12 +5,13 @@
   "author": "GoQSystemInc",
   "license": "MIT",
   "scripts": {
-    "del": "del ./dist/demo.d.ts",
+    "del": "del ./dist",
     "start": "webpack serve --mode development",
     "dev": "webpack --mode development",
-    "build": "webpack --mode production && npm run del",
+    "build": "npm run del && webpack --mode production",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "lint:fix": "eslint . --ext .ts --fix",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.23.0",
