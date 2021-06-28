@@ -2,7 +2,7 @@
   "name": "goqzipcode",
   "version": "1.0.0",
   "main": "./dist/index.js",
-  "author": "GoQSystem.Inc",
+  "author": "GoQSystemInc",
   "license": "MIT",
   "scripts": {
     "start": "webpack serve --mode development",

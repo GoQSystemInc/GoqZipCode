@@ -4,23 +4,36 @@ module.exports = {
     contentBase: './',
     publicPath: '/dist/',
     open: true,
-    openPage: 'sample/index.html'
+    openPage: 'docs/index.html',
   },
-  entry: './src/index.ts',
+  entry: {
+    'dist/index': './src/index.ts',
+    'docs/demo': './src/demo.ts',
+  },
   output: {
-    path: `${__dirname}/dist`,
-    filename: 'app.js',
-    libraryTarget: 'umd'
+    path: `${__dirname}`,
+    filename: '[name].js',
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
       {
         test: /\.ts$/,
-        loader: 'ts-loader'
+        loader: 'ts-loader',
+      },
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: { url: false }
+          }
+        ]
       }
-    ]
+    ],
   },
   resolve: {
-    extensions: ['.js', '.ts']
-  }
+    extensions: ['.js', '.ts'],
+  },
 }

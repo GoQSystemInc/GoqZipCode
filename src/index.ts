@@ -12,7 +12,7 @@ export class GoqZipCode {
   static isFetching: boolean = false;
   private options: app.options = {
     limit: 50,
-    is_hyphen: true
+    is_hyphen: true,
   };
 
   /**
@@ -21,7 +21,7 @@ export class GoqZipCode {
   constructor(options?: app.options) {
     this.options = {
       ...this.options,
-      ...options
+      ...options,
     };
   }
 
@@ -113,7 +113,10 @@ export class GoqZipCode {
    * @param {app.options} options - オプション
    * @returns {app.response[]} 変換後の住所一覧
    */
-  static convertHyphenatedZipCode(addresses: app.response[], options: app.options): app.response[] {
+  static convertHyphenatedZipCode(
+    addresses: app.response[],
+    options: app.options
+  ): app.response[] {
     if (options.is_hyphen === false) {
       return addresses;
     }
@@ -121,7 +124,7 @@ export class GoqZipCode {
     return addresses.map((address) => {
       return {
         ...address,
-        zipcode: `${address.zipcode.slice(0, 3)}-${address.zipcode.slice(3)}`
+        zipcode: `${address.zipcode.slice(0, 3)}-${address.zipcode.slice(3)}`,
       };
     });
   }
@@ -167,7 +170,10 @@ export class GoqZipCode {
           return;
         }
 
-        const payload = GoqZipCode.convertHyphenatedZipCode([matchAddress], this.options);
+        const payload = GoqZipCode.convertHyphenatedZipCode(
+          [matchAddress],
+          this.options
+        );
         resolve(payload);
         return;
       }
@@ -190,7 +196,10 @@ export class GoqZipCode {
         }
       }
 
-      const payload = GoqZipCode.convertHyphenatedZipCode(matchAddresses, this.options);
+      const payload = GoqZipCode.convertHyphenatedZipCode(
+        matchAddresses,
+        this.options
+      );
       resolve(payload);
     });
   }
@@ -235,7 +244,10 @@ export class GoqZipCode {
           return;
         }
 
-        const payload = GoqZipCode.convertHyphenatedZipCode([matchAddress], this.options);
+        const payload = GoqZipCode.convertHyphenatedZipCode(
+          [matchAddress],
+          this.options
+        );
         resolve(payload);
         return;
       }
@@ -272,7 +284,10 @@ export class GoqZipCode {
         }
       }
 
-      const payload = GoqZipCode.convertHyphenatedZipCode(matchAddresses, this.options);
+      const payload = GoqZipCode.convertHyphenatedZipCode(
+        matchAddresses,
+        this.options
+      );
       resolve(payload);
     });
   }
