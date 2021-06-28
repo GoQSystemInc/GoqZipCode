@@ -8,7 +8,7 @@ module.exports = {
   },
   entry: {
     'dist/index': './src/index.ts',
-    'docs/demo': './src/demo.ts',
+    'docs/demo': './docs/demo.ts',
   },
   output: {
     path: `${__dirname}`,
