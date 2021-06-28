@@ -28,9 +28,7 @@ InternetExplorerを除く、モダンブラウザで使用可能です。　
 
 ## デモページ
 以下のデモページから使用できるメソッドやオプションの一覧が確認できます。  
-[デモページ](https://goqsysteminc.github.io/GoqZipCode/)
-
-[comment]: <> (masterマージ後、ブランチを変更する)
+[デモページへ](https://goqsysteminc.github.io/GoqZipCode/)
 
 ## インストール
 `npm`を使用します。
@@ -98,10 +96,10 @@ const goqZipCode = new GoqZipCode(options);
 
 引数のオブジェクトプロパティは以下を設定します。
 
-| 名前 | 型 | 説明 |
-----|----|----
-| zipcode  | string  | 郵便番号 |
-| is_exact  | boolean  | 完全一致の有無 |
+| 名前 | 型 | 説明 | デフォルト値
+----|----|----|----
+| zipcode  | string  | 郵便番号 | ""
+| is_exact  | boolean  | 完全一致の有無 | false
 
 #### 完全一致
 入力番号が7文字必須です。  
@@ -127,7 +125,6 @@ goqZipCode.searchAddressFromZipcode({
 ```javascript
 goqZipCode.searchAddressFromZipcode({
   zipcode: '1040031',
-  is_exact: false
 })
   .then(result => {
     // do sccess handling 
@@ -145,11 +142,11 @@ goqZipCode.searchAddressFromZipcode({
 
 引数のオブジェクトプロパティは以下を設定します。
 
-| 名前 | 型 | 説明 |
-----|----|----
-| address  | string  | 住所 |
-| is_exact  | boolean  | 完全一致の有無 |
-| is_left  | boolean  | 前方一致の有無 |
+| 名前 | 型 | 説明 | デフォルト値
+----|----|----|----
+| address  | string  | 住所 | ""
+| is_exact  | boolean  | 完全一致の有無 | false
+| is_left  | boolean  | 前方一致の有無 | false
 
 #### 完全一致
 入力された住所と一致したデータを返します。
@@ -173,7 +170,6 @@ goqZipCode.searchAddressFromZipcode({
 ```javascript
 goqZipCode.searchAddressFromZipcode({
   address: '東京都中央区',
-  is_exact: false,
   is_left: true
 })
   .then(result => {
@@ -190,8 +186,6 @@ goqZipCode.searchAddressFromZipcode({
 ```javascript
 goqZipCode.searchAddressFromZipcode({
   address: '中央区京橋',
-  is_exact: false,
-  is_left: false
 })
   .then(result => {
     // do sccess handling 
@@ -200,6 +194,3 @@ goqZipCode.searchAddressFromZipcode({
     // do failure handling 
   })
 ```
-
-## ライセンス
-MIT License &copy;GoQSystem Inc.

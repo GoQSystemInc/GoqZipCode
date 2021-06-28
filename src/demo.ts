@@ -39,7 +39,6 @@ $zip2.addEventListener('input', async (event) => {
   const data = await goqZipCode
     .searchAddressFromZipcode({
       zipcode: String(target.value),
-      is_exact: false,
     })
     .catch((err) => {
       return [];
@@ -75,7 +74,6 @@ $address1?.addEventListener('input', async (event) => {
     .searchZipcodeFromAddress({
       address: String(target?.value),
       is_exact: true,
-      is_left: true,
     })
     .catch((err) => {
       return [];
@@ -101,7 +99,6 @@ $address2.addEventListener('input', async (event) => {
   const data = await goqZipCode
     .searchZipcodeFromAddress({
       address: String(target.value),
-      is_exact: false,
       is_left: true,
     })
     .catch((err) => {
@@ -145,8 +142,6 @@ $address3.addEventListener('input', async (event) => {
   const data = await goqZipCode
     .searchZipcodeFromAddress({
       address: String(target.value),
-      is_exact: false,
-      is_left: false,
     })
     .catch((err) => {
       return [];
