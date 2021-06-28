@@ -132,7 +132,7 @@ $address2.addEventListener('input', async (event) => {
 });
 
 // 住所から郵便番号を検索（部分一致）
-const $address3 = document.getElementById('address5') as HTMLInputElement;
+const $address3 = document.getElementById('address3') as HTMLInputElement;
 const $dropdown5 = document.getElementById('dropdown5') as HTMLElement;
 const $result5 = document.getElementById('js-result5') as HTMLInputElement;
 

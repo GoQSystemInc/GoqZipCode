@@ -1,9 +1,10 @@
 const webpack = require('webpack');
 const dotenv = require('dotenv');
 
-module.exports = () => {
-  const env = dotenv.config().parsed;
-  return {
+const env = dotenv.config().parsed;
+
+module.exports = (_, argv) => {
+  const config = {
     target: ['web'],
     devServer: {
       contentBase: './',
@@ -37,4 +38,14 @@ module.exports = () => {
       extensions: ['.js', '.ts'],
     },
   }
+
+  const mode = argv.mode
+  if (mode === 'development') {
+    config.devtool = 'source-map'
+  }
+  if (mode === 'production') {
+    config.mode = mode
+  }
+
+  return config
 }
