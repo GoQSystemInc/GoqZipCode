@@ -1,5 +1,5 @@
 # GoQZipCode
-GoQZipCodeは、郵便番号もしくは住所から該当する住所を検索し、該当の住所データを受け取ることができます。
+GoQZipCodeは、郵便番号もしくは住所から該当する住所を検索し、住所データを受け取ることができます。
 
 ## 目次
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -157,7 +157,7 @@ goqZipCode.searchAddressFromZipcode({
 
 ```javascript
 goqZipCode.searchAddressFromZipcode({
-  address: '東京都中央区京橋',
+  address: '東京都中央区',
   is_exact: false,
   is_left: true
 })
