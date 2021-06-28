@@ -1,0 +1,11 @@
+docs
+node_modules
+src
+.editorconfig
+.eslintignore
+.eslintrc
+.gitignore
+.prettier
+tsconfig.json
+webpack.config.js
+yarn.lock
