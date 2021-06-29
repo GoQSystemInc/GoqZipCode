@@ -9,7 +9,7 @@ export class GoqZipCode {
   static addressJson: string = process.env.ZIP_FILE_PATH as string;
   static addressData: app.responses = [];
   static isFetching: boolean = false;
-  private options: app.options = {
+  private options: Required<app.options> = {
     limit: 50,
     is_hyphen: true,
   };
@@ -92,7 +92,10 @@ export class GoqZipCode {
    * @param {number} length - 郵便番号の文字数
    * @return {boolean} trueかfalseか
    */
-  private static checkLength(isExact: boolean = false, length: number): boolean {
+  private static checkLength(
+    isExact: boolean = false,
+    length: number
+  ): boolean {
     // 一致検索する場合、7文字でない場合は処理しない
     if (isExact === true && length !== 7) {
       return false;

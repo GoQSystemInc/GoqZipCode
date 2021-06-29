@@ -24,6 +24,6 @@ export type requestSearchZipcodeFromAddress = {
 };
 
 export type options = {
-  limit: number;
-  is_hyphen: boolean;
+  limit?: number;
+  is_hyphen?: boolean;
 };
