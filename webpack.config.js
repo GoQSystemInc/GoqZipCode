@@ -21,6 +21,7 @@ module.exports = (_, argv) => {
       path: `${__dirname}`,
       filename: '[name].js',
       libraryTarget: 'umd',
+      globalObject: 'this',
     },
     module: {
       rules: [

@@ -13,7 +13,7 @@ $zip1.addEventListener('input', async (event) => {
       zipcode: String(target.value),
       is_exact: true,
     })
-    .catch((err) => {
+    .catch(() => {
       return [];
     });
 
@@ -40,7 +40,7 @@ $zip2.addEventListener('input', async (event) => {
     .searchAddressFromZipcode({
       zipcode: String(target.value),
     })
-    .catch((err) => {
+    .catch(() => {
       return [];
     });
 
@@ -75,7 +75,7 @@ $address1?.addEventListener('input', async (event) => {
       address: String(target?.value),
       is_exact: true,
     })
-    .catch((err) => {
+    .catch(() => {
       return [];
     });
 
@@ -101,7 +101,7 @@ $address2.addEventListener('input', async (event) => {
       address: String(target.value),
       is_left: true,
     })
-    .catch((err) => {
+    .catch(() => {
       return [];
     });
 
@@ -143,7 +143,7 @@ $address3.addEventListener('input', async (event) => {
     .searchZipcodeFromAddress({
       address: String(target.value),
     })
-    .catch((err) => {
+    .catch(() => {
       return [];
     });
 
