@@ -92,7 +92,7 @@ export class GoqZipCode {
    * @param {number} length - 郵便番号の文字数
    * @return {boolean} trueかfalseか
    */
-  private static checkLength(isExact: boolean, length: number): boolean {
+  private static checkLength(isExact: boolean = false, length: number): boolean {
     // 一致検索する場合、7文字でない場合は処理しない
     if (isExact === true && length !== 7) {
       return false;
@@ -212,9 +212,9 @@ export class GoqZipCode {
     data: app.requestSearchZipcodeFromAddress
   ): Promise<app.responses> {
     return new Promise(async (resolve, reject) => {
-      // 住所が3文字未満の場合は、以降の検索処理を実行させない
-      if (data.address.length <= 2) {
-        const message = '住所は3文字以上必要です';
+      // 住所が2文字未満の場合は、以降の検索処理を実行させない
+      if (data.address.length <= 1) {
+        const message = '住所は2文字以上必要です';
         reject(message);
         return;
       }

@@ -97,7 +97,6 @@ const hideDropdown2 = () => {
 $zip2.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchAddressFromZipcode({
     zipcode: String(e.target.value),
-    is_exact: false,
   }).catch((e) => {
     return [];
   });
@@ -147,7 +146,6 @@ $address1.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchZipcodeFromAddress({
     address: String(e.target.value),
     is_exact: true,
-    is_left: true,
   }).catch((e) => {
     return [];
   });
@@ -193,7 +191,6 @@ const hideDropdown4 = () => {
 $address2.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchZipcodeFromAddress({
     address: String(e.target.value),
-    is_exact: false,
     is_left: true,
   }).catch((e) => {
     return [];
@@ -252,8 +249,6 @@ const hideDropdown5 = () => {
 $address3.addEventListener('input', async(e) => {
   const data = await goqZipCode.searchZipcodeFromAddress({
     address: String(e.target.value),
-    is_exact: false,
-    is_left: false,
   }).catch((e) => {
     return [];
   });
