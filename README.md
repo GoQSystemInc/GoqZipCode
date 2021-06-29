@@ -43,7 +43,7 @@ $ yarn add goqzipcode
 ### 初期化
 インポートした`GoqZipCode`を初期化します。
 ```javascript
-// node.js
+// commonjs
 const { GoqZipCode } = require('goqzipcode')
 // ES6
 import { GoqZipCode } from 'goqzipcode'
