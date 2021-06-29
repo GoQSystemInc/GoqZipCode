@@ -7,3 +7,5 @@ dist
 # 環境変数
 .env
 docs/*.js
+docs/*.map
+docs/*.txt
