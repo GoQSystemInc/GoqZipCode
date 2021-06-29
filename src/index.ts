@@ -1,4 +1,3 @@
-import axios from 'axios';
 import JSZip from 'jszip';
 
 import * as app from './types';
@@ -60,14 +59,9 @@ export class GoqZipCode {
    */
   private static async fetchAddressJson(path: string): Promise<Blob> {
     return new Promise(async (resolve, reject) => {
-      await axios
-        .get(path, {
-          responseType: 'arraybuffer',
-          headers: { Accept: 'application/zip' },
-        })
-        .then(({ data }) => {
-          const blob = new Blob([data], { type: 'application/zip' });
-          resolve(blob);
+      await fetch(path)
+        .then((data) => {
+          resolve(data.blob());
         })
         .catch((e: Error) => {
           // TODO
