@@ -12,6 +12,7 @@ module.exports = (_, argv) => {
       open: true,
       openPage: 'docs/index.html',
     },
+    mode: 'development',
     entry: {
       'dist/index': './src/index.ts',
       'docs/demo': './src/demo.ts',

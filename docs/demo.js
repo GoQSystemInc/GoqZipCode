@@ -301,9 +301,9 @@ var GoqZipCode = /** @class */ (function () {
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0:
-                                    // 住所が3文字未満の場合は、以降の検索処理を実行させない
-                                    if (data.address.length <= 2) {
-                                        message = '住所は3文字以上必要です';
+                                    // 住所が2文字未満の場合は、以降の検索処理を実行させない
+                                    if (data.address.length <= 1) {
+                                        message = '住所は2文字以上必要です';
                                         reject(message);
                                         return [2 /*return*/];
                                     }

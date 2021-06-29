@@ -212,9 +212,9 @@ export class GoqZipCode {
     data: app.requestSearchZipcodeFromAddress
   ): Promise<app.responses> {
     return new Promise(async (resolve, reject) => {
-      // 住所が3文字未満の場合は、以降の検索処理を実行させない
-      if (data.address.length <= 2) {
-        const message = '住所は3文字以上必要です';
+      // 住所が2文字未満の場合は、以降の検索処理を実行させない
+      if (data.address.length <= 1) {
+        const message = '住所は2文字以上必要です';
         reject(message);
         return;
       }
