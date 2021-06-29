@@ -39,6 +39,11 @@ $ npm install goqzipcode
 $ yarn add goqzipcode
 ```
 
+CDNも利用可能です。
+```html
+<script src="https://cdn.jsdelivr.net/npm/goqzipcode@latest/dist/index.min.js"></script>
+```
+
 ## API
 ### 初期化
 インポートした`GoqZipCode`を初期化します。
