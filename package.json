@@ -4,6 +4,10 @@
   "main": "./dist/index.js",
   "author": "GoQSystemInc",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GoQSystemInc/GoqZipCode/issues",
+    "email" : "info@goqsystem.com"
+  },
   "scripts": {
     "del": "del ./dist",
     "lint": "eslint . --ext .ts",
