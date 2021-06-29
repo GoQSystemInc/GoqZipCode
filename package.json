@@ -8,6 +8,11 @@
     "url": "https://github.com/GoQSystemInc/GoqZipCode/issues",
     "email" : "info@goqsystem.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GoQSystemInc/GoqZipCode.git"
+  },
+  "homepage": "https://goqsysteminc.github.io/GoqZipCode/",
   "scripts": {
     "del": "del ./dist",
     "lint": "eslint . --ext .ts",
