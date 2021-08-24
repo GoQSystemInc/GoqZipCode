@@ -156,7 +156,7 @@ goqZipCode.searchAddressFromZipcode({
 入力された住所と一致したデータを返します。
 
 ```javascript
-goqZipCode.searchAddressFromZipcode({
+goqZipCode.searchZipcodeFromAddress({
   address: '東京都中央区京橋',
   is_exact: true
 })
@@ -172,7 +172,7 @@ goqZipCode.searchAddressFromZipcode({
 入力された住所と都度データ照合をして、該当したデータを返します。
 
 ```javascript
-goqZipCode.searchAddressFromZipcode({
+goqZipCode.searchZipcodeFromAddress({
   address: '東京都中央区',
   is_left: true
 })
@@ -188,7 +188,7 @@ goqZipCode.searchAddressFromZipcode({
 入力された住所が部分的に該当したデータを返します。
 
 ```javascript
-goqZipCode.searchAddressFromZipcode({
+goqZipCode.searchZipcodeFromAddress({
   address: '中央区京橋',
 })
   .then(result => {
