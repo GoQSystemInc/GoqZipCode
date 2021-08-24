@@ -3,6 +3,11 @@ import JSZip from 'jszip';
 import * as app from './types';
 
 /**
+ * 型をimportできるようにする
+ */
+export * from './types';
+
+/**
  * 住所を検索
  */
 export class GoqZipCode {
