@@ -3,12 +3,16 @@ import JSZip from 'jszip';
 import * as app from './types';
 
 /**
+ * 型をimportできるようにする
+ */
+export * from './types';
+
+/**
  * 住所を検索
  */
 export class GoqZipCode {
   static addressJson: string = process.env.ZIP_FILE_PATH as string;
   static addressData: app.responses = [];
-  static isFetching: boolean = false;
   private options: Required<app.options> = {
     limit: 50,
     is_hyphen: true,
@@ -22,19 +26,14 @@ export class GoqZipCode {
       ...this.options,
       ...options,
     };
+    GoqZipCode.init();
   }
 
   /**
    * 初期化
-   * ※ユーザーがinit()した場合、jsonファイルの容量が大きく、
-   * 他の動作に支障が出るため、ライブラリ側で実行する
    * @module init
    */
   private static async init() {
-    // 二重取得防止
-    if (this.isFetching === true) return;
-    this.isFetching = true;
-
     const zip: Blob = await this.fetchAddressJson(this.addressJson);
 
     // zipファイルを解凍
@@ -45,10 +44,8 @@ export class GoqZipCode {
     );
 
     if (addressJson) {
-      this.addressData = await JSON.parse(addressJson);
+      this.addressData = JSON.parse(addressJson);
     }
-
-    this.isFetching = false;
   }
 
   /**
@@ -155,11 +152,6 @@ export class GoqZipCode {
         return;
       }
 
-      // jsonデータを取得してない場合
-      if (GoqZipCode.addressData.length === 0) {
-        await GoqZipCode.init();
-      }
-
       // 一致検索の場合
       if (data.is_exact === true) {
         // 郵便番号7桁とマッチするデータを探す
@@ -220,11 +212,6 @@ export class GoqZipCode {
         const message = '住所は2文字以上必要です';
         reject(message);
         return;
-      }
-
-      // jsonデータを取得してない場合
-      if (GoqZipCode.addressData.length === 0) {
-        await GoqZipCode.init();
       }
 
       // 一致検索の場合
