@@ -56,6 +56,9 @@ import { GoqZipCode } from 'goqzipcode'
 const goqZipCode = new GoqZipCode()
 ```
 
+初期化はSSR（サーバーサイドレンダリング）では動きません。    
+開発者がクライアントサイドで実行するように記述してください。
+
 ### オプション
 | 名前 | 型 | 初期値 | 説明 |
 ----|----|----|----

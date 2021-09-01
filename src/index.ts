@@ -26,6 +26,7 @@ export class GoqZipCode {
       ...this.options,
       ...options,
     };
+
     GoqZipCode.init();
   }
 
