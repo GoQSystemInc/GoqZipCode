@@ -47,6 +47,9 @@ CDNも利用可能です。
 ## API
 ### 初期化
 インポートした`GoqZipCode`を初期化します。
+
+初期化はSSR（サーバーサイドレンダリング）では動きません。    
+開発者がクライアントサイドで実行するように記述してください。
 ```javascript
 // commonjs
 const { GoqZipCode } = require('goqzipcode')
@@ -55,9 +58,6 @@ import { GoqZipCode } from 'goqzipcode'
 // initialize
 const goqZipCode = new GoqZipCode()
 ```
-
-初期化はSSR（サーバーサイドレンダリング）では動きません。    
-開発者がクライアントサイドで実行するように記述してください。
 
 ### オプション
 | 名前 | 型 | 初期値 | 説明 |
