@@ -49,7 +49,7 @@ CDNも利用可能です。
 インポートした`GoqZipCode`を初期化します。
 
 初期化はSSR（サーバーサイドレンダリング）では動きません。    
-開発環境でSSRを使用している場合、クライアントサイドで実行するように記述してください。
+SSRを使用している場合、クライアントサイドで実行するように記述してください。
 ```javascript
 // commonjs
 const { GoqZipCode } = require('goqzipcode')
