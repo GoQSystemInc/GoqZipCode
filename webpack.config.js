@@ -7,10 +7,8 @@ module.exports = (_, argv) => {
   const config = {
     target: ['web'],
     devServer: {
-      contentBase: './',
-      publicPath: '/dist/',
-      open: true,
-      openPage: 'docs/index.html',
+      static: 'docs',
+      open: true
     },
     mode: 'development',
     entry: {

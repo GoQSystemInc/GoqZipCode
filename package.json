@@ -6,7 +6,7 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/GoQSystemInc/GoqZipCode/issues",
-    "email" : "info@goqsystem.com"
+    "email": "info@goqsystem.com"
   },
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
     "typescript": "^4.2.4",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^4.0.0"
   },
   "dependencies": {
     "jszip": "^3.6.0"
