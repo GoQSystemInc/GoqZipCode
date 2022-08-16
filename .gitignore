@@ -4,5 +4,6 @@
 # 不要ディレクトリ
 node_modules
 dist
+cypress/videos
 # 環境変数
 .env
