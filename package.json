@@ -22,11 +22,14 @@
     "prod": "webpack --mode production",
     "start": "run-p dev serve",
     "build": "run-s del prod",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
+    "cypress": "^10.4.0",
     "del-cli": "^4.0.0",
     "dotenv": "^10.0.0",
     "eslint": "^7.26.0",
