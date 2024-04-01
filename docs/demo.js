@@ -282,7 +282,7 @@ var GoqZipCode = /** @class */ (function () {
             var _this = this;
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                        var message, matchAddress, payload_2, matchAddresses, len, i, address, fullAddress, fullKanaAddress, payload;
+                        var message, matchAddress, payload_2, matchAddresses, len, i, address, fullAddress, payload;
                         return __generator(this, function (_a) {
                             // 住所が2文字未満の場合は、以降の検索処理を実行させない
                             if (data.address.length <= 1) {
@@ -294,8 +294,7 @@ var GoqZipCode = /** @class */ (function () {
                             if (data.is_exact === true) {
                                 matchAddress = GoqZipCode.addressData.find(function (element) {
                                     var fullAddress = "".concat(element.pref).concat(element.city).concat(element.town);
-                                    var fullKanaAddress = "".concat(element.pref_kana).concat(element.city_kana).concat(element.town_kana);
-                                    return (fullAddress === data.address || fullKanaAddress === data.address);
+                                    return (fullAddress === data.address);
                                 });
                                 // データがないならreject
                                 if (matchAddress === undefined) {
@@ -316,17 +315,14 @@ var GoqZipCode = /** @class */ (function () {
                                     break;
                                 address = GoqZipCode.addressData[i];
                                 fullAddress = "".concat(address.pref).concat(address.city).concat(address.town);
-                                fullKanaAddress = "".concat(address.pref_kana).concat(address.city_kana).concat(address.town_kana);
                                 // 前方一致か部分一致か
                                 if (data.is_left) {
-                                    if (fullAddress.startsWith(data.address) === true ||
-                                        fullKanaAddress.startsWith(data.address) === true) {
+                                    if (fullAddress.startsWith(data.address) === true) {
                                         matchAddresses.push(address);
                                     }
                                 }
                                 else {
-                                    if (fullAddress.includes(data.address) === true ||
-                                        fullKanaAddress.includes(data.address) === true) {
+                                    if (fullAddress.includes(data.address) === true) {
                                         matchAddresses.push(address);
                                     }
                                 }

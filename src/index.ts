@@ -221,10 +221,9 @@ export class GoqZipCode {
         const matchAddress: app.response | undefined =
           GoqZipCode.addressData.find((element) => {
             const fullAddress: string = `${element.pref}${element.city}${element.town}`;
-            const fullKanaAddress: string = `${element.pref_kana}${element.city_kana}${element.town_kana}`;
 
             return (
-              fullAddress === data.address || fullKanaAddress === data.address
+              fullAddress === data.address
             );
           });
 
@@ -254,20 +253,17 @@ export class GoqZipCode {
 
         const address: app.response = GoqZipCode.addressData[i];
         const fullAddress: string = `${address.pref}${address.city}${address.town}`;
-        const fullKanaAddress: string = `${address.pref_kana}${address.city_kana}${address.town_kana}`;
 
         // 前方一致か部分一致か
         if (data.is_left) {
           if (
-            fullAddress.startsWith(data.address) === true ||
-            fullKanaAddress.startsWith(data.address) === true
+            fullAddress.startsWith(data.address) === true
           ) {
             matchAddresses.push(address);
           }
         } else {
           if (
-            fullAddress.includes(data.address) === true ||
-            fullKanaAddress.includes(data.address) === true
+            fullAddress.includes(data.address) === true
           ) {
             matchAddresses.push(address);
           }
