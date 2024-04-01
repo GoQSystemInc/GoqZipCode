@@ -1,5 +1,4 @@
 export type response = {
-  address: string;
   city: string;
   pref: string;
   town: string;
