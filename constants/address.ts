@@ -1,9 +1,11 @@
-export const address = {
-  city: '中央区',
-  pref: '東京都',
-  town: '京橋',
-  zipcode: '104-0031',
-};
+export const address = [
+  {
+    city: '中央区',
+    pref: '東京都',
+    town: '京橋',
+    zipcode: '104-0031',
+  },
+];
 
 export const addresses = [
   {
