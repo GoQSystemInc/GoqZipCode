@@ -1,5 +1,5 @@
-const partInputZipcode = '734';
+export const partInputZipcode = '734';
 
-const fullinputZipcodeIncludingHyphen = '732-0021';
+export const fullinputZipcodeIncludingHyphen = '732-0021';
 
-const fullinputZipcodeExcludingHyphen = '7320021';
+export const fullinputZipcodeExcludingHyphen = '7320021';
