@@ -9,4 +9,7 @@ test('ユーザー入力から取得した郵便番号を元に、完全一致�
     city: '広島市東区',
     town: '中山新町',
   };
+  const matchAddress = addresses.find(
+    (element) => element.zipcode === fullinputZipcodeExcludingHyphen
+  );
 });
