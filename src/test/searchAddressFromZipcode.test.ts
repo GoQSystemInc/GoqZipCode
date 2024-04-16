@@ -12,5 +12,5 @@ test('ユーザー入力から取得した郵便番号を元に、完全一致�
   const matchAddress = addresses.find(
     (element) => element.zipcode === fullinputZipcodeExcludingHyphen
   );
-  expect(matchAddress?.zipcode).toBe(expectedData.zipcode);
+  expect(matchAddress).toBe(expectedData);
 });
