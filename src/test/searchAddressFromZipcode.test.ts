@@ -27,7 +27,9 @@ test('検索条件と郵便番号の桁数によって処理するか否かの�
   const isExactTrue = true;
   const isExactFalse = true;
   const lengthNotSeven= 8;
+  const lengthSeven = 7;
   const lengthLessThanTwo = 1;
+  const lengthTwo = 2;
   let flag = true;
 
 
