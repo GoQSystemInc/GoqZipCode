@@ -33,7 +33,7 @@ test('検索条件と郵便番号の桁数によって処理するか否かの�
   const lengthTwo = 2;
   let flag = true;
 
-  const checkLength = (isExact, length) => {
+  const checkLength = (isExact: boolean, length: number) => {
     // 完全一致検索の場合は入力データが7文字ちょうどで処理を実行
     if (isExact === true && length !== 7) {
       return flag = false;
