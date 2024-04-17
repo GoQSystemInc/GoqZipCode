@@ -30,17 +30,20 @@ test('検索条件と郵便番号の桁数によって処理するか否かの�
   const lengthLessThanTwo = 1;
   let flag = true;
 
-  // 完全一致検索の場合は入力データが7文字ちょうどで処理を実行
-  if (isExact === true && length !== 7) {
-    return flag = false;
-  }
 
-  // 部分一致検索の場合は入力データが2文字以上で処理を実行
-  if (isExact === false && length <= 1) {
-    return flag = false;
-  }
+  const checkLength = (isExact, length) => {
+    // 完全一致検索の場合は入力データが7文字ちょうどで処理を実行
+    if (isExact === true && length !== 7) {
+      return flag = false;
+    }
   
-  flag = ture;
+    // 部分一致検索の場合は入力データが2文字以上で処理を実行
+    if (isExact === false && length <= 1) {
+      return flag = false;
+    }
+    
+    return flag = true;
+  }
 
   // 完全一致検索で入力データが7文字なら処理が実行されるか
   expect(flag).toBe(true)
