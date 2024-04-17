@@ -66,8 +66,6 @@ test('検索条件と郵便番号の桁数によって処理するか否かの�
 });
 
 test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
-  const testOptionData = false;
-  const testZipcodeData = '7320021';
 
   const convertHyphenatedZipCode = (testOptionData: boolean) => {
     if (testOptionData === false) {
