@@ -24,8 +24,6 @@ test('ユーザー入力から取得した郵便番号の全角数字を半角�
 test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
   const testOptionData = false;
   const testZipcodeData = '7320021';
-  const expectedDataIncludingHyphen = '732-0021';
-  const expectedDataExcludingHyphen = '7320021';
   const expectedaddressesDataIncludingHyphen = [
     {
       zipcode: '734-0001',
