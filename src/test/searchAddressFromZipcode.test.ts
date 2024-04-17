@@ -23,6 +23,10 @@ test('ユーザー入力から取得した郵便番号の全角数字を半角�
   expect(convertZipCode(testDatamixtureFullAndHalf)).toBe(expectedDataExcludingHyphen)
 });
 
+test('検索条件と郵便番号の桁数によって処理するか否かのフラグを返す', () => {
+
+})
+
 test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
   const testOptionData = false;
   const testZipcodeData = '7320021';
