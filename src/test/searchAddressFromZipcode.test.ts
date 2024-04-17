@@ -6,8 +6,7 @@ test('ユーザー入力から取得した郵便番号の全角数字を半角�
   const testDataExcludingHyphen = '７３２００２１';
   const testDataIncludingHyphen = '７３２ー００２１';
   const expectedDataExcludingHyphen = '7320021';
-  const expectedDataIncludingHyphen = '732ー0021';
-  
+
   const convertZipCode = (testData: string): string => {
     const a: string = testData.replace(/[０-９]/g, (s: string) =>
       String.fromCharCode(s.charCodeAt(0) - 65248)
