@@ -137,17 +137,19 @@ test('オプションでハイフンありを指定している場合、郵便�
       town: '牛田早稲田',
     },
   ];
-  
-  if (testOptionData === false) {
-    return;
+
+  const convertHyphenatedZipCode = (testOptionData) => {
+    if (testOptionData === false) {
+      return;
+    }
+    
+    const addressesListIncludingHyphen = addresses.map((address) => {
+      return {
+        ...address,
+        zipcode: `${address.zipcode.slice(0, 3)}-${address.zipcode.slice(3)}`,
+      };
+    });
   }
-  
-  const addressesListIncludingHyphen = addresses.map((address) => {
-    return {
-      ...address,
-      zipcode: `${address.zipcode.slice(0, 3)}-${address.zipcode.slice(3)}`,
-    };
-  });
 })
 
 test('ユーザー入力から取得した郵便番号を元に、完全一致で郵便番号から住所を検索する', () => {
