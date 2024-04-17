@@ -138,12 +138,12 @@ test('オプションでハイフンありを指定している場合、郵便�
     },
   ];
 
-  const convertHyphenatedZipCode = (testOptionData) => {
+  const convertHyphenatedZipCode = (testOptionData: boolean) => {
     if (testOptionData === false) {
-      return;
+      return addresses;
     }
     
-    const addressesListIncludingHyphen = addresses.map((address) => {
+    return addresses.map((address) => {
       return {
         ...address,
         zipcode: `${address.zipcode.slice(0, 3)}-${address.zipcode.slice(3)}`,
