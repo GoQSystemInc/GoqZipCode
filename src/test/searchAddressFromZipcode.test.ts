@@ -16,6 +16,7 @@ test('ユーザー入力から取得した郵便番号の全角数字を半角�
   }
 
   expect(convertZipCode(testDataExcludingHyphen)).toBe(expectedDataExcludingHyphen)
+  expect(convertZipCode(testDataIncludingHyphen)).toBe(expectedDataExcludingHyphen)
 });
 
 test('ユーザー入力から取得した郵便番号を元に、完全一致で郵便番号から住所を検索する', () => {
