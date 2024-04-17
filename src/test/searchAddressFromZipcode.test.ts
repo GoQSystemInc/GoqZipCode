@@ -150,6 +150,9 @@ test('オプションでハイフンありを指定している場合、郵便�
       };
     });
   }
+
+  expect(convertHyphenatedZipCode(false)).toEqual(expectedadAddressDataListExcludingHyphen)
+  expect(convertHyphenatedZipCode(true)).toEqual(expectedadAddressDataListIncludHyphen)
 })
 
 test('ユーザー入力から取得した郵便番号を元に、完全一致で郵便番号から住所を検索する', () => {
