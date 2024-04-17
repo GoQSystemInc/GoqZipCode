@@ -5,6 +5,7 @@ import { fullinputZipcodeExcludingHyphen } from '../../constants/userInput/zipco
 test('ユーザー入力から取得した郵便番号の全角数字を半角に変換 ハイフンが入っていても数字のみの抽出', () => {
   const testDataExcludingHyphen = '７３２００２１';
   const testDataIncludingHyphen = '７３２ー００２１';
+  const testDatamixtureFullAndHalf = '７３2００２1';
   const expectedDataExcludingHyphen = '7320021';
 
   const convertZipCode = (testData: string): string => {
@@ -17,6 +18,7 @@ test('ユーザー入力から取得した郵便番号の全角数字を半角�
 
   expect(convertZipCode(testDataExcludingHyphen)).toBe(expectedDataExcludingHyphen)
   expect(convertZipCode(testDataIncludingHyphen)).toBe(expectedDataExcludingHyphen)
+  expect(convertZipCode(testDatamixtureFullAndHalf)).toBe(expectedDataExcludingHyphen)
 });
 
 test('ユーザー入力から取得した郵便番号を元に、完全一致で郵便番号から住所を検索する', () => {
