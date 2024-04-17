@@ -25,7 +25,7 @@ test('ユーザー入力から取得した郵便番号の全角数字を半角�
 
 test('検索条件と郵便番号の桁数によって処理するか否かのフラグを返す', () => {
   const isExactTrue = true;
-  const isExactFalse = true;
+  const isExactFalse = false;
   const lengthNotSeven= 8;
   const lengthSeven = 7;
   const lengthLessThanTwo = 1;
