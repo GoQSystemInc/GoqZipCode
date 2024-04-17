@@ -7,10 +7,14 @@ test('ユーザー入力から取得した郵便番号の全角数字を半角�
   const testDataIncludingHyphen = '７３２ー００２１';
   const expectedDataExcludingHyphen = '7320021';
   const expectedDataIncludingHyphen = '732ー0021';
-  const a: string = testData.replace(/[０-９]/g, (s: string) =>
-    String.fromCharCode(s.charCodeAt(0) - 65248)
-  );
-  const b: RegExpMatchArray = a.match(/\d/g) || [];
+  
+  const convertZipCode = (testData: string): string => {
+    const a: string = testData.replace(/[０-９]/g, (s: string) =>
+      String.fromCharCode(s.charCodeAt(0) - 65248)
+    );
+    const b: RegExpMatchArray = a.match(/\d/g) || [];
+    return b.join('')
+  }
 
   expect(b.join('')).toBe(expectedData)
 });
@@ -29,11 +33,3 @@ test('ユーザー入力から取得した郵便番号を元に、完全一致�
 
   expect(matchAddress).toEqual(expectedData);
 });
-
-// TODO:非同期でrejectされた時のテストどうやって書くか検討がつかいないので、一旦保留
-// test('ユーザーから受け取ったデータがマスタデータと合致しない場合はアラート出力', () => {
-//   const matchAddress = undefined;
-//   if (matchAddress === undefined) {
-//     return expect('指定の郵便番号に一致する住所は見つかりませんでした').rejects.toMatch('指定の郵便番号に一致する住所は見つかりませんでした');;
-//   }
-// })
