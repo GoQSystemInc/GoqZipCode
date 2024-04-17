@@ -3,7 +3,6 @@ import { addresses } from './constants/masterData/address';
 import { expectedadAddressDataListIncludHyphen } from './constants/masterData/address';
 import { expectedadAddressDataListExcludingHyphen } from './constants/masterData/address';
 import { fullinputZipcodeExcludingHyphen } from './constants/userInput/zipcode';
-import { NumericDictionary } from 'cypress/types/lodash';
 
 test('ユーザー入力から取得した郵便番号の全角数字を半角に変換 ハイフンが入っていても数字のみの抽出', () => {
   const testDataExcludingHyphen = '７３２００２１';
