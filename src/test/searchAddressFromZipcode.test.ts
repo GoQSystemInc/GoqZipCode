@@ -118,10 +118,10 @@ test('オプションでハイフンありを指定している場合、郵便�
     });
   };
 
-  expect(convertHyphenatedZipCode(false)).toEqual(
+  expect(goqZipCode.convertHyphenatedZipCode(false)).toEqual(
     expectedadAddressDataListExcludingHyphen
   );
-  expect(convertHyphenatedZipCode(true)).toEqual(
+  expect(goqZipCode.convertHyphenatedZipCode(true)).toEqual(
     expectedadAddressDataListIncludHyphen
   );
 });
