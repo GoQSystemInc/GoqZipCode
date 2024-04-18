@@ -41,32 +41,34 @@ const goqZipCode = {
   },
 };
 
-test('ユーザーによって入力された郵便番号がすべて全角の時にすべて半角に変換', () => {
-  const testDataExcludingHyphen = '７３２００２１';
-  const expectedDataExcludingHyphen = '7320021';
-
-  expect(goqZipCode.convertZipCode(testDataExcludingHyphen)).toBe(
-    expectedDataExcludingHyphen
-  );
-});
-
-test('ユーザーによって入力された郵便番号がすべて全角でかつハイフンが入っている場合に、数字は半角になりハイフンが摘出されているか', () => {
-  const expectedDataExcludingHyphen = '7320021';
-  const testDataIncludingHyphen = '７３２ー００２１';
-
-  expect(goqZipCode.convertZipCode(testDataIncludingHyphen)).toBe(
-    expectedDataExcludingHyphen
-  );
-});
-
-test('ユーザーによって入力された郵便番号が半角と全角の混合の値だった場合に数字をすべて半角に変換', () => {
-  const expectedDataExcludingHyphen = '7320021';
-  const testDatamixtureFullAndHalf = '７３2００２1';
-
-  expect(goqZipCode.convertZipCode(testDatamixtureFullAndHalf)).toBe(
-    expectedDataExcludingHyphen
-  );
-});
+describe('convertZipCodeの動作をテストする', () => {
+  test('ユーザーによって入力された郵便番号がすべて全角の時にすべて半角に変換', () => {
+    const testDataExcludingHyphen = '７３２００２１';
+    const expectedDataExcludingHyphen = '7320021';
+  
+    expect(goqZipCode.convertZipCode(testDataExcludingHyphen)).toBe(
+      expectedDataExcludingHyphen
+    );
+  });
+  
+  test('ユーザーによって入力された郵便番号がすべて全角でかつハイフンが入っている場合に、数字は半角になりハイフンが摘出されているか', () => {
+    const expectedDataExcludingHyphen = '7320021';
+    const testDataIncludingHyphen = '７３２ー００２１';
+  
+    expect(goqZipCode.convertZipCode(testDataIncludingHyphen)).toBe(
+      expectedDataExcludingHyphen
+    );
+  });
+  
+  test('ユーザーによって入力された郵便番号が半角と全角の混合の値だった場合に数字をすべて半角に変換', () => {
+    const expectedDataExcludingHyphen = '7320021';
+    const testDatamixtureFullAndHalf = '７３2００２1';
+  
+    expect(goqZipCode.convertZipCode(testDatamixtureFullAndHalf)).toBe(
+      expectedDataExcludingHyphen
+    );
+  });
+})
 
 test('検索条件と郵便番号の桁数によって処理するか否かのフラグを返す', () => {
   const isExactTrue = true;
