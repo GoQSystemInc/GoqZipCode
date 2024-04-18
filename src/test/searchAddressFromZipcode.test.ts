@@ -25,7 +25,20 @@ const goqZipCode = {
     }
 
     return true
-  }
+  },
+  
+  convertHyphenatedZipCode: function(testOptionData: boolean) {
+    if (testOptionData === false) {
+      return addresses;
+    }
+
+    return addresses.map((address) => {
+      return {
+        ...address,
+        zipcode: `${address.zipcode.slice(0, 3)}-${address.zipcode.slice(3)}`,
+      };
+    });
+  },
 }
 
 test('ユーザー入力から取得した郵便番号の全角数字を半角に変換 ハイフンが入っていても数字のみの抽出', () => {
