@@ -79,16 +79,16 @@ test('検索条件と郵便番号の桁数によって処理するか否かの�
   };
 
   // 完全一致検索で入力データが7文字なら処理が実行されるか
-  expect(checkLength(isExactTrue, lengthSeven)).toBe(true);
+  expect(goqZipCode.checkLength(isExactTrue, lengthSeven)).toBe(true);
 
   // 部分一致検索で入力データが2文字以上なら処理が実行されるか
-  expect(checkLength(isExactFalse, lengthTwo)).toBe(true);
+  expect(goqZipCode.checkLength(isExactFalse, lengthTwo)).toBe(true);
 
   // 完全一致検索の場合は7文字以外の場合は処理が実行されないか
-  expect(checkLength(isExactTrue, lengthNotSeven)).toBe(false);
+  expect(goqZipCode.checkLength(isExactTrue, lengthNotSeven)).toBe(false);
 
   // 部分一致検索の場合は2文字未満の場合は処理されないか
-  expect(checkLength(isExactFalse, lengthLessThanTwo)).toBe(false);
+  expect(goqZipCode.checkLength(isExactFalse, lengthLessThanTwo)).toBe(false);
 });
 
 test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
