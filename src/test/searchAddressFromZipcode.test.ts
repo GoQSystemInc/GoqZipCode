@@ -70,17 +70,21 @@ describe('convertZipCodeの動作をテストする', () => {
   });
 })
 
-test('検索条件と郵便番号の桁数によって処理するか否かのフラグを返す', () => {
-  const isExactTrue = true;
-  const isExactFalse = false;
-  const lengthNotSeven = 8;
-  const lengthSeven = 7;
-  const lengthLessThanTwo = 1;
-  const lengthTwo = 2;
-
-  // 完全一致検索で入力データが7文字なら処理が実行されるか
-  expect(goqZipCode.checkLength(isExactTrue, lengthSeven)).toBe(true);
+test('完全一致検索で入力データが7文字ならtrueを返す', () => {
+  expect(goqZipCode.checkLength(true, 7)).toBe(true);
 });
+
+test('部分一致検索で入力データが2文字以上ならtrueを返す', () => {
+  expect(goqZipCode.checkLength(false, 2)).toBe(true);
+})
+
+test('完全一致検索で入力データが7文字以外ならfalseを返す', () => {
+  expect(goqZipCode.checkLength(true, 8)).toBe(false);
+})
+
+test('部分一致検索で入力データが2文字未満の場合はfalseを返す', () => {
+  expect(goqZipCode.checkLength(false, 1)).toBe(false);
+})
 
 test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
   expect(goqZipCode.convertHyphenatedZipCode(false)).toEqual(
@@ -90,18 +94,6 @@ test('オプションでハイフンありを指定している場合、郵便�
     expectedadAddressDataListIncludHyphen
   );
 });
-
-test('部分一致検索で入力データが2文字以上なら真偽値 trueを返す', () => {
-  expect(goqZipCode.checkLength(false, 2)).toBe(true);
-})
-
-test('完全一致検索で入力データが7文字以外なら場合 falseを返す', () => {
-  expect(goqZipCode.checkLength(true, 8)).toBe(false);
-})
-
-test('部分一致検索で入力データが2文字未満の場合はfalseを返す', () => {
-  expect(goqZipCode.checkLength(false, 1)).toBe(false);
-})
 
 test('ユーザー入力から取得した郵便番号を元に、完全一致で郵便番号から住所を検索する', () => {
   const expectedData = {
