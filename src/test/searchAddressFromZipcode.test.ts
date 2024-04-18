@@ -28,13 +28,13 @@ test('ユーザー入力から取得した郵便番号の全角数字を半角�
     return b.join('');
   };
 
-  expect(convertZipCode(testDataExcludingHyphen)).toBe(
+  expect(goqZipCode.convertZipCode(testDataExcludingHyphen)).toBe(
     expectedDataExcludingHyphen
   );
-  expect(convertZipCode(testDataIncludingHyphen)).toBe(
+  expect(goqZipCode.convertZipCode(testDataIncludingHyphen)).toBe(
     expectedDataExcludingHyphen
   );
-  expect(convertZipCode(testDatamixtureFullAndHalf)).toBe(
+  expect(goqZipCode.convertZipCode(testDatamixtureFullAndHalf)).toBe(
     expectedDataExcludingHyphen
   );
 });
