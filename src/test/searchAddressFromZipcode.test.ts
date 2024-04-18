@@ -24,10 +24,10 @@ const goqZipCode = {
       return false;
     }
 
-    return true
+    return true;
   },
-  
-  convertHyphenatedZipCode: function(testOptionData: boolean) {
+
+  convertHyphenatedZipCode: function (testOptionData: boolean) {
     if (testOptionData === false) {
       return addresses;
     }
@@ -39,7 +39,7 @@ const goqZipCode = {
       };
     });
   },
-}
+};
 
 test('ユーザー入力から取得した郵便番号の全角数字を半角に変換 ハイフンが入っていても数字のみの抽出', () => {
   const testDataExcludingHyphen = '７３２００２１';
