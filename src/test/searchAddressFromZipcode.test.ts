@@ -47,14 +47,6 @@ test('ユーザー入力から取得した郵便番号の全角数字を半角�
   const testDatamixtureFullAndHalf = '７３2００２1';
   const expectedDataExcludingHyphen = '7320021';
 
-  const convertZipCode = (testData: string): string => {
-    const a: string = testData.replace(/[０-９]/g, (s: string) =>
-      String.fromCharCode(s.charCodeAt(0) - 65248)
-    );
-    const b: RegExpMatchArray | [] = a.match(/\d/g) || [];
-    return b.join('');
-  };
-
   expect(goqZipCode.convertZipCode(testDataExcludingHyphen)).toBe(
     expectedDataExcludingHyphen
   );
@@ -73,23 +65,6 @@ test('検索条件と郵便番号の桁数によって処理するか否かの�
   const lengthSeven = 7;
   const lengthLessThanTwo = 1;
   const lengthTwo = 2;
-  let flag = true;
-
-  const checkLength = (isExact: boolean, length: number) => {
-    // 完全一致検索の場合は入力データが7文字ちょうどで処理を実行
-    if (isExact === true && length !== 7) {
-      return (flag = false);
-    }
-
-    // 部分一致検索の場合は入力データが2文字以上で処理を実行
-    if (isExact === false && length <= 1) {
-      return (flag = false);
-    }
-
-    flag = true;
-
-    return flag;
-  };
 
   // 完全一致検索で入力データが7文字なら処理が実行されるか
   expect(goqZipCode.checkLength(isExactTrue, lengthSeven)).toBe(true);
@@ -105,18 +80,6 @@ test('検索条件と郵便番号の桁数によって処理するか否かの�
 });
 
 test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
-  const convertHyphenatedZipCode = (testOptionData: boolean) => {
-    if (testOptionData === false) {
-      return addresses;
-    }
-
-    return addresses.map((address) => {
-      return {
-        ...address,
-        zipcode: `${address.zipcode.slice(0, 3)}-${address.zipcode.slice(3)}`,
-      };
-    });
-  };
 
   expect(goqZipCode.convertHyphenatedZipCode(false)).toEqual(
     expectedadAddressDataListExcludingHyphen
