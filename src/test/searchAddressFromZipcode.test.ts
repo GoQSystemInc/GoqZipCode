@@ -11,6 +11,20 @@ const goqZipCode = {
     );
     const b: RegExpMatchArray | [] = a.match(/\d/g) || [];
     return b.join('');
+  },
+
+  checkLength: function (isExact: boolean, length: number) {
+    // 完全一致検索の場合は入力データが7文字ちょうどで処理を実行
+    if (isExact === true && length !== 7) {
+      return false;
+    }
+
+    // 部分一致検索の場合は入力データが2文字以上で処理を実行
+    if (isExact === false && length <= 1) {
+      return false;
+    }
+
+    return true
   }
 }
 
