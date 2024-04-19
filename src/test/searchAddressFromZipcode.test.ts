@@ -88,16 +88,18 @@ describe('checkLengthの動作をテストする', () => {
   });
 });
 
-test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
-  expect(goqZipCode.convertHyphenatedZipCode(true)).toEqual(
-    expectedadAddressDataListIncludHyphen
-  );
-});
+describe('convertHyphenatedZipCode', () => {
+  test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
+    expect(goqZipCode.convertHyphenatedZipCode(true)).toEqual(
+      expectedadAddressDataListIncludHyphen
+    );
+  });
 
-test('オプションでハイフンなしを指定している場合、郵便番号にハイフンを追加しない', () => {
-  expect(goqZipCode.convertHyphenatedZipCode(false)).toEqual(
-    expectedadAddressDataListExcludingHyphen
-  );
+  test('オプションでハイフンなしを指定している場合、郵便番号にハイフンを追加しない', () => {
+    expect(goqZipCode.convertHyphenatedZipCode(false)).toEqual(
+      expectedadAddressDataListExcludingHyphen
+    );
+  });
 });
 
 test('ユーザー入力から取得した郵便番号を元に、完全一致で郵便番号から住所を検索する', () => {
