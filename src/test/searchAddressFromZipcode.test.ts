@@ -1,6 +1,6 @@
 import { expect } from '@jest/globals';
-import { addresses } from './constants/masterData/address';
 import {
+  addresses,
   expectedAddressExcludingHyphenDataList,
   expectedAddressIncludHyphenDataList,
 } from './constants/masterData/address';
