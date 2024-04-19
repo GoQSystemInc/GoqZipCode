@@ -1,6 +1,9 @@
 import { expect } from '@jest/globals';
 import { addresses } from './constants/masterData/address';
-import { expectedadAddressDataListExcludingHyphen, expectedadAddressDataListIncludHyphen } from './constants/masterData/address';
+import {
+  expectedAddressDataListExcludingHyphen,
+  expectedAddressDataListIncludHyphen,
+} from './constants/masterData/address';
 import { fullinputZipcodeExcludingHyphen } from './constants/userInput/zipcode';
 
 const goqZipCode = {
@@ -90,13 +93,13 @@ describe('checkLengthの動作をテストする', () => {
 describe('convertHyphenatedZipCode', () => {
   test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
     expect(goqZipCode.convertHyphenatedZipCode(true)).toEqual(
-      expectedadAddressDataListIncludHyphen
+      expectedAddressDataListIncludHyphen
     );
   });
 
   test('オプションでハイフンなしを指定している場合、郵便番号にハイフンを追加しない', () => {
     expect(goqZipCode.convertHyphenatedZipCode(false)).toEqual(
-      expectedadAddressDataListExcludingHyphen
+      expectedAddressDataListExcludingHyphen
     );
   });
 });
