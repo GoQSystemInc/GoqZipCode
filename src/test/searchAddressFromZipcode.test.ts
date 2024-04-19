@@ -1,7 +1,6 @@
 import { expect } from '@jest/globals';
 import { addresses } from './constants/masterData/address';
-import { expectedadAddressDataListIncludHyphen } from './constants/masterData/address';
-import { expectedadAddressDataListExcludingHyphen } from './constants/masterData/address';
+import { expectedadAddressDataListExcludingHyphen, expectedadAddressDataListIncludHyphen } from './constants/masterData/address';
 import { fullinputZipcodeExcludingHyphen } from './constants/userInput/zipcode';
 
 const goqZipCode = {
