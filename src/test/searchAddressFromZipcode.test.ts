@@ -43,8 +43,8 @@ const goqZipCode = {
 
 describe('全角の郵便番号を半角に変換', () => {
   test('ユーザーによって入力された郵便番号がすべて全角の時にすべて半角に変換', () => {
-    const testZipCodeExcludingHyphen = '７３２００２１';
     const expectedZipCodeExcludingHyphen = '7320021';
+    const testZipCodeExcludingHyphen = '７３２００２１';
 
     expect(goqZipCode.convertZipCode(testZipCodeExcludingHyphen)).toBe(
       expectedZipCodeExcludingHyphen
