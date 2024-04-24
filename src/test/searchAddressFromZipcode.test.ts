@@ -83,7 +83,7 @@ describe('郵便番号が期待する桁数かチェック', () => {
     expect(goqZipCode.checkLength(true, 8)).toBe(false);
   });
 
-  test('部分一致検索で入力データが2文字未満の場合はfalseを返す', () => {
+  test('部分一致検索で入力データが1文字以下の場合はfalseを返す', () => {
     expect(goqZipCode.checkLength(false, 1)).toBe(false);
   });
 });
