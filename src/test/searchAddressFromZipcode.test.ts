@@ -6,6 +6,8 @@ import {
 } from './constants/masterData/address';
 import { fullInputZipCodeExcludingHyphen } from './constants/userInput/zipcode';
 
+import type { Addresses } from './type'
+
 const goqZipCode = {
   convertZipCode: function (testZipCode: string): string {
     const a: string = testZipCode.replace(/[０-９]/g, (s: string) =>
@@ -27,7 +29,7 @@ const goqZipCode = {
     return true;
   },
 
-  convertHyphenatedZipCode: function (hasOptionHyphen: boolean) {
+  convertHyphenatedZipCode: function (hasOptionHyphen: boolean, addresses:Addresses) {
     if (hasOptionHyphen === false) {
       return addresses;
     }
@@ -90,13 +92,13 @@ describe('郵便番号が期待する桁数かチェック', () => {
 
 describe('オプションによってハイフンを付与', () => {
   test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
-    expect(goqZipCode.convertHyphenatedZipCode(true)).toEqual(
+    expect(goqZipCode.convertHyphenatedZipCode(true, addresses)).toEqual(
       expectedAddressIncludeHyphenDataList
     );
   });
 
   test('オプションでハイフンなしを指定している場合、郵便番号にハイフンを追加しない', () => {
-    expect(goqZipCode.convertHyphenatedZipCode(false)).toEqual(
+    expect(goqZipCode.convertHyphenatedZipCode(false, addresses)).toEqual(
       expectedAddressExcludingHyphenDataList
     );
   });
