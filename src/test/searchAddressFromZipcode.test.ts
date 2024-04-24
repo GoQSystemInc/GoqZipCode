@@ -41,7 +41,7 @@ const goqZipCode = {
   },
 };
 
-describe('convertZipCodeの動作をテストする', () => {
+describe('全角の郵便番号を半角に変換', () => {
   test('ユーザーによって入力された郵便番号がすべて全角の時にすべて半角に変換', () => {
     const testZipCodeExcludingHyphen = '７３２００２１';
     const expectedZipCodeExcludingHyphen = '7320021';
@@ -70,7 +70,7 @@ describe('convertZipCodeの動作をテストする', () => {
   });
 });
 
-describe('checkLengthの動作をテストする', () => {
+describe('郵便番号が期待する桁数かチェック', () => {
   test('完全一致検索で入力データが7文字ならtrueを返す', () => {
     expect(goqZipCode.checkLength(true, 7)).toBe(true);
   });
@@ -88,7 +88,7 @@ describe('checkLengthの動作をテストする', () => {
   });
 });
 
-describe('convertHyphenatedZipCode', () => {
+describe('オプションによってハイフンを付与', () => {
   test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
     expect(goqZipCode.convertHyphenatedZipCode(true)).toEqual(
       expectedAddressIncludeHyphenDataList
