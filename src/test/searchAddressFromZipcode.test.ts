@@ -4,11 +4,11 @@ import {
   expectedAddressExcludingHyphenDataList,
   expectedAddressIncludeHyphenDataList,
 } from './constants/masterData/address';
-import { fullInputZipcodeExcludingHyphen } from './constants/userInput/zipcode';
+import { fullInputZipCodeExcludingHyphen } from './constants/userInput/zipcode';
 
 const goqZipCode = {
-  convertZipCode: function (testZipcode: string): string {
-    const a: string = testZipcode.replace(/[０-９]/g, (s: string) =>
+  convertZipCode: function (testZipCode: string): string {
+    const a: string = testZipCode.replace(/[０-９]/g, (s: string) =>
       String.fromCharCode(s.charCodeAt(0) - 65248)
     );
     const b: RegExpMatchArray | [] = a.match(/\d/g) || [];
@@ -43,29 +43,29 @@ const goqZipCode = {
 
 describe('convertZipCodeの動作をテストする', () => {
   test('ユーザーによって入力された郵便番号がすべて全角の時にすべて半角に変換', () => {
-    const testZipcodeExcludingHyphen = '７３２００２１';
-    const expectedZipcodeExcludingHyphen = '7320021';
+    const testZipCodeExcludingHyphen = '７３２００２１';
+    const expectedZipCodeExcludingHyphen = '7320021';
 
-    expect(goqZipCode.convertZipCode(testZipcodeExcludingHyphen)).toBe(
-      expectedZipcodeExcludingHyphen
+    expect(goqZipCode.convertZipCode(testZipCodeExcludingHyphen)).toBe(
+      expectedZipCodeExcludingHyphen
     );
   });
 
   test('ユーザーによって入力された郵便番号がすべて全角でかつハイフンが入っている場合に、数字は半角になりハイフンが摘出されているか', () => {
-    const expectedZipcodeExcludingHyphen = '7320021';
-    const testZipcodeIncludingHyphen = '７３２ー００２１';
+    const expectedZipCodeExcludingHyphen = '7320021';
+    const testZipCodeIncludingHyphen = '７３２ー００２１';
 
-    expect(goqZipCode.convertZipCode(testZipcodeIncludingHyphen)).toBe(
-      expectedZipcodeExcludingHyphen
+    expect(goqZipCode.convertZipCode(testZipCodeIncludingHyphen)).toBe(
+      expectedZipCodeExcludingHyphen
     );
   });
 
   test('ユーザーによって入力された郵便番号が半角と全角の混合の値だった場合に数字をすべて半角に変換', () => {
-    const expectedZipcodeExcludingHyphen = '7320021';
-    const testZipcodeMixtureFullAndHalf = '７３2００２1';
+    const expectedZipCodeExcludingHyphen = '7320021';
+    const testZipCodeMixtureFullAndHalf = '７３2００２1';
 
-    expect(goqZipCode.convertZipCode(testZipcodeMixtureFullAndHalf)).toBe(
-      expectedZipcodeExcludingHyphen
+    expect(goqZipCode.convertZipCode(testZipCodeMixtureFullAndHalf)).toBe(
+      expectedZipCodeExcludingHyphen
     );
   });
 });
@@ -111,7 +111,7 @@ test('ユーザー入力から取得した郵便番号を元に、完全一致�
   };
 
   const matchAddress = addresses.find(
-    (element) => element.zipcode === fullInputZipcodeExcludingHyphen
+    (element) => element.zipcode === fullInputZipCodeExcludingHyphen
   );
 
   expect(matchAddress).toEqual(expectedAddressData);
