@@ -62,7 +62,7 @@ describe('convertZipCodeの動作をテスト', () => {
     );
   });
 
-  test('全角のみ半角に変換', () => {
+  test('半角と全角の郵便番号を半角に変換', () => {
     const expectedZipCodeExcludingHyphen = '7320021';
     const testZipCodeMixtureFullAndHalf = '７３2００２1';
 
