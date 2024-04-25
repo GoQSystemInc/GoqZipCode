@@ -2,7 +2,7 @@ import { expect } from '@jest/globals';
 import {
   addresses,
   expectedAddressExcludingHyphenDataList,
-  expectedAddressIncludeHyphenDataList,
+  expectedAddressIncludingHyphenDataList,
 } from './constants/masterData/address';
 import { fullInputZipCodeExcludingHyphen } from './constants/userInput/zipcode';
 
@@ -94,7 +94,7 @@ describe('郵便番号が期待する桁数かチェック', () => {
 describe('オプションによってハイフンを付与', () => {
   test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
     expect(goqZipCode.convertHyphenatedZipCode(true, addresses)).toEqual(
-      expectedAddressIncludeHyphenDataList
+      expectedAddressIncludingHyphenDataList
     );
   });
 

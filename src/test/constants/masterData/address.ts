@@ -64,7 +64,7 @@ export const addresses = [
   },
 ];
 
-export const expectedAddressIncludeHyphenDataList = [
+export const expectedAddressIncludingHyphenDataList = [
   {
     zipcode: '734-0001',
     pref: '広島県',
