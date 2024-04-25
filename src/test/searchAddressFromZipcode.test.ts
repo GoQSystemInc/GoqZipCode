@@ -4,7 +4,6 @@ import {
   expectedAddressExcludingHyphenDataList,
   expectedAddressIncludingHyphenDataList,
 } from './constants/masterData/address';
-import { fullInputZipCodeExcludingHyphen } from './constants/userInput/zipcode';
 
 import type { Addresses } from './type'
 
