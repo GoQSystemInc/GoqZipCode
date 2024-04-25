@@ -5,7 +5,7 @@ import {
   expectedAddressIncludingHyphenDataList,
 } from './constants/masterData/address';
 
-import type { Addresses } from './type'
+import type { Address } from './type'
 
 const goqZipCode = {
   convertZipCode: function (testZipCode: string): string {
@@ -29,7 +29,7 @@ const goqZipCode = {
     return true;
   },
 
-  convertHyphenatedZipCode: function (hasOptionHyphen: boolean, addresses:Addresses) {
+  convertHyphenatedZipCode: function (hasOptionHyphen: boolean, addresses:Address[]) {
     if (hasOptionHyphen === false) {
       return addresses;
     }
