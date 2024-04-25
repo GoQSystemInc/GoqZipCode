@@ -18,15 +18,15 @@ const goqZipCode = {
   },
 
   checkLength: function (isExact: boolean, length: number) {
-    if (isExact === true && length !== 7) {
-      return false;
+    if (isExact === true && length === 7) {
+      return true;
     }
 
-    if (isExact === false && length <= 1) {
-      return false;
+    if (isExact === false && length >= 2) {
+      return true;
     }
 
-    return true;
+    return false;
   },
 
   convertHyphenatedZipCode: function (
