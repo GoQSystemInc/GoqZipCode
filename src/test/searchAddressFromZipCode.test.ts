@@ -5,15 +5,15 @@ import {
   expectedAddressIncludingHyphenDataList,
 } from './constants/masterData/address';
 
-import type { Address } from './type'
+import type { Address } from './type';
 
 const goqZipCode = {
   convertZipCode: function (testZipCode: string): string {
     const a: string = testZipCode.replace(/[０-９]/g, (s: string) =>
       String.fromCharCode(s.charCodeAt(0) - 65248)
     );
-    
-    const b = a.replaceAll(/\D/g, '')
+
+    const b = a.replaceAll(/\D/g, '');
     return b;
   },
 
@@ -29,7 +29,10 @@ const goqZipCode = {
     return true;
   },
 
-  convertHyphenatedZipCode: function (hasOptionHyphen: boolean, addresses:Address[]) {
+  convertHyphenatedZipCode: function (
+    hasOptionHyphen: boolean,
+    addresses: Address[]
+  ) {
     if (hasOptionHyphen === false) {
       return addresses;
     }
