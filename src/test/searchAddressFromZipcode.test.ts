@@ -44,8 +44,8 @@ const goqZipCode = {
   },
 };
 
-describe('全角の郵便番号を半角に変換', () => {
-  test('ユーザーによって入力された郵便番号がすべて全角の時にすべて半角に変換', () => {
+describe('convertZipCodeの動作をテスト', () => {
+  test('全角の郵便番号を半角に変換', () => {
     const expectedZipCodeExcludingHyphen = '7320021';
     const testZipCodeExcludingHyphen = '７３２００２１';
 
@@ -54,7 +54,7 @@ describe('全角の郵便番号を半角に変換', () => {
     );
   });
 
-  test('ユーザーによって入力された郵便番号がすべて全角でかつハイフンが入っている場合に、数字は半角になりハイフンが摘出されているか', () => {
+  test('全角の郵便番号を半角に変換して、ハイフンを削除', () => {
     const expectedZipCodeExcludingHyphen = '7320021';
     const testZipCodeIncludingHyphen = '７３２ー００２１';
 
@@ -63,7 +63,7 @@ describe('全角の郵便番号を半角に変換', () => {
     );
   });
 
-  test('ユーザーによって入力された郵便番号が半角と全角の混合の値だった場合に数字をすべて半角に変換', () => {
+  test('全角のみ半角に変換', () => {
     const expectedZipCodeExcludingHyphen = '7320021';
     const testZipCodeMixtureFullAndHalf = '７３2００２1';
 
