@@ -76,7 +76,7 @@ describe('オプションによってハイフンを付与', () => {
   });
 });
 
-test('', () => {
+test('郵便番号で検索して住所データを取得', () => {
   const expectedAddressData = {
     zipcode: '7340001',
     pref: '広島県',
@@ -87,4 +87,7 @@ test('', () => {
     '指定の郵便番号に一致する住所は見つかりませんでした';
   const includedZipCode = '7340001';
   const notIncludedZipCodeFor = '7330001';
+
+  expect(includedZipCode).toBe(expectedAddressData);
+  expect(notIncludedZipCodeFor).toBe(expectedErrorMessage);
 });
