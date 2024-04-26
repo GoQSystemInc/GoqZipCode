@@ -130,4 +130,6 @@ test('郵便番号が部分一致する住所を検索', () => {
       town: '翠',
     },
   ];
+
+  expect('734').toEqual(expectedAddressDatalist);
 });
