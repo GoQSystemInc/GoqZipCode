@@ -75,3 +75,16 @@ describe('オプションによってハイフンを付与', () => {
     );
   });
 });
+
+test('', () => {
+  const expectedAddressData = {
+    zipcode: '7340001',
+    pref: '広島県',
+    city: '広島市南区',
+    town: '出汐',
+  };
+  const expectedErrorMessage =
+    '指定の郵便番号に一致する住所は見つかりませんでした';
+  const includedZipCode = '7340001';
+  const notIncludedZipCodeFor = '7330001';
+});
