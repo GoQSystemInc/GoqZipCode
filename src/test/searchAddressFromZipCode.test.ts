@@ -83,10 +83,7 @@ test('郵便番号で検索して住所データを取得', () => {
     city: '広島市南区',
     town: '出汐',
   };
-  const expectedErrorMessage =
-    '指定の郵便番号に一致する住所は見つかりませんでした';
-  const notIncludedZipCodeFor = '7330001';
 
   expect(goqZipCode.searchMachingZipCode(addresses, '7340001')).toBe(expectedAddressData);
-  expect(notIncludedZipCodeFor).toBe(expectedErrorMessage);
+  expect(goqZipCode.searchMachingZipCode(addresses, '7330001')).toBe( '指定の郵便番号に一致する住所は見つかりませんでした');
 });
