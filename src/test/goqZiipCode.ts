@@ -2,12 +2,12 @@ import type { Address } from './type';
 
 export const goqZipCode = {
   convertZipCode: function (testZipCode: string): string {
-    const a: string = testZipCode.replace(/[０-９]/g, (s: string) =>
+    const halfWidthZipCode: string = testZipCode.replace(/[０-９]/g, (s: string) =>
       String.fromCharCode(s.charCodeAt(0) - 65248)
     );
 
-    const b = a.replaceAll(/\D/g, '');
-    return b;
+    const halfWidthZipCodeExcludingHyphen = halfWidthZipCode.replaceAll(/\D/g, '');
+    return halfWidthZipCodeExcludingHyphen;
   },
 
   checkLength: function (isExact: boolean, length: number): boolean {
