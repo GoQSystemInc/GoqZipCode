@@ -1,4 +1,6 @@
-export const addresses = [
+import { Address } from '../../type'
+
+export const addresses: Address[] = [
   {
     zipcode: '7340001',
     pref: '広島県',
