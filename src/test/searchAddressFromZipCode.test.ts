@@ -88,6 +88,10 @@ test('郵便番号で検索して住所データを取得', () => {
   const includedZipCode = '7340001';
   const notIncludedZipCodeFor = '7330001';
 
+  const matchAddress = addresses.find(
+    (address) => address.zipcode === includedZipCode
+  );
+
   expect(includedZipCode).toBe(expectedAddressData);
   expect(notIncludedZipCodeFor).toBe(expectedErrorMessage);
 });
