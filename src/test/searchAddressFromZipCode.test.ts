@@ -85,14 +85,14 @@ describe('郵便番号で住所データ検索', () => {
       town: '出汐',
     };
 
-    expect(goqZipCode.searchMachingZipCode(addresses, '7340001')).toBe(
+    expect(goqZipCode.searchMachingZipCode(addresses, '7340001')).toEqual(
       expectedAddressData
     );
   });
 
   test('郵便番号検索で一致するデータがない旨メッセージ表示', () => {
     expect(goqZipCode.searchMachingZipCode(addresses, '7330001')).toBe(
-      '指定の郵便番号に一致する住所は見つかりませんでした'
+      '指定の住所に一致する郵便番号は見つかりませんでした'
     );
   });
 });
