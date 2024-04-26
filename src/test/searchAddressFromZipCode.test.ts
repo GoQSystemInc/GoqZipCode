@@ -7,8 +7,8 @@ import {
 } from './constants/masterData/address';
 
 describe('convertZipCodeの動作をテスト', () => {
+  const expectedZipCodeExcludingHyphen = '7320021';
   test('全角の郵便番号を半角に変換', () => {
-    const expectedZipCodeExcludingHyphen = '7320021';
     const testZipCodeExcludingHyphen = '７３２００２１';
 
     expect(goqZipCode.convertZipCode(testZipCodeExcludingHyphen)).toBe(
@@ -17,7 +17,6 @@ describe('convertZipCodeの動作をテスト', () => {
   });
 
   test('全角の郵便番号を半角に変換して、ハイフンを削除', () => {
-    const expectedZipCodeExcludingHyphen = '7320021';
     const testZipCodeIncludingHyphen = '７３２ー００２１';
 
     expect(goqZipCode.convertZipCode(testZipCodeIncludingHyphen)).toBe(
@@ -26,7 +25,6 @@ describe('convertZipCodeの動作をテスト', () => {
   });
 
   test('半角のハイフンを削除', () => {
-    const expectedZipCodeExcludingHyphen = '7320021';
     const testZipCodeIncludingHyphen = '732-0021';
 
     expect(goqZipCode.convertZipCode(testZipCodeIncludingHyphen)).toBe(
@@ -35,7 +33,6 @@ describe('convertZipCodeの動作をテスト', () => {
   });
 
   test('半角と全角の郵便番号を半角に変換', () => {
-    const expectedZipCodeExcludingHyphen = '7320021';
     const testZipCodeMixtureFullAndHalf = '７３2００２1';
 
     expect(goqZipCode.convertZipCode(testZipCodeMixtureFullAndHalf)).toBe(
