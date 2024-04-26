@@ -1,50 +1,10 @@
 import { expect } from '@jest/globals';
+import { goqZipCode } from './goqZiipCode';
 import {
   addresses,
   expectedAddressExcludingHyphenDataList,
   expectedAddressIncludingHyphenDataList,
 } from './constants/masterData/address';
-
-import type { Address } from './type';
-
-const goqZipCode = {
-  convertZipCode: function (testZipCode: string): string {
-    const a: string = testZipCode.replace(/[０-９]/g, (s: string) =>
-      String.fromCharCode(s.charCodeAt(0) - 65248)
-    );
-
-    const b = a.replaceAll(/\D/g, '');
-    return b;
-  },
-
-  checkLength: function (isExact: boolean, length: number) {
-    if (isExact === true && length === 7) {
-      return true;
-    }
-
-    if (isExact === false && length >= 2 && length <= 7) {
-      return true;
-    }
-
-    return false;
-  },
-
-  convertHyphenatedZipCode: function (
-    hasOptionHyphen: boolean,
-    addresses: Address[]
-  ) {
-    if (hasOptionHyphen === false) {
-      return addresses;
-    }
-
-    return addresses.map((address) => {
-      return {
-        ...address,
-        zipcode: `${address.zipcode.slice(0, 3)}-${address.zipcode.slice(3)}`,
-      };
-    });
-  },
-};
 
 describe('convertZipCodeの動作をテスト', () => {
   test('全角の郵便番号を半角に変換', () => {
