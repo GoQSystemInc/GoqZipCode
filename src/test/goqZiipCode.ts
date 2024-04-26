@@ -2,11 +2,15 @@ import type { Address } from './type';
 
 export const goqZipCode = {
   convertZipCode: function (testZipCode: string): string {
-    const halfWidthZipCode: string = testZipCode.replace(/[０-９]/g, (s: string) =>
-      String.fromCharCode(s.charCodeAt(0) - 65248)
+    const halfWidthZipCode: string = testZipCode.replace(
+      /[０-９]/g,
+      (s: string) => String.fromCharCode(s.charCodeAt(0) - 65248)
     );
 
-    const halfWidthZipCodeExcludingHyphen = halfWidthZipCode.replaceAll(/\D/g, '');
+    const halfWidthZipCodeExcludingHyphen = halfWidthZipCode.replaceAll(
+      /\D/g,
+      ''
+    );
     return halfWidthZipCodeExcludingHyphen;
   },
 
@@ -36,5 +40,16 @@ export const goqZipCode = {
         zipcode: `${address.zipcode.slice(0, 3)}-${address.zipcode.slice(3)}`,
       };
     });
+  },
+
+  searchMachingZipCode: function (
+    addresses: Address[],
+    zipCode: string
+  ): Address | string {
+    const matchAddress = addresses.find(
+      (address) => address.zipcode === zipCode
+    );
+
+    return matchAddress;
   },
 };
