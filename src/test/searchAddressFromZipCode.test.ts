@@ -22,7 +22,7 @@ const goqZipCode = {
       return true;
     }
 
-    if (isExact === false && length >= 2) {
+    if (isExact === false && length >= 2 && length <= 7) {
       return true;
     }
 
