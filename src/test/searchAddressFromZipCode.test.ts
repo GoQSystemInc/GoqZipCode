@@ -131,17 +131,7 @@ test('郵便番号が部分一致する住所を検索', () => {
     },
   ];
 
-  const matchAddresses = [];
-  const len: number = addresses.length;
-
-  for (let i: number = 0; i < len; i++) {
-    const rule: RegExp = new RegExp(`^734`);
-    const address = addresses[i];
-
-    if (rule.test(address.zipcode) === true) {
-      matchAddresses.push(address);
-    }
-  }
-
-  expect(matchAddresses).toEqual(expectedAddressDatalist);
+  expect(goqZipCode.searchAddressFromPartialZip(addresses)).toEqual(
+    expectedAddressDatalist
+  );
 });
