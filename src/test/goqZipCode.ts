@@ -11,7 +11,7 @@ export const goqZipCode = {
       /\D/g,
       ''
     );
-    
+
     return halfWidthZipCodeExcludingHyphen;
   },
 

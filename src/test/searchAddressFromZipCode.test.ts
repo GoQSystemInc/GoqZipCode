@@ -1,5 +1,5 @@
 import { expect } from '@jest/globals';
-import { goqZipCode } from './goqZiipCode';
+import { goqZipCode } from './goqZipCode';
 import {
   addresses,
   expectedAddressExcludingHyphenDataList,
