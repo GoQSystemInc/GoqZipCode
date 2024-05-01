@@ -1,8 +1,8 @@
 import { expect } from '@jest/globals';
 import { goqZipCode } from './goqZipCode';
-import { addresses } from './constants/masterData/address';
-import { addressExcludingHyphenDataList } from './constants/masterData';
-import { addressIncludingHyphenDataList } from './constants/masterData';
+import { addresses } from './constants/address';
+import { addressExcludingHyphenDataList } from './constants';
+import { addressIncludingHyphenDataList } from './constants';
 
 
 describe('convertZipCodeの動作をテスト', () => {
