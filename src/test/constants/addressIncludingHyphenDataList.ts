@@ -1,4 +1,6 @@
-export const addressIncludingHyphenDataList = [
+import type { Address, HyphenatedZipCode } from '../type/type';
+
+export const addressIncludingHyphenDataList: Address<HyphenatedZipCode>[] = [
   {
     zipcode: '734-0001',
     pref: '広島県',

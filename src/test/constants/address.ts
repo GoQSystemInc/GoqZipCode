@@ -1,6 +1,6 @@
-import { Address } from '../type/type';
+import { Address, UnHyphenatedZipCode } from '../type/type';
 
-export const addresses: Address[] = [
+export const addresses: Address<UnHyphenatedZipCode>[] = [
   {
     zipcode: '7340001',
     pref: '広島県',
