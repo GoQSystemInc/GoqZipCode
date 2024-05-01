@@ -5,5 +5,5 @@ export type Address<ZipCode extends string> = {
   town: string;
 };
 
-export type UnHyphenatedZipCode = `${string}`
-export type HyphenatedZipCode = `${string}-${string}`
+export type UnHyphenatedZipCode = `${string}`;
+export type HyphenatedZipCode = `${string}-${string}`;

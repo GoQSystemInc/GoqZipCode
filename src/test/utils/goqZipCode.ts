@@ -1,4 +1,8 @@
-import type { Address, HyphenatedZipCode, UnHyphenatedZipCode } from '../type/type';
+import type {
+  Address,
+  HyphenatedZipCode,
+  UnHyphenatedZipCode,
+} from '../type/type';
 
 export const goqZipCode = {
   convertZipCode: function (testZipCode: string): string {
