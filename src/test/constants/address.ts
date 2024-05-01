@@ -1,4 +1,4 @@
-import { Address } from '../type';
+import { Address } from '../type/type';
 
 export const addresses: Address[] = [
   {

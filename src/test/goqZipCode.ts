@@ -1,4 +1,4 @@
-import type { Address } from './type';
+import type { Address } from './type/type';
 
 export const goqZipCode = {
   convertZipCode: function (testZipCode: string): string {
