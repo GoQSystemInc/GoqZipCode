@@ -46,4 +46,19 @@ export const goqZipCode = {
       };
     });
   },
+
+  searchMachingZipCode: function (
+    addresses: Address[],
+    zipCode: string
+  ): Address | string {
+    const matchAddress = addresses.find(
+      (address) => address.zipcode === zipCode
+    );
+
+    if (matchAddress === undefined) {
+      return '指定の住所に一致する郵便番号は見つかりませんでした';
+    }
+
+    return matchAddress;
+  },
 };
