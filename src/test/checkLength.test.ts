@@ -1,5 +1,5 @@
 import { expect } from '@jest/globals';
-import { goqZipCode } from './goqZipCode';
+import { goqZipCode } from './utils/goqZipCode';
 
 describe('郵便番号が期待する桁数かチェック', () => {
   test('完全一致検索で入力データが7文字ならtrueを返す', () => {
