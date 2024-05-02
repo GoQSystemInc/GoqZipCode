@@ -1,4 +1,4 @@
-import { checkLength, convertHyphenatedZipCode, convertZipCode  } from './utils'
+import { checkLength, convertHyphenatedZipCode, convertZipCode } from './utils';
 
 export const goqZipCode = {
   convertZipCode,
