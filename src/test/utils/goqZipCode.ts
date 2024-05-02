@@ -1,7 +1,4 @@
-import type {
-  HyphenatedZipCodeAddress,
-  UnHyphenatedZipCodeAddress,
-} from '../type/type';
+import type { HyphenatedZipCode } from '../type/type';
 
 export const goqZipCode = {
   convertZipCode: function (testZipCode: string): string {
@@ -31,18 +28,8 @@ export const goqZipCode = {
   },
 
   convertHyphenatedZipCode: function (
-    hasOptionHyphen: boolean,
-    addresses: UnHyphenatedZipCodeAddress[]
-  ): HyphenatedZipCodeAddress[] | UnHyphenatedZipCodeAddress[] {
-    if (hasOptionHyphen === false) {
-      return addresses;
-    }
-
-    return addresses.map((address) => {
-      return {
-        ...address,
-        zipcode: `${address.zipcode.slice(0, 3)}-${address.zipcode.slice(3)}`,
-      };
-    });
+    zipCode: string | HyphenatedZipCode
+  ): HyphenatedZipCode | string {
+    return `${zipCode.slice(0, 3)}-${zipCode.slice(3)}`;
   },
 };
