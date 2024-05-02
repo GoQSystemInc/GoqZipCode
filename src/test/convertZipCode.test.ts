@@ -1,5 +1,5 @@
 import { expect } from '@jest/globals';
-import { goqZipCode } from './utils/goqZipCode';
+import { goqZipCode } from './goqZipCode';
 
 describe('convertZipCodeの動作をテスト', () => {
   const expectedZipCodeExcludingHyphen = '7320021';
