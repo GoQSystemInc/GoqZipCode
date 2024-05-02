@@ -1,5 +1,5 @@
 import { expect } from '@jest/globals';
-import { goqZipCode } from './goqZipCode';
+import { goqZipCode } from '../goqZipCode';
 
 describe('オプションによってハイフンを付与', () => {
   test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
