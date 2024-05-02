@@ -1,17 +1,8 @@
 import { expect } from '@jest/globals';
 import { goqZipCode } from './utils/goqZipCode';
-import { addresses, addressIncludingHyphenDataList } from './constants';
 
 describe('オプションによってハイフンを付与', () => {
   test('オプションでハイフンありを指定している場合、郵便番号にハイフンを追加する', () => {
-    expect(goqZipCode.convertHyphenatedZipCode(true, addresses)).toEqual(
-      addressIncludingHyphenDataList
-    );
-  });
-
-  test('オプションでハイフンなしを指定している場合、郵便番号にハイフンを追加しない', () => {
-    expect(goqZipCode.convertHyphenatedZipCode(false, addresses)).toBe(
-      addresses
-    );
+    expect(goqZipCode.convertHyphenatedZipCode('7340001')).toEqual('734-0001');
   });
 });
