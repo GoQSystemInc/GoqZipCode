@@ -1,4 +1,4 @@
-export type UnHyphenatedZipCodeAddress = {
+export type Address = {
   zipcode: string;
   pref: string;
   city: string;
@@ -6,11 +6,10 @@ export type UnHyphenatedZipCodeAddress = {
 };
 
 export type HyphenatedZipCodeAddress = {
-  zipcode: `${string}-${string}`;
+  zipcode: HyphenatedZipCode;
   pref: string;
   city: string;
   town: string;
 };
 
-export type UnHyphenatedZipCode = `${number}`;
-export type HyphenatedZipCode = `${number}-${number}`;
+export type HyphenatedZipCode = `${string}-${string}`;
