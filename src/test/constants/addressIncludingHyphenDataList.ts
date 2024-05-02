@@ -1,4 +1,4 @@
-import type { HyphenatedZipCodeAddress } from '../type/type';
+import type { HyphenatedZipCodeAddress } from '../types/type';
 
 export const addressIncludingHyphenDataList: HyphenatedZipCodeAddress[] = [
   {

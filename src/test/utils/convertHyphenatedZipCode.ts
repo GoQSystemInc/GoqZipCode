@@ -1,4 +1,4 @@
-import type { HyphenatedZipCode } from '../type/type';
+import type { HyphenatedZipCode } from '../types/type';
 
 export const convertHyphenatedZipCode = (
   zipCode: string
