@@ -1,7 +1,6 @@
 import type {
-  Address,
-  HyphenatedZipCode,
-  UnHyphenatedZipCode,
+  HyphenatedZipCodeAddress,
+  UnHyphenatedZipCodeAddress,
 } from '../type/type';
 
 export const goqZipCode = {
@@ -33,8 +32,8 @@ export const goqZipCode = {
 
   convertHyphenatedZipCode: function (
     hasOptionHyphen: boolean,
-    addresses: Address<string>[]
-  ): Address<UnHyphenatedZipCode | HyphenatedZipCode>[] {
+    addresses: UnHyphenatedZipCodeAddress[]
+  ): HyphenatedZipCodeAddress[] | UnHyphenatedZipCodeAddress[] {
     if (hasOptionHyphen === false) {
       return addresses;
     }
