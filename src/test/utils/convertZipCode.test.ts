@@ -17,14 +17,10 @@ describe('convertZipCodeの動作をテスト', () => {
   });
 
   test('半角のハイフンを削除', () => {
-    expect(convertZipCode('732-0021')).toBe(
-      expectedZipCodeExcludingHyphen
-    );
+    expect(convertZipCode('732-0021')).toBe(expectedZipCodeExcludingHyphen);
   });
 
   test('半角と全角の郵便番号を半角に変換', () => {
-    expect(convertZipCode('７３2００２1')).toBe(
-      expectedZipCodeExcludingHyphen
-    );
+    expect(convertZipCode('７３2００２1')).toBe(expectedZipCodeExcludingHyphen);
   });
 });
