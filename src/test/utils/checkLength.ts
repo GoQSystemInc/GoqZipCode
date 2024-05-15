@@ -1,11 +1,11 @@
 export const checkLength = (isExact: boolean, length: number): boolean => {
-  if (isExact === true && length === 7) {
-    return true;
+  if (isExact === true && length !== 7) {
+    return false;
   }
 
-  if (isExact === false && length >= 2 && length <= 7) {
-    return true;
+  if (isExact === false && length <= 1) {
+    return false;
   }
 
-  return false;
+  return true;
 };
