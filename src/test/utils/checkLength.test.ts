@@ -5,8 +5,16 @@ describe('郵便番号が期待する桁数かチェック', () => {
   test('完全一致検索で入力データが7文字ならtrueを返す', () => {
     expect(checkLength(true, 7)).toBe(true);
   });
+  
+  test('完全一致検索で入力データが6文字以下ならfalseを返す', () => {
+    expect(checkLength(true, 6)).toBe(false);
+  });
 
-  test('完全一致検索で入力データが7文字以外ならfalseを返す', () => {
+  test('完全一致検索で入力データが0文字ならfalseを返す', () => {
+    expect(checkLength(true, 0)).toBe(false);
+  });
+
+  test('完全一致検索で入力データが7文字以上ならfalseを返す', () => {
     expect(checkLength(true, 8)).toBe(false);
   });
 
