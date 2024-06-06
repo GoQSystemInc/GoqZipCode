@@ -222,9 +222,7 @@ export class GoqZipCode {
           GoqZipCode.addressData.find((element) => {
             const fullAddress: string = `${element.pref}${element.city}${element.town}`;
 
-            return (
-              fullAddress === data.address
-            );
+            return fullAddress === data.address;
           });
 
         // データがないならreject
@@ -256,15 +254,11 @@ export class GoqZipCode {
 
         // 前方一致か部分一致か
         if (data.is_left) {
-          if (
-            fullAddress.startsWith(data.address) === true
-          ) {
+          if (fullAddress.startsWith(data.address) === true) {
             matchAddresses.push(address);
           }
         } else {
-          if (
-            fullAddress.includes(data.address) === true
-          ) {
+          if (fullAddress.includes(data.address) === true) {
             matchAddresses.push(address);
           }
         }
