@@ -1,7 +1,7 @@
 import { expect } from '@jest/globals';
 import { convertZipCode } from './';
 
-describe('convertZipCodeの動作をテスト', () => {
+describe('郵便番号を変換する処理のテスト', () => {
   const expectedZipCodeExcludingHyphen = '7320021';
 
   test('全角の郵便番号を半角に変換', () => {
