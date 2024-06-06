@@ -1,7 +1,7 @@
 import { expect } from '@jest/globals';
 import { checkLength } from '.';
 
-describe('完全一致検索時の桁数はチェック', () => {
+describe('完全一致検索時の桁数チェック', () => {
   test('完全一致検索で入力データが7文字ならtrueを返す', () => {
     expect(checkLength(true, 7)).toBe(true);
   });
