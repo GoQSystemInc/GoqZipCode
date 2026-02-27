@@ -130,6 +130,27 @@ export class GoqZipCode {
   }
 
   /**
+   * 住所に含まれる波ダッシュ (U+301C) を 全角チルダ (U+FF5E) に変換する
+   * @param {app.response[]} addresses - 住所一覧
+   * @returns {app.response[]} 変換後の住所一覧
+   */
+  static convertWaveDashToTilde(
+    addresses: app.response[]
+  ): app.response[] {
+    return addresses.map((address) => {
+      // \u301C: 波ダッシュ 「〜」
+      // \uFF5E: 全角チルダ 「～」
+      const waveDashRegex = /\u301C/g;
+      return {
+        ...address,
+        pref: address.pref.replace(waveDashRegex, '\uFF5E'),
+        city: address.city.replace(waveDashRegex, '\uFF5E'),
+        town: address.town.replace(waveDashRegex, '\uFF5E'),
+      };
+    });
+  }
+
+  /**
    * 郵便番号から検索
    * @param {app.requestSearchAddressFromZipcode} data - 郵便番号と検索条件
    * @return {Promise<app.responses>} 検索結果（条件に合う住所またはエラー文）
@@ -165,8 +186,10 @@ export class GoqZipCode {
           return;
         }
 
+        const tildeConverted =
+          GoqZipCode.convertWaveDashToTilde([matchAddress]);
         const payload = GoqZipCode.convertHyphenatedZipCode(
-          [matchAddress],
+          tildeConverted,
           this.options
         );
         resolve(payload);
@@ -191,8 +214,10 @@ export class GoqZipCode {
         }
       }
 
+      const tildeConverted =
+        GoqZipCode.convertWaveDashToTilde(matchAddresses);
       const payload = GoqZipCode.convertHyphenatedZipCode(
-        matchAddresses,
+        tildeConverted,
         this.options
       );
       resolve(payload);
@@ -233,8 +258,10 @@ export class GoqZipCode {
           return;
         }
 
+        const tildeConverted =
+          GoqZipCode.convertWaveDashToTilde([matchAddress]);
         const payload = GoqZipCode.convertHyphenatedZipCode(
-          [matchAddress],
+          tildeConverted,
           this.options
         );
         resolve(payload);
@@ -270,8 +297,10 @@ export class GoqZipCode {
         }
       }
 
+      const tildeConverted =
+        GoqZipCode.convertWaveDashToTilde(matchAddresses);
       const payload = GoqZipCode.convertHyphenatedZipCode(
-        matchAddresses,
+        tildeConverted,
         this.options
       );
       resolve(payload);
