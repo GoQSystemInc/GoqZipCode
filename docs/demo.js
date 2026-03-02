@@ -217,6 +217,19 @@ var GoqZipCode = /** @class */ (function () {
         });
     };
     /**
+     * 住所に含まれる波ダッシュ (U+301C) を 全角チルダ (U+FF5E) に変換する
+     * @param {app.response[]} addresses - 住所一覧
+     * @returns {app.response[]} 変換後の住所一覧
+     */
+    GoqZipCode.convertWaveDashToTilde = function (addresses) {
+        return addresses.map(function (address) {
+            // \u301C: 波ダッシュ 「〜」
+            // \uFF5E: 全角チルダ 「～」
+            var waveDashRegex = /\u301C/g;
+            return __assign(__assign({}, address), { pref: address.pref.replace(waveDashRegex, '\uFF5E'), city: address.city.replace(waveDashRegex, '\uFF5E'), town: address.town.replace(waveDashRegex, '\uFF5E') });
+        });
+    };
+    /**
      * 郵便番号から検索
      * @param {app.requestSearchAddressFromZipcode} data - 郵便番号と検索条件
      * @return {Promise<app.responses>} 検索結果（条件に合う住所またはエラー文）
@@ -226,7 +239,7 @@ var GoqZipCode = /** @class */ (function () {
             var _this = this;
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                        var zipCode, flag, message, matchAddress, payload_1, matchAddresses, len, i, rule, address, payload;
+                        var zipCode, flag, message, matchAddress, tildeConverted_1, payload_1, matchAddresses, len, i, rule, address, tildeConverted, payload;
                         return __generator(this, function (_a) {
                             zipCode = GoqZipCode.convertZipCode(data.zipcode);
                             flag = GoqZipCode.checkLength(data.is_exact, zipCode.length);
@@ -246,7 +259,8 @@ var GoqZipCode = /** @class */ (function () {
                                     reject('指定の郵便番号に一致する住所は見つかりませんでした');
                                     return [2 /*return*/];
                                 }
-                                payload_1 = GoqZipCode.convertHyphenatedZipCode([matchAddress], this.options);
+                                tildeConverted_1 = GoqZipCode.convertWaveDashToTilde([matchAddress]);
+                                payload_1 = GoqZipCode.convertHyphenatedZipCode(tildeConverted_1, this.options);
                                 resolve(payload_1);
                                 return [2 /*return*/];
                             }
@@ -264,7 +278,8 @@ var GoqZipCode = /** @class */ (function () {
                                     matchAddresses.push(address);
                                 }
                             }
-                            payload = GoqZipCode.convertHyphenatedZipCode(matchAddresses, this.options);
+                            tildeConverted = GoqZipCode.convertWaveDashToTilde(matchAddresses);
+                            payload = GoqZipCode.convertHyphenatedZipCode(tildeConverted, this.options);
                             resolve(payload);
                             return [2 /*return*/];
                         });
@@ -282,7 +297,7 @@ var GoqZipCode = /** @class */ (function () {
             var _this = this;
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                        var message, matchAddress, payload_2, matchAddresses, len, i, address, fullAddress, payload;
+                        var message, matchAddress, tildeConverted_2, payload_2, matchAddresses, len, i, address, fullAddress, tildeConverted, payload;
                         return __generator(this, function (_a) {
                             // 住所が2文字未満の場合は、以降の検索処理を実行させない
                             if (data.address.length <= 1) {
@@ -301,7 +316,8 @@ var GoqZipCode = /** @class */ (function () {
                                     reject('指定の住所に一致する郵便番号は見つかりませんでした');
                                     return [2 /*return*/];
                                 }
-                                payload_2 = GoqZipCode.convertHyphenatedZipCode([matchAddress], this.options);
+                                tildeConverted_2 = GoqZipCode.convertWaveDashToTilde([matchAddress]);
+                                payload_2 = GoqZipCode.convertHyphenatedZipCode(tildeConverted_2, this.options);
                                 resolve(payload_2);
                                 return [2 /*return*/];
                             }
@@ -327,7 +343,8 @@ var GoqZipCode = /** @class */ (function () {
                                     }
                                 }
                             }
-                            payload = GoqZipCode.convertHyphenatedZipCode(matchAddresses, this.options);
+                            tildeConverted = GoqZipCode.convertWaveDashToTilde(matchAddresses);
+                            payload = GoqZipCode.convertHyphenatedZipCode(tildeConverted, this.options);
                             resolve(payload);
                             return [2 /*return*/];
                         });
