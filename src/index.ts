@@ -11,7 +11,7 @@ export * from './types';
  * 住所を検索
  */
 export class GoqZipCode {
-  static addressJson: string = process.env.ZIP_FILE_PATH as string;
+  static addressJson: string = 'https://goqform-zipcode.s3-ap-northeast-1.amazonaws.com/data/zipcodes_min.json.zip';
   static addressData: app.responses = [];
   private options: Required<app.options> = {
     limit: 50,
